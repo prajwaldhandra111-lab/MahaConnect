@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MahaConnect | Notifications</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    const userMobile = localStorage.getItem("userMobile");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userMobile || !userRole) {
+        window.location.href = "index.html";
+    }
+
+    if (userRole !== "citizen") {
+        alert("Access Denied: Citizen access required.");
+        window.location.href = "index.html";
+    }
+</script>
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="logo">MC</div>
+
+                <div>
+                    <h2>MahaConnect</h2>
+                    <span>Citizen Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    <span>▦</span>
+                    Dashboard
+                </a>
+
+                <a href="profile.html">
+                    <span>👤</span>
+                    My Profile
+                </a>
+
+                <a href="applications.html">
+                    <span>▤</span>
+                    My Applications
+                </a>
+
+                <a href="consent.html">
+                    <span>🔐</span>
+                    Data Consent
+                </a>
+
+                <a href="notifications.html" class="active">
+                    <span>🔔</span>
+                    Notifications
+                </a>
+
+                <a href="#">
+                    <span>⚙</span>
+                    Settings
+                </a>
+
+                <a href="index.html">
+                    <span>↪</span>
+                    Logout
+                </a>
+
+            </nav>
+
+            <div class="security-card">
+
+                <div class="security-icon">🛡️</div>
+
+                <h4>Your Data is Protected</h4>
+
+                <p>
+                    Your information is shared only
+                    with authorized services.
+                </p>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Area -->
+        <main class="main-area">
+
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input type="text" placeholder="Search services...">
+                </div>
+
+                <div class="user-area">
+
+                    <span class="notification-icon">🔔</span>
+
+                    <div class="user-avatar">
+                        U
+                    </div>
+
+                    <div class="user-name">
+                        <strong>User</strong>
+                        <small>Citizen</small>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Page Content -->
+            <section class="dashboard-content">
+
+                <div class="page-intro">
+
+                    <div>
+                        <span class="page-label">UPDATES & ALERTS</span>
+
+                        <h1>Notifications</h1>
+
+                        <p>
+                            Stay updated with your applications,
+                            services and important government alerts.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Notification Summary -->
+                <div class="modern-services">
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            🔔
+                        </div>
+
+                        <div>
+                            <h3>New Notifications</h3>
+                            <p>
+                                2 new updates are waiting for you.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            📋
+                        </div>
+
+                        <div>
+                            <h3>Application Updates</h3>
+                            <p>
+                                Track the latest status of your applications.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            ⚠️
+                        </div>
+
+                        <div>
+                            <h3>Important Alerts</h3>
+                            <p>
+                                Important service and deadline information.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Notifications -->
+                <div class="dashboard-box">
+
+                    <div class="section-title">
+                        <h2>Recent Notifications</h2>
+                    </div>
+
+                    <div id="notificationsContent">
+                        <p>Loading notifications...</p>
+                    </div>
+
+                </div>
+
+
+                <!-- Notification Preferences -->
+                <div class="bottom-grid">
+
+                    <div class="dashboard-box">
+
+                        <div class="section-title">
+                            <h2>Notification Preferences</h2>
+                        </div>
+
+                        <div class="application-row">
+
+                            <div class="application-info">
+
+                                <strong>
+                                    Application Status
+                                </strong>
+
+                                <span>
+                                    Receive updates when your application
+                                    status changes.
+                                </span>
+
+                            </div>
+
+                            <span>✓</span>
+
+                        </div>
+
+
+                        <div class="application-row">
+
+                            <div class="application-info">
+
+                                <strong>
+                                    Government Alerts
+                                </strong>
+
+                                <span>
+                                    Receive important service announcements.
+                                </span>
+
+                            </div>
+
+                            <span>✓</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-box">
+
+                        <div class="section-title">
+                            <h2>Quick Access</h2>
+                        </div>
+
+                        <p>
+                            View your applications and track their
+                            current status from one place.
+                        </p>
+
+                        <div class="quick-action">
+
+                            <button onclick="window.location.href='applications.html'">
+                                View Applications
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    </section>
+
+    <script src="js/notifications.js"></script>
+
+</main>
+
+</body>
+
+</html>

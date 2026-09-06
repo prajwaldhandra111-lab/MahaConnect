@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MahaConnect | Data Consent</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    const userMobile = localStorage.getItem("userMobile");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userMobile || !userRole) {
+        window.location.href = "index.html";
+    }
+
+    if (userRole !== "citizen") {
+        alert("Access Denied: Citizen access required.");
+        window.location.href = "index.html";
+    }
+</script>
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="logo">MC</div>
+
+                <div>
+                    <h2>MahaConnect</h2>
+                    <span>Citizen Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    <span>▦</span>
+                    Dashboard
+                </a>
+
+                <a href="profile.html">
+                    <span>👤</span>
+                    My Profile
+                </a>
+
+                <a href="applications.html">
+                    <span>▤</span>
+                    My Applications
+                </a>
+
+                <a href="consent.html" class="active">
+                    <span>🔐</span>
+                    Data Consent
+                </a>
+
+                <a href="notifications.html">
+                    <span>🔔</span>
+                    Notifications
+                </a>
+
+                <a href="#">
+                    <span>⚙</span>
+                    Settings
+                </a>
+
+                <a href="index.html">
+                    <span>↪</span>
+                    Logout
+                </a>
+
+            </nav>
+
+            <div class="security-card">
+
+                <div class="security-icon">🛡️</div>
+
+                <h4>Your Data is Protected</h4>
+
+                <p>
+                    Your information is shared only
+                    with authorized services.
+                </p>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Area -->
+        <main class="main-area">
+
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input type="text" placeholder="Search services...">
+                </div>
+
+                <div class="user-area">
+
+                    <span class="notification-icon">🔔</span>
+
+                    <div class="user-avatar">
+                        U
+                    </div>
+
+                    <div class="user-name">
+                        <strong>User</strong>
+                        <small>Citizen</small>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Page Content -->
+            <section class="dashboard-content">
+
+                <div class="page-intro">
+
+                    <div>
+                        <span class="page-label">PRIVACY & SECURITY</span>
+
+                        <h1>Data Consent</h1>
+
+                        <p>
+                            Control how your information is shared
+                            with different government services.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Consent Notice -->
+                <div class="dashboard-box">
+
+                    <div class="section-title">
+                        <h2>🔐 Manage Your Data Sharing</h2>
+                    </div>
+
+                    <p>
+                        MahaConnect uses your consent to share only
+                        the information required by each department.
+                        You can enable or disable access at any time.
+                    </p>
+
+                </div>
+
+
+                <!-- Consent Cards -->
+                <div class="modern-services">
+
+
+                    <!-- Education -->
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            🎓
+                        </div>
+
+                        <div>
+
+                            <h3>Education Department</h3>
+
+                            <p>
+                                Allow required education information
+                                to be shared for scholarships,
+                                student services and education schemes.
+                            </p>
+
+                            <label class="consent-toggle">
+
+                                <input
+                                    type="checkbox"
+                                    id="educationConsent"
+                                >
+
+                                <span>
+                                    Allow Education Data Sharing
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Employment -->
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            💼
+                        </div>
+
+                        <div>
+
+                            <h3>Employment Department</h3>
+
+                            <p>
+                                Allow required information to be shared
+                                for eligible jobs, skill programs and
+                                employment services.
+                            </p>
+
+                            <label class="consent-toggle">
+
+                                <input
+                                    type="checkbox"
+                                    id="employmentConsent"
+                                >
+
+                                <span>
+                                    Allow Employment Data Sharing
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Welfare -->
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            🏛️
+                        </div>
+
+                        <div>
+
+                            <h3>Welfare Department</h3>
+
+                            <p>
+                                Allow required information to be shared
+                                for welfare schemes, financial support
+                                and citizen benefits.
+                            </p>
+
+                            <label class="consent-toggle">
+
+                                <input
+                                    type="checkbox"
+                                    id="welfareConsent"
+                                >
+
+                                <span>
+                                    Allow Welfare Data Sharing
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Privacy Information -->
+                <div class="bottom-grid">
+
+                    <div class="dashboard-box">
+
+                        <div class="section-title">
+                            <h2>🛡️ Privacy Rules</h2>
+                        </div>
+
+                        <div class="application-row">
+
+                            <div class="application-info">
+                                <strong>Minimum Data Sharing</strong>
+                                <span>
+                                    Only required information is shared.
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="application-row">
+
+                            <div class="application-info">
+                                <strong>Consent Control</strong>
+                                <span>
+                                    You can change your consent anytime.
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="application-row">
+
+                            <div class="application-info">
+                                <strong>Access Tracking</strong>
+                                <span>
+                                    Data access is recorded in audit logs.
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-box">
+
+                        <div class="section-title">
+                            <h2>ℹ️ Important</h2>
+                        </div>
+
+                        <p>
+                            Disabling consent may prevent certain
+                            government services from automatically
+                            accessing the required information.
+                        </p>
+
+                        <p style="margin-top: 15px;">
+                            Your profile data is not automatically
+                            shared with every department.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Actions -->
+                <div class="quick-action">
+
+                    <button onclick="saveConsent()">
+                        Save Consent
+                    </button>
+
+                    <button onclick="goBack()">
+                        ← Back
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/services.js"></script>
+
+</body>
+
+</html>

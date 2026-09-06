@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MahaConnect | Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    const userMobile = localStorage.getItem("userMobile");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userMobile || !userRole) {
+        window.location.href = "index.html";
+    }
+
+    if (userRole !== "citizen") {
+        alert("Access Denied: Citizen access required.");
+        window.location.href = "index.html";
+    }
+</script>
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️ MahaConnect</h2>
+                <p>One Profile • Multiple Services</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="active">
+                    ▦ Dashboard
+                </a>
+
+                <a href="profile.html">
+                    👤 My Profile
+                </a>
+
+                <a href="applications.html">
+                    📄 My Applications
+                </a>
+
+                <a href="consent.html">
+                    🔐 Data Consent
+                </a>
+
+                <a href="notifications.html">
+                    🔔 Notifications
+                </a>
+
+                <a href="#">
+                    ⚙️ Settings
+                </a>
+
+                <a href="index.html">
+                    🚪 Logout
+                </a>
+
+            </nav>
+
+            <div class="security-card">
+                <strong>🛡️ Your data is secure</strong>
+                <span>Protected by MahaConnect</span>
+            </div>
+
+        </aside>
+
+
+        <div class="main-area">
+
+            <header class="top-navbar">
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search services, schemes..."
+                    >
+                </div>
+
+                <div class="user-area">
+
+                    <span>🔔</span>
+
+                    <div class="user-avatar">
+                        👤
+                    </div>
+
+                    <span class="user-name" id="navbarName">
+                        User
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <main class="dashboard-content">
+
+                <section class="page-intro">
+
+                    <h1>
+                        Hello ,
+                        <span id="dashboardName">User</span> 👋
+                    </h1>
+
+                    <p>
+                        Manage your profile and access government
+                        services seamlessly.
+                    </p>
+
+                    <p>
+                        📍 <span id="dashboardCity">City</span>
+                    </p>
+
+                </section>
+
+
+                <section class="profile-summary">
+
+                    <div class="profile-info">
+
+                        <div class="profile-avatar">
+                            👤
+                        </div>
+
+                        <div>
+
+                            <h2>Master Profile</h2>
+
+                            <p>
+                                One profile for multiple
+                                government services.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="completion">
+
+                        <div class="completion-text">
+                            <span>Profile Completion</span>
+                            <strong>85%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section>
+
+                    <div class="section-title">
+
+                        <h2>Government Services</h2>
+
+                        <p>
+                            Explore services from multiple departments
+                        </p>
+
+                    </div>
+
+
+                    <div class="modern-services">
+
+
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                🎓
+                            </div>
+
+                            <h3>Education</h3>
+
+                            <p>
+                                Scholarships, education records
+                                and student services.
+                            </p>
+
+                            <button onclick="openEducation()">
+                                Explore Education →
+                            </button>
+
+                        </div>
+
+
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                💼
+                            </div>
+
+                            <h3>Employment</h3>
+
+                            <p>
+                                Jobs, career opportunities
+                                and employment services.
+                            </p>
+
+                            <button onclick="openEmployment()">
+                                Explore Employment →
+                            </button>
+
+                        </div>
+
+
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                🏛️
+                            </div>
+
+                            <h3>Welfare</h3>
+
+                            <p>
+                                Government schemes, benefits
+                                and welfare services.
+                            </p>
+
+                            <button onclick="openWelfare()">
+                                Explore Welfare →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="bottom-grid">
+
+
+                    <div class="dashboard-box">
+
+                        <h3>Recent Applications</h3>
+
+                        <div class="application-row">
+
+                            <div class="application-info">
+
+                                <strong>
+                                    Student Scholarship
+                                </strong>
+
+                                <span>
+                                    MC-EDU-001
+                                </span>
+
+                            </div>
+
+                            <span class="status-pending">
+                                Pending
+                            </span>
+
+                        </div>
+
+
+                        <div class="application-row">
+
+                            <div class="application-info">
+
+                                <strong>
+                                    Welfare Scheme
+                                </strong>
+
+                                <span>
+                                    MC-WEL-001
+                                </span>
+
+                            </div>
+
+                            <span class="status-approved">
+                                Approved
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-box">
+
+                        <h3>Quick Actions</h3>
+
+                        <a
+                            href="consent.html"
+                            class="quick-action"
+                        >
+                            🔐 Data Consent
+                        </a>
+
+                        <a
+                            href="applications.html"
+                            class="quick-action"
+                        >
+                            📄 My Applications
+                        </a>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

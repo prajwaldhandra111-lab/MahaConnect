@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | MahaConnect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+    const userMobile = localStorage.getItem("userMobile");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userMobile || !userRole) {
+        window.location.href = "index.html";
+    }
+
+    if (userRole !== "admin") {
+        alert("Access Denied: Administrator access required.");
+        window.location.href = "index.html";
+    }
+</script>
+
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>MahaConnect</h2>
+                <p>ADMINISTRATION PORTAL</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin.html" class="active">
+                    📊 Dashboard
+                </a>
+
+                <a href="#users">
+                    👥 Users
+                </a>
+
+                <a href="#departments">
+                    🏛️ Departments
+                </a>
+
+                <a href="#integrations">
+                    🔗 Integrations
+                </a>
+
+                <a href="#audit">
+                    📋 Audit Logs
+                </a>
+
+                <a href="#system">
+                    ⚙️ System Activity
+                </a>
+
+                <a href="home.html">
+                    🏠 Home
+                </a>
+
+                <a href="#" onclick="logout()">
+                    🚪 Logout
+                </a>
+
+            </nav>
+
+            <div class="security-card">
+
+                <strong>🔐 Platform Security</strong>
+
+                <span>
+                    ● All systems operational
+                </span>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN AREA ================= -->
+
+        <main class="main-area">
+
+            <!-- Top Navbar -->
+
+            <header class="top-navbar">
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search platform..."
+                    >
+                </div>
+
+                <div class="user-area">
+
+                    <div class="user-avatar">
+                        🛡️
+                    </div>
+
+                    <div class="user-name">
+                        Administrator
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- ================= CONTENT ================= -->
+
+            <div class="dashboard-content">
+
+                <!-- Page Intro -->
+
+                <div class="page-intro">
+
+                    <h1>
+                        Admin Dashboard
+                    </h1>
+
+                    <p>
+                        Monitor MahaConnect platform operations,
+                        integrations and system activity.
+                    </p>
+
+                </div>
+
+
+                <!-- ================= STATS ================= -->
+
+                <div class="modern-services">
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            👥
+                        </div>
+
+                        <h3>
+                            Total Users
+                        </h3>
+
+                        <p>
+                            Registered citizens and government
+                            platform users.
+                        </p>
+
+                        <strong class="admin-stat">
+                            1
+                        </strong>
+
+                    </div>
+
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            🏛️
+                        </div>
+
+                        <h3>
+                            Departments
+                        </h3>
+
+                        <p>
+                            Connected government service departments.
+                        </p>
+
+                        <strong class="admin-stat">
+                            3
+                        </strong>
+
+                    </div>
+
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            🔗
+                        </div>
+
+                        <h3>
+                            Active APIs
+                        </h3>
+
+                        <p>
+                            APIs currently connected to MahaConnect.
+                        </p>
+
+                        <strong class="admin-stat">
+                            3
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= API HEALTH ================= -->
+
+                <div class="section-title">
+
+                    <h2>
+                        Integration Monitoring
+                    </h2>
+
+                    <p>
+                        Real-time status of connected departmental
+                        services.
+                    </p>
+
+                </div>
+
+
+                <div class="modern-services">
+
+                    <!-- Education -->
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            🎓
+                        </div>
+
+                        <h3>
+                            Education API
+                        </h3>
+
+                        <p>
+                            Education department integration
+                            service.
+                        </p>
+
+                        <span class="status-approved">
+                            ● Operational
+                        </span>
+
+                    </div>
+
+
+                    <!-- Employment -->
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            💼
+                        </div>
+
+                        <h3>
+                            Employment API
+                        </h3>
+
+                        <p>
+                            Employment service integration.
+                        </p>
+
+                        <span class="status-approved">
+                            ● Operational
+                        </span>
+
+                    </div>
+
+
+                    <!-- Welfare -->
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            🤝
+                        </div>
+
+                        <h3>
+                            Welfare API
+                        </h3>
+
+                        <p>
+                            Welfare scheme integration service.
+                        </p>
+
+                        <span class="status-approved">
+                            ● Operational
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= BOTTOM GRID ================= -->
+
+                <div class="bottom-grid">
+
+
+                    <!-- System Activity -->
+
+                    <div class="dashboard-box" id="system">
+
+                        <h3>
+                            Recent System Activity
+                        </h3>
+
+
+                        <div class="application-row">
+
+                            <div class="application-info">
+
+                                <strong>
+                                    API Integration
+                                </strong>
+
+                                <span>
+                                    Education service connected
+                                </span>
+
+                            </div>
+
+                            <span class="status-approved">
+                                Success
+                            </span>
+
+                        </div>
+
+
+                        <div class="application-row">
+
+                            <div class="application-info">
+
+                                <strong>
+                                    Application Workflow
+                                </strong>
+
+                                <span>
+                                    Employment application processed
+                                </span>
+
+                            </div>
+
+                            <span class="status-approved">
+                                Success
+                            </span>
+
+                        </div>
+
+
+                        <div class="application-row">
+
+                            <div class="application-info">
+
+                                <strong>
+                                    Data Synchronization
+                                </strong>
+
+                                <span>
+                                    Welfare service synchronized
+                                </span>
+
+                            </div>
+
+                            <span class="status-approved">
+                                Success
+                            </span>
+
+                        </div>
+
+
+                        <div class="application-row">
+
+                            <div class="application-info">
+
+                                <strong>
+                                    Security Audit
+                                </strong>
+
+                                <span>
+                                    Platform access verified
+                                </span>
+
+                            </div>
+
+                            <span class="status-approved">
+                                Verified
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Quick Actions -->
+
+                    <div class="dashboard-box">
+
+                        <h3>
+                            Quick Actions
+                        </h3>
+
+                        <a
+                            href="#users"
+                            class="quick-action"
+                        >
+                            👥 Manage Users
+                        </a>
+
+                        <a
+                            href="#departments"
+                            class="quick-action"
+                        >
+                            🏛️ View Departments
+                        </a>
+
+                        <a
+                            href="#integrations"
+                            class="quick-action"
+                        >
+                            🔗 Check API Integrations
+                        </a>
+
+                        <a
+                            href="#audit"
+                            class="quick-action"
+                        >
+                            📋 View Audit Logs
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= PLATFORM OVERVIEW ================= -->
+
+                <div
+                    class="dashboard-box"
+                    id="integrations"
+                    style="margin-top: 20px;"
+                >
+
+                    <h3>
+                        Platform Overview
+                    </h3>
+
+                    <div class="application-row">
+
+                        <div class="application-info">
+
+                            <strong>
+                                API Gateway
+                            </strong>
+
+                            <span>
+                                Central integration layer
+                            </span>
+
+                        </div>
+
+                        <span class="status-approved">
+                            Online
+                        </span>
+
+                    </div>
+
+
+                    <div class="application-row">
+
+                        <div class="application-info">
+
+                            <strong>
+                                Consent Engine
+                            </strong>
+
+                            <span>
+                                Data access and consent management
+                            </span>
+
+                        </div>
+
+                        <span class="status-approved">
+                            Online
+                        </span>
+
+                    </div>
+
+
+                    <div class="application-row">
+
+                        <div class="application-info">
+
+                            <strong>
+                                Eligibility Engine
+                            </strong>
+
+                            <span>
+                                Service eligibility validation
+                            </span>
+
+                        </div>
+
+                        <span class="status-approved">
+                            Online
+                        </span>
+
+                    </div>
+
+
+                    <div class="application-row">
+
+                        <div class="application-info">
+
+                            <strong>
+                                Notification Service
+                            </strong>
+
+                            <span>
+                                Citizen and officer notifications
+                            </span>
+
+                        </div>
+
+                        <span class="status-approved">
+                            Online
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AUDIT ================= -->
+
+                <div
+                    class="dashboard-box"
+                    id="audit"
+                    style="margin-top: 20px;"
+                >
+
+                    <h3>
+                        Audit & Security
+                    </h3>
+
+                    <p style="color:#68738a; font-size:13px;">
+                        All important platform actions are recorded
+                        for transparency and accountability.
+                    </p>
+
+                    <br>
+
+                    <div class="application-row">
+
+                        <div class="application-info">
+
+                            <strong>
+                                Audit Logging
+                            </strong>
+
+                            <span>
+                                Application and system actions
+                            </span>
+
+                        </div>
+
+                        <span class="status-approved">
+                            Enabled
+                        </span>
+
+                    </div>
+
+
+                    <div class="application-row">
+
+                        <div class="application-info">
+
+                            <strong>
+                                Role Based Access
+                            </strong>
+
+                            <span>
+                                Citizen / Officer / Admin
+                            </span>
+
+                        </div>
+
+                        <span class="status-approved">
+                            Enabled
+                        </span>
+
+                    </div>
+
+
+                    <div class="application-row">
+
+                        <div class="application-info">
+
+                            <strong>
+                                Data Consent
+                            </strong>
+
+                            <span>
+                                Citizen controlled data sharing
+                            </span>
+
+                        </div>
+
+                        <span class="status-approved">
+                            Enabled
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script>
+function logout() {
+    localStorage.removeItem("userMobile");
+    localStorage.removeItem("userRole");
+
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+
+</html>

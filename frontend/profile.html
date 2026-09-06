@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page Title -->
+    <title>MahaConnect | Master Profile</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    const userMobile = localStorage.getItem("userMobile");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userMobile || !userRole) {
+        window.location.href = "index.html";
+    }
+
+    if (userRole !== "citizen") {
+        alert("Access Denied: Citizen access required.");
+        window.location.href = "index.html";
+    }
+</script>
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️ MahaConnect</h2>
+                <p>One Profile • Multiple Services</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    ▦ Dashboard
+                </a>
+
+                <a href="profile.html" class="active">
+                    👤 My Profile
+                </a>
+
+                <a href="applications.html">
+                    📄 My Applications
+                </a>
+
+                <a href="consent.html">
+                    🔐 Data Consent
+                </a>
+
+                <a href="notifications.html">
+                    🔔 Notifications
+                </a>
+
+                <a href="#">
+                    ⚙️ Settings
+                </a>
+
+                <a href="index.html">
+                    🚪 Logout
+                </a>
+
+            </nav>
+
+
+            <!-- Security Card -->
+            <div class="security-card">
+                <strong>🛡️ Your data is secure</strong>
+                <span>Protected by MahaConnect</span>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Area -->
+        <div class="main-area">
+
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search services, schemes..."
+                    >
+                </div>
+
+                <div class="user-area">
+
+                    <span>🔔</span>
+
+                    <div class="user-avatar">
+                        👤
+                    </div>
+
+                    <span class="user-name">
+                        User
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- Profile Content -->
+            <main class="dashboard-content">
+
+                <!-- Page Intro -->
+                <section class="page-intro">
+
+                    <h1>Master Profile</h1>
+
+                    <p>
+                        Your unified profile for multiple government services.
+                    </p>
+
+                </section>
+
+
+                <!-- Profile Summary -->
+                <section class="profile-summary">
+
+                    <div class="profile-info">
+
+                        <div class="profile-avatar">
+                            👤
+                        </div>
+
+                        <div>
+                            <h2>Your Master Profile</h2>
+
+                            <p>
+                                Keep your information updated for
+                                government services.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="completion">
+
+                        <div class="completion-text">
+                            <span>Profile Completion</span>
+                            <strong>85%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Profile Form -->
+                <form id="profileForm">
+
+
+                    <!-- Personal Information -->
+                    <div class="profile-section">
+
+                        <h2>Personal Information</h2>
+
+                        <div class="form-grid">
+
+                            <div>
+                                <label>Full Name</label>
+
+                                <input
+                                    type="text"
+                                    id="fullName"
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+                            </div>
+
+
+                            <div>
+                                <label>Date of Birth</label>
+
+                                <input
+                                    type="date"
+                                    id="dob"
+                                    required
+                                >
+                            </div>
+
+
+                            <div>
+                                <label>Gender</label>
+
+                                <select id="gender">
+
+                                    <option value="">
+                                        Select Gender
+                                    </option>
+
+                                    <option>
+                                        Male
+                                    </option>
+
+                                    <option>
+                                        Female
+                                    </option>
+
+                                    <option>
+                                        Other
+                                    </option>
+
+                                </select>
+                            </div>
+
+
+                            <div>
+                                <label>Mobile Number</label>
+
+                                <input
+                                    type="tel"
+                                    id="mobile"
+                                    readonly
+                                >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Contact Information -->
+                    <div class="profile-section">
+
+                        <h2>Contact Information</h2>
+
+                        <div class="form-grid">
+
+                            <div>
+                                <label>Email</label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter email"
+                                >
+                            </div>
+
+
+                            <div>
+                                <label>City / District</label>
+
+                                <input
+                                    type="text"
+                                    id="city"
+                                    placeholder="Enter city or district"
+                                >
+                            </div>
+
+
+                            <div class="full-width">
+
+                                <label>Address</label>
+
+                                <textarea
+                                    id="address"
+                                    placeholder="Enter your address"
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Education Information -->
+                    <div class="profile-section">
+
+                        <h2>Education Information</h2>
+
+                        <div class="form-grid">
+
+                            <div>
+                                <label>School / College</label>
+
+                                <input
+                                    type="text"
+                                    id="institution"
+                                    placeholder="Enter institution name"
+                                >
+                            </div>
+
+
+                            <div>
+                                <label>Board</label>
+
+                                <select id="board">
+
+                                    <option value="">
+                                        Select Board
+                                    </option>
+
+                                    <option>
+                                        Maharashtra State Board
+                                    </option>
+
+                                    <option>
+                                        CBSE
+                                    </option>
+
+                                    <option>
+                                        ICSE
+                                    </option>
+
+                                    <option>
+                                        Other
+                                    </option>
+
+                                </select>
+                            </div>
+
+
+                            <div>
+                                <label>Current Class</label>
+
+                                <input
+                                    type="text"
+                                    id="class"
+                                    placeholder="Example: 10th"
+                                >
+                            </div>
+
+
+                            <div>
+                                <label>Academic Year</label>
+
+                                <input
+                                    type="text"
+                                    id="academicYear"
+                                    placeholder="2026-27"
+                                >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Skills and Interests -->
+                    <div class="profile-section">
+
+                        <h2>Skills & Interests</h2>
+
+                        <div class="form-grid">
+
+                            <div class="full-width">
+
+                                <label>Skills</label>
+
+                                <input
+                                    type="text"
+                                    id="skills"
+                                    placeholder="Example: Python, Web Development"
+                                >
+
+                            </div>
+
+
+                            <div class="full-width">
+
+                                <label>Interests</label>
+
+                                <input
+                                    type="text"
+                                    id="interests"
+                                    placeholder="Example: Technology, Sports"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Save Button -->
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        Save & Continue →
+                    </button>
+
+                </form>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="js/profile.js"></script>
+
+</body>
+
+</html>

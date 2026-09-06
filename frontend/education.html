@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page Title -->
+    <title>MahaConnect | Education</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    const userMobile = localStorage.getItem("userMobile");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userMobile || !userRole) {
+        window.location.href = "index.html";
+    }
+
+    if (userRole !== "citizen") {
+        alert("Access Denied: Citizen access required.");
+        window.location.href = "index.html";
+    }
+</script>
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️ MahaConnect</h2>
+                <p>One Profile • Multiple Services</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    ▦ Dashboard
+                </a>
+
+                <a href="profile.html">
+                    👤 My Profile
+                </a>
+
+                <a href="applications.html">
+                    📄 My Applications
+                </a>
+
+                <a href="consent.html">
+                    🔐 Data Consent
+                </a>
+
+                <a href="notifications.html">
+                    🔔 Notifications
+                </a>
+
+                <a href="#">
+                    ⚙️ Settings
+                </a>
+
+                <a href="index.html">
+                    🚪 Logout
+                </a>
+
+            </nav>
+
+            <!-- Security Card -->
+            <div class="security-card">
+                <strong>🛡️ Your data is secure</strong>
+                <span>Protected by MahaConnect</span>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Area -->
+        <div class="main-area">
+
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search services, schemes..."
+                    >
+                </div>
+
+                <div class="user-area">
+
+                    <span>🔔</span>
+
+                    <div class="user-avatar">
+                        👤
+                    </div>
+
+                    <span class="user-name">
+                        User
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- Education Content -->
+            <main class="dashboard-content">
+
+                <!-- Page Intro -->
+                <section class="page-intro">
+
+                    <h1>🎓 Education Services</h1>
+
+                    <p>
+                        Access education services and student opportunities.
+                    </p>
+
+                </section>
+
+
+                <!-- Education Services -->
+                <section>
+
+                    <div class="section-title">
+
+                        <h2>Available Services</h2>
+
+                        <p>
+                            Explore education related government services.
+                        </p>
+
+                    </div>
+
+
+                    <div class="modern-services">
+
+
+                        <!-- Scholarships -->
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                📚
+                            </div>
+
+                            <h3>Scholarships</h3>
+
+                            <p>
+                                Find and apply for eligible
+                                government scholarships.
+                            </p>
+
+                            <button onclick="applyScholarship()">
+                                View Scholarships →
+                            </button>
+
+                        </div>
+
+
+                        <!-- Education Records -->
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                📄
+                            </div>
+
+                            <h3>Education Records</h3>
+
+                            <p>
+                                View your education records
+                                and academic information.
+                            </p>
+
+                            <button onclick="viewEducationRecords()">
+                                View Records →
+                            </button>
+
+                        </div>
+
+
+                        <!-- Student Services -->
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                🎓
+                            </div>
+
+                            <h3>Student Services</h3>
+
+                            <p>
+                                Access available student
+                                government services.
+                            </p>
+
+                            <button onclick="viewStudentServices()">
+                                Explore Services →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- Scholarships -->
+                <section id="scholarshipSection" class="dashboard-box" style="display: none;">
+
+                    <h3>📚 Available Scholarships</h3>
+
+                    <div id="scholarshipContent">
+                        Loading scholarships...
+                    </div>
+
+                </section> 
+
+                <!-- Student Services -->
+                <section id="studentServicesSection" class="dashboard-box" style="display: none;">
+
+                    <h3>🎓 Student Services</h3>
+
+                    <div id="studentServicesContent">
+                        Loading student services...
+                    </div>
+
+                </section>
+
+
+                <!-- Quick Action -->
+                <section class="dashboard-box">
+
+                    <h3>Need Help?</h3>
+
+                    <p>
+                        Your profile information can be used
+                        to check eligibility for available services.
+                    </p>
+
+                </section>
+
+                <!-- Education Records -->
+                    <section id="educationRecordsSection" class="dashboard-box" style="display: none;">
+
+                        <h3>📄 Your Education Records</h3>
+
+                        <div id="educationRecordsContent">
+                            Loading records...
+                        </div>
+
+                    </section>
+
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="js/services.js"></script>
+
+</body>
+
+</html>

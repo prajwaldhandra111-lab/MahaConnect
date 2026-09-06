@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MahaConnect | Officer Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    const userMobile = localStorage.getItem("userMobile");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userMobile || !userRole) {
+        window.location.href = "index.html";
+    }
+
+    if (userRole !== "officer") {
+        alert("Access Denied: Government Officer access required.");
+        window.location.href = "index.html";
+    }
+</script>
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <h2>🏛️ MahaConnect</h2>
+            <p>Government Officer Portal</p>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="officer-applications.html">
+                📄 Applications
+            </a>
+
+            <a href="#">
+                👥 Citizens
+            </a>
+
+            <a href="#">
+                🔗 Department Integration
+            </a>
+
+            <a href="#">
+                📊 Reports
+            </a>
+
+            <a href="#">
+                ⚙️ Settings
+            </a>
+
+            <a href="#" onclick="logout()">
+    🚪 Logout
+</a>
+
+        </nav>
+
+        <div class="security-card">
+            <strong>🛡️ Secure Officer Access</strong>
+            <span>Protected by MahaConnect</span>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Area -->
+    <div class="main-area">
+
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    placeholder="Search applications..."
+                >
+            </div>
+
+            <div class="user-area">
+
+                <span>🔔</span>
+
+                <div class="user-avatar">
+                    👨‍💼
+                </div>
+
+                <span class="user-name">
+                    Government Officer
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- Dashboard Content -->
+        <main class="dashboard-content">
+
+            <!-- Intro -->
+            <section class="page-intro">
+
+                <h1>
+                    👨‍💼 Officer Dashboard
+                </h1>
+
+                <p>
+                    Manage citizen applications and government service workflows.
+                </p>
+
+            </section>
+
+
+            <!-- Statistics -->
+            <section>
+
+                <div class="section-title">
+
+                    <h2>
+                        Application Overview
+                    </h2>
+
+                    <p>
+                        Monitor applications received through MahaConnect.
+                    </p>
+
+                </div>
+
+
+                <div class="modern-services">
+
+                    <!-- Total -->
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            📄
+                        </div>
+
+                        <h3>
+                            Total Applications
+                        </h3>
+
+                        <p
+                            id="totalApplications"
+                            style="font-size: 32px; font-weight: bold;"
+                        >
+                            0
+                        </p>
+
+                    </div>
+
+
+                    <!-- Pending -->
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            ⏳
+                        </div>
+
+                        <h3>
+                            Pending
+                        </h3>
+
+                        <p
+                            id="pendingApplications"
+                            style="font-size: 32px; font-weight: bold;"
+                        >
+                            0
+                        </p>
+
+                    </div>
+
+
+                    <!-- Approved -->
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            ✅
+                        </div>
+
+                        <h3>
+                            Approved
+                        </h3>
+
+                        <p
+                            id="approvedApplications"
+                            style="font-size: 32px; font-weight: bold;"
+                        >
+                            0
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Applications -->
+            <section class="dashboard-box">
+
+                <h2>
+                    📋 Recent Applications
+                </h2>
+
+                <p>
+                    Applications received from citizens.
+                </p>
+
+                <div id="applicationsContent">
+
+                    <p>
+                        Loading applications...
+                    </p>
+
+                </div>
+
+            </section>
+
+            <div class="dashboard-box">
+                <div class="section-title">
+                    <h2>🔐 Audit Logs</h2>
+                </div>
+
+                <div id="auditLogsContent">
+                    <p>Loading audit logs...</p>
+                </div>
+            </div>
+
+
+            <!-- Integration Status -->
+            <section class="dashboard-box">
+
+                <h2>
+                    🔗 Department Integration
+                </h2>
+
+                <p>
+                    Connected government department systems.
+                </p>
+
+                <div class="modern-services">
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            🎓
+                        </div>
+
+                        <h3>
+                            Education Department
+                        </h3>
+
+                        <p>
+                            API Integration
+                        </p>
+
+                        <span class="status-pending">
+                            🟢 Online
+                        </span>
+
+                    </div>
+
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            💼
+                        </div>
+
+                        <h3>
+                            Employment Department
+                        </h3>
+
+                        <p>
+                            API Integration
+                        </p>
+
+                        <span class="status-pending">
+                            🟢 Online
+                        </span>
+
+                    </div>
+
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            🏛️
+                        </div>
+
+                        <h3>
+                            Welfare Department
+                        </h3>
+
+                        <p>
+                            API Integration
+                        </p>
+
+                        <span class="status-pending">
+                            🟢 Online
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</div>
+
+
+<script src="js/officer.js"></script>
+<script>
+function logout() {
+    localStorage.removeItem("userMobile");
+    localStorage.removeItem("userRole");
+
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

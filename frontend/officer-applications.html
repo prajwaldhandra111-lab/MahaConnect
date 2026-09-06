@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MahaConnect | Officer Applications</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    const userMobile = localStorage.getItem("userMobile");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userMobile || !userRole) {
+        window.location.href = "index.html";
+    }
+
+    if (userRole !== "officer") {
+        alert("Access Denied: Government Officer access required.");
+        window.location.href = "index.html";
+    }
+</script>
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <h2>🏛️ MahaConnect</h2>
+            <p>Government Officer Portal</p>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="officer.html">
+                ▦ Dashboard
+            </a>
+
+            <a href="officer-applications.html">
+                📄 Applications
+            </a>
+
+            <a href="#">
+                👥 Citizens
+            </a>
+
+            <a href="#">
+                🔗 Department Integration
+            </a>
+
+            <a href="#">
+                📊 Reports
+            </a>
+
+            <a href="#">
+                ⚙️ Settings
+            </a>
+
+            <a href="index.html">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+        <div class="security-card">
+            <strong>🛡️ Secure Officer Access</strong>
+            <span>Protected by MahaConnect</span>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Area -->
+    <div class="main-area">
+
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="applicationSearch"
+                    placeholder="Search applications..."
+                >
+            </div>
+
+            <div class="user-area">
+
+                <span>🔔</span>
+
+                <div class="user-avatar">
+                    👨‍💼
+                </div>
+
+                <span class="user-name">
+                    Government Officer
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- Main Content -->
+        <main class="dashboard-content">
+
+            <!-- Page Intro -->
+            <section class="page-intro">
+
+                <h1>
+                    📄 Citizen Applications
+                </h1>
+
+                <p>
+                    Review and manage applications received through MahaConnect.
+                </p>
+
+            </section>
+
+
+            <!-- Application Statistics -->
+            <section>
+
+                <div class="section-title">
+
+                    <h2>
+                        Application Overview
+                    </h2>
+
+                    <p>
+                        Monitor citizen service requests.
+                    </p>
+
+                </div>
+
+
+                <div class="modern-services">
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            📄
+                        </div>
+
+                        <h3>
+                            Total Applications
+                        </h3>
+
+                        <p
+                            id="totalApplications"
+                            style="font-size: 32px; font-weight: bold;"
+                        >
+                            0
+                        </p>
+
+                    </div>
+
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            ⏳
+                        </div>
+
+                        <h3>
+                            Pending
+                        </h3>
+
+                        <p
+                            id="pendingApplications"
+                            style="font-size: 32px; font-weight: bold;"
+                        >
+                            0
+                        </p>
+
+                    </div>
+
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            ✅
+                        </div>
+
+                        <h3>
+                            Approved
+                        </h3>
+
+                        <p
+                            id="approvedApplications"
+                            style="font-size: 32px; font-weight: bold;"
+                        >
+                            0
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Applications List -->
+            <section class="dashboard-box">
+
+                <h2>
+                    📋 All Citizen Applications
+                </h2>
+
+                <p>
+                    Applications submitted through connected government services.
+                </p>
+
+                <div id="applicationsContent">
+
+                    <p>
+                        Loading applications...
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- Integration Information -->
+            <section class="dashboard-box">
+
+                <h2>
+                    🔗 Service Integration
+                </h2>
+
+                <p>
+                    Applications are routed through the MahaConnect Integration Layer.
+                </p>
+
+                <div class="modern-services">
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            🎓
+                        </div>
+
+                        <h3>
+                            Education
+                        </h3>
+
+                        <p>
+                            Connected Service
+                        </p>
+
+                        <span class="status-pending">
+                            🟢 Online
+                        </span>
+
+                    </div>
+
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            💼
+                        </div>
+
+                        <h3>
+                            Employment
+                        </h3>
+
+                        <p>
+                            Connected Service
+                        </p>
+
+                        <span class="status-pending">
+                            🟢 Online
+                        </span>
+
+                    </div>
+
+
+                    <div class="modern-card">
+
+                        <div class="card-icon">
+                            🏛️
+                        </div>
+
+                        <h3>
+                            Welfare
+                        </h3>
+
+                        <p>
+                            Connected Service
+                        </p>
+
+                        <span class="status-pending">
+                            🟢 Online
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</div>
+
+
+<script src="js/officer-applications.js"></script>
+
+</body>
+</html>

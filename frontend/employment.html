@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page Title -->
+    <title>MahaConnect | Employment</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    const userMobile = localStorage.getItem("userMobile");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userMobile || !userRole) {
+        window.location.href = "index.html";
+    }
+
+    if (userRole !== "citizen") {
+        alert("Access Denied: Citizen access required.");
+        window.location.href = "index.html";
+    }
+</script>
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️ MahaConnect</h2>
+                <p>One Profile • Multiple Services</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    ▦ Dashboard
+                </a>
+
+                <a href="profile.html">
+                    👤 My Profile
+                </a>
+
+                <a href="applications.html">
+                    📄 My Applications
+                </a>
+
+                <a href="consent.html">
+                    🔐 Data Consent
+                </a>
+
+                <a href="notifications.html">
+                    🔔 Notifications
+                </a>
+
+                <a href="#">
+                    ⚙️ Settings
+                </a>
+
+                <a href="index.html">
+                    🚪 Logout
+                </a>
+
+            </nav>
+
+            <!-- Security Card -->
+            <div class="security-card">
+                <strong>🛡️ Your data is secure</strong>
+                <span>Protected by MahaConnect</span>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Area -->
+        <div class="main-area">
+
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search jobs, programs..."
+                    >
+                </div>
+
+                <div class="user-area">
+
+                    <span>🔔</span>
+
+                    <div class="user-avatar">
+                        👤
+                    </div>
+
+                    <span class="user-name">
+                        User
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- Employment Content -->
+            <main class="dashboard-content">
+
+                <!-- Page Intro -->
+                <section class="page-intro">
+
+                    <h1>💼 Employment Services</h1>
+
+                    <p>
+                        Explore jobs, skill development and career opportunities.
+                    </p>
+
+                </section>
+
+
+                <!-- Eligibility -->
+                <section class="profile-summary">
+
+                    <div class="profile-info">
+
+                        <div class="profile-avatar">
+                            💼
+                        </div>
+
+                        <div>
+                            <h2>
+                                Employment Access
+
+                            </h2>
+
+                            <p id="eligibilityMessage">
+                                Checking your employment eligibility...
+                            </p>
+
+                            <p>
+                                Age: <strong id="userAge">--</strong>
+                            </p>
+
+                            <button
+                            id="employmentApplyBtn"
+                            onclick="applyForEmployment()"
+                            style="display: none;"
+                            >
+                            Apply for Employment →
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                
+                <!-- Employment Services -->
+                <section>
+
+                    <div class="section-title">
+
+                        <h2>Available Services</h2>
+
+                        <p>
+                            Explore employment opportunities and programs.
+                        </p>
+
+                    </div>
+
+
+                    <div class="modern-services">
+
+
+                        <!-- Job Search -->
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                🔎
+                            </div>
+
+                            <h3>Job Search</h3>
+
+                            <p>
+                                Find suitable government and
+                                employment opportunities.
+                            </p>
+
+                            <button onclick="searchJobs()">
+                                Find Jobs →
+                            </button>
+
+                        </div>
+
+
+                        <!-- Skill Development -->
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                🛠️
+                            </div>
+
+                            <h3>Skill Development</h3>
+
+                            <p>
+                                Explore skill development and
+                                training programs.
+                            </p>
+
+                            <button onclick="skillPrograms()">
+                                Explore Programs →
+                            </button>
+
+                        </div>
+
+
+                        <!-- Career Services -->
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                🚀
+                            </div>
+
+                            <h3>Career Services</h3>
+
+                            <p>
+                                Access career guidance and
+                                employment support.
+                            </p>
+
+                            <button onclick="careerServices()">
+                                Explore Services →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="js/services.js"></script>
+
+</body>
+
+</html>

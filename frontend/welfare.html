@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page Title -->
+    <title>MahaConnect | Welfare</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    const userMobile = localStorage.getItem("userMobile");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userMobile || !userRole) {
+        window.location.href = "index.html";
+    }
+
+    if (userRole !== "citizen") {
+        alert("Access Denied: Citizen access required.");
+        window.location.href = "index.html";
+    }
+</script>
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️ MahaConnect</h2>
+                <p>One Profile • Multiple Services</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    ▦ Dashboard
+                </a>
+
+                <a href="profile.html">
+                    👤 My Profile
+                </a>
+
+                <a href="applications.html">
+                    📄 My Applications
+                </a>
+
+                <a href="consent.html">
+                    🔐 Data Consent
+                </a>
+
+                <a href="notifications.html">
+                    🔔 Notifications
+                </a>
+
+                <a href="#">
+                    ⚙️ Settings
+                </a>
+
+                <a href="index.html">
+                    🚪 Logout
+                </a>
+
+            </nav>
+
+            <!-- Security Card -->
+            <div class="security-card">
+                <strong>🛡️ Your data is secure</strong>
+                <span>Protected by MahaConnect</span>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Area -->
+        <div class="main-area">
+
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search schemes, benefits..."
+                    >
+                </div>
+
+                <div class="user-area">
+
+                    <span>🔔</span>
+
+                    <div class="user-avatar">
+                        👤
+                    </div>
+
+                    <span class="user-name">
+                        User
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- Welfare Content -->
+            <main class="dashboard-content">
+
+                <!-- Page Intro -->
+                <section class="page-intro">
+
+                    <h1>🏛️ Welfare Services</h1>
+
+                    <p>
+                        Explore government schemes, benefits and support programs.
+                    </p>
+
+                </section>
+
+
+                <!-- Welfare Services -->
+                <section>
+
+                    <div class="section-title">
+
+                        <h2>Available Schemes</h2>
+
+                        <p>
+                            Discover welfare services based on your profile.
+                        </p>
+
+                    </div>
+
+
+                    <div class="modern-services">
+
+
+                        <!-- Student Schemes -->
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                🎓
+                            </div>
+
+                            <h3>Student Schemes</h3>
+
+                            <p>
+                                Find scholarships and welfare
+                                schemes for students.
+                            </p>
+
+                            <button onclick="studentSchemes()">
+                                View Schemes →
+                            </button>
+
+                        </div>
+
+
+                        <!-- Financial Support -->
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                💰
+                            </div>
+
+                            <h3>Financial Support</h3>
+
+                            <p>
+                                Explore available financial
+                                assistance programs.
+                            </p>
+
+                            <button onclick="financialSupport()">
+                                View Support →
+                            </button>
+
+                        </div>
+
+
+                        <!-- Welfare Benefits -->
+                        <div class="modern-card">
+
+                            <div class="card-icon">
+                                🏠
+                            </div>
+
+                            <h3>Welfare Benefits</h3>
+
+                            <p>
+                                Check government welfare
+                                benefits and services.
+                            </p>
+
+                            <button onclick="welfareBenefits()">
+                                Explore Benefits →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="js/services.js"></script>
+
+</body>
+
+</html>

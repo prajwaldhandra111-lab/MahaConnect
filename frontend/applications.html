@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page Title -->
+    <title>MahaConnect | Applications</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    const userMobile = localStorage.getItem("userMobile");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userMobile || !userRole) {
+        window.location.href = "index.html";
+    }
+
+    if (userRole !== "citizen") {
+        alert("Access Denied: Citizen access required.");
+        window.location.href = "index.html";
+    }
+</script>
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️ MahaConnect</h2>
+                <p>One Profile • Multiple Services</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    ▦ Dashboard
+                </a>
+
+                <a href="profile.html">
+                    👤 My Profile
+                </a>
+
+                <a href="applications.html" class="active">
+                    📄 My Applications
+                </a>
+
+                <a href="consent.html">
+                    🔐 Data Consent
+                </a>
+
+                <a href="notifications.html">
+                    🔔 Notifications
+                </a>
+
+                <a href="#">
+                    ⚙️ Settings
+                </a>
+
+                <a href="index.html">
+                    🚪 Logout
+                </a>
+
+            </nav>
+
+            <!-- Security Card -->
+            <div class="security-card">
+                <strong>🛡️ Your data is secure</strong>
+                <span>Protected by MahaConnect</span>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Area -->
+        <div class="main-area">
+
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search applications..."
+                    >
+                </div>
+
+                <div class="user-area">
+
+                    <span>🔔</span>
+
+                    <div class="user-avatar">
+                        👤
+                    </div>
+
+                    <span class="user-name">
+                        User
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- Applications Content -->
+            <main class="dashboard-content">
+
+                <!-- Page Intro -->
+                <section class="page-intro">
+
+                    <h1>📄 My Applications</h1>
+
+                    <p>
+                        Track your government service applications.
+                    </p>
+
+                </section>
+
+
+                <!-- Applications -->
+                <section class="modern-services">
+
+
+                    <section class="modern-services" id="applicationsContainer">
+
+    <p id="loadingMessage">
+        Loading your applications...
+    </p>
+
+</section>
+                </section>
+
+
+                <!-- Application Info -->
+                <section class="dashboard-box">
+
+                    <h3>Application Tracking</h3>
+
+                    <p>
+                        Your application status will be synchronized
+                        with the connected department systems.
+                    </p>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="js/applications.js"></script>
+    <script src="js/services.js"></script>
+
+</body>
+
+</html>
