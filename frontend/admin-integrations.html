@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MahaConnect | Integrations</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️MahaConnect</h2>
+                <p>ADMINISTRATION PORTAL</p>
+            </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="admin.html">
+                📊 Dashboard
+            </a>
+
+            <a href="admin-users.html">
+                👥 Users
+            </a>
+
+            <a href="admin-departments.html">
+                🏛️ Departments
+            </a>
+
+            <a href="admin-integrations.html" class="active">
+                🔗 Integrations
+            </a>
+
+            <a href="admin-audit-logs.html">
+                📋 Audit Logs
+            </a>
+
+            <a href="admin-system-activity.html">
+                📈 System Activity
+            </a>
+
+            <a href="admin-settings.html">
+                ⚙️ Settings
+            </a>
+
+            <a href="home.html">
+                🏠 Home
+            </a>
+
+            <a href="index.html">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+        <div class="security-card">
+
+            <strong>🛡️ System Protected</strong>
+
+            <span>
+                Administrator access
+            </span>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main">
+
+        <!-- Header -->
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="page-label">
+                    ADMINISTRATION
+                </span>
+
+                <h1>
+                    API Integrations
+                </h1>
+
+                <p>
+                    Monitor and manage connected government service integrations.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Integration Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <span>🔗</span>
+
+                <h3 id="totalIntegrations">-</h3>
+
+                <p>
+                    Total Integrations
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>🟢</span>
+
+                <h3 id="activeApis">-</h3>
+
+                <p>
+                    Active APIs
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>⚡</span>
+
+                <h3 id="integrationAvailability">-</h3>
+
+                <p>
+                    Availability
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>🔄</span>
+
+                <h3>24/7</h3>
+
+                <p>
+                    Monitoring
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Connected APIs -->
+
+        <div class="admin-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <h2>
+                        Connected Government APIs
+                    </h2>
+
+                    <p>
+                        Departmental systems connected through the MahaConnect integration layer.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="integration-grid">
+
+
+                <!-- Education API -->
+
+                <div class="integration-card">
+
+                    <div class="integration-top">
+
+                        <div class="integration-icon">
+                            🎓
+                        </div>
+
+                        <span class="api-status" id="educationApiStatus">
+                            ● Checking...
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Education API
+                    </h3>
+
+                    <p>
+                        Connects MahaConnect with education department services
+                        for student and academic information.
+                    </p>
+
+                    <div class="integration-details">
+
+                        <div>
+                            <span>Department</span>
+                            <strong>Education</strong>
+                        </div>
+
+                        <div>
+                            <span>Protocol</span>
+                            <strong>REST API</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="api-endpoint">
+                        <span>Endpoint</span>
+                        <code>/api/education</code>
+                    </div>
+
+                </div>
+
+
+                <!-- Employment API -->
+
+                <div class="integration-card">
+
+                    <div class="integration-top">
+
+                        <div class="integration-icon">
+                            💼
+                        </div>
+
+                        <span class="api-status" id="employmentApiStatus">
+                            ● Checking...
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Employment API
+                    </h3>
+
+                    <p>
+                        Connects employment services for job opportunities,
+                        eligibility and application workflows.
+                    </p>
+
+                    <div class="integration-details">
+
+                        <div>
+                            <span>Department</span>
+                            <strong>Employment</strong>
+                        </div>
+
+                        <div>
+                            <span>Protocol</span>
+                            <strong>REST API</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="api-endpoint">
+                        <span>Endpoint</span>
+                        <code>/api/employment</code>
+                    </div>
+
+                </div>
+
+
+                <!-- Welfare API -->
+
+                <div class="integration-card">
+
+                    <div class="integration-top">
+
+                        <div class="integration-icon">
+                            🤝
+                        </div>
+
+                        <span class="api-status" id="welfareApiStatus">
+                            ● Checking...
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Welfare API
+                    </h3>
+
+                    <p>
+                        Connects welfare schemes and citizen benefit services
+                        with the MahaConnect platform.
+                    </p>
+
+                    <div class="integration-details">
+
+                        <div>
+                            <span>Department</span>
+                            <strong>Welfare</strong>
+                        </div>
+
+                        <div>
+                            <span>Protocol</span>
+                            <strong>REST API</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="api-endpoint">
+                        <span>Endpoint</span>
+                        <code>/api/welfare</code>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- Integration Architecture -->
+
+        <div class="admin-card">
+
+            <h2>
+                Integration Architecture
+            </h2>
+
+            <p>
+                MahaConnect acts as an interoperability layer between
+                the citizen platform and independent government systems.
+            </p>
+
+
+            <div class="integration-architecture">
+
+
+                <div class="architecture-box">
+
+                    <span>👤</span>
+
+                    <strong>
+                        Citizen Platform
+                    </strong>
+
+                    <small>
+                        Master Profile
+                    </small>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    →
+                </div>
+
+
+                <div class="architecture-box">
+
+                    <span>🔐</span>
+
+                    <strong>
+                        Access Control
+                    </strong>
+
+                    <small>
+                        Consent + Eligibility
+                    </small>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    →
+                </div>
+
+
+                <div class="architecture-box highlight">
+
+                    <span>🔗</span>
+
+                    <strong>
+                        MahaConnect
+                    </strong>
+
+                    <small>
+                        Integration Layer
+                    </small>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    →
+                </div>
+
+
+                <div class="architecture-box">
+
+                    <span>🏛️</span>
+
+                    <strong>
+                        Government APIs
+                    </strong>
+
+                    <small>
+                        Department Systems
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- API Security -->
+
+        <div class="admin-card">
+
+            <h2>
+                Integration Security
+            </h2>
+
+            <p>
+                Data exchange is controlled through authorization, consent
+                and service-specific access rules.
+            </p>
+
+
+            <div class="security-grid">
+
+                <div class="security-item">
+
+                    <span>🔐</span>
+
+                    <div>
+
+                        <strong>
+                            Controlled Access
+                        </strong>
+
+                        <small>
+                            Only authorized services can access required data.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="security-item">
+
+                    <span>✅</span>
+
+                    <div>
+
+                        <strong>
+                            Citizen Consent
+                        </strong>
+
+                        <small>
+                            Data sharing is based on citizen consent.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="security-item">
+
+                    <span>📋</span>
+
+                    <div>
+
+                        <strong>
+                            Audit Logging
+                        </strong>
+
+                        <small>
+                            Integration activities can be recorded for monitoring.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Role Protection -->
+
+    <script>
+
+        const userRole = localStorage.getItem("userRole");
+
+        if (!userRole) {
+
+            window.location.href = "index.html";
+
+        }
+
+        if (userRole !== "admin") {
+
+            alert("Access Denied: Administrator access required.");
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+    <script src="js/admin-integrations.js"></script>
+    <script src="js/theme.js"></script>
+
+</body>
+</html>

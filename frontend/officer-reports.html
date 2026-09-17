@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | MahaConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <h2>🏛️ MahaConnect</h2>
+            <p>Government Officer Portal</p>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="officer.html">
+                📊 Dashboard
+            </a>
+
+            <a href="officer-applications.html">
+                📄 Applications
+            </a>
+
+            <a href="officer-citizens.html">
+                👥 Citizens
+            </a>
+
+            <a href="officer-integration.html">
+                🔗 Department Integration
+            </a>
+
+            <a href="officer-reports.html" class="active">
+                📊 Reports
+            </a>
+
+            <a href="officer-settings.html">
+                ⚙️ Settings
+            </a>
+
+            <a href="#" onclick="logout()">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+        <div class="security-card">
+            <strong>🛡️ Secure Officer Access</strong>
+            <span>Protected by MahaConnect</span>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <!-- Header -->
+        <div class="page-header">
+
+            <div>
+                <h1>📊 Reports</h1>
+                <p>
+                    View service, application and interoperability reports.
+                </p>
+            </div>
+
+            <div class="officer-status">
+                🟢 Officer Access
+            </div>
+
+        </div>
+
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">📄</div>
+                <div>
+                    <h3>Total Applications</h3>
+                    <strong id="totalApplications">-</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div>
+                    <h3>Approved</h3>
+                    <strong id="approvedApplications">-</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <div>
+                    <h3>Pending</h3>
+                    <strong id="pendingApplications">-</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">❌</div>
+                <div>
+                    <h3>Rejected</h3>
+                    <strong id="rejectedApplications">-</strong>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Application Report -->
+        <div class="admin-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>Application Summary</h2>
+                    <p>
+                        Overview of applications handled through MahaConnect.
+                    </p>
+                </div>
+            </div>
+
+            <div class="report-table-container">
+
+                <table class="report-table">
+
+                    <thead>
+                        <tr>
+                            <th>Department</th>
+                            <th>Total</th>
+                            <th>Approved</th>
+                            <th>Pending</th>
+                            <th>Rejected</th>
+                            <th>Success Rate</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><strong>Education</strong></td>
+                            <td id="educationTotal">-</td>
+                            <td id="educationApproved">-</td>
+                            <td id="educationPending">-</td>
+                            <td id="educationRejected">-</td>
+                            <td>
+                                <span class="report-success" id="educationSuccessRate">-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Employment</strong></td>
+                            <td id="employmentTotal">-</td>
+                            <td id="employmentApproved">-</td>
+                            <td id="employmentPending">-</td>
+                            <td id="employmentRejected">-</td>
+                            <td>
+                                <span class="report-success" id="employmentSuccessRate">-</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Welfare</strong></td>
+                            <td id="welfareTotal">-</td>
+                            <td id="welfareApproved">-</td>
+                            <td id="welfarePending">-</td>
+                            <td id="welfareRejected">-</td>
+                            <td>
+                                <span class="report-success" id="welfareSuccessRate">-</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- Service Activity -->
+        <div class="report-grid">
+
+            <div class="admin-card">
+
+                <div class="card-header">
+                    <div>
+                        <h2>Service Activity</h2>
+                        <p>Current platform service usage.</p>
+                    </div>
+                </div>
+
+                <div class="report-metric">
+
+                    <div class="metric-row">
+                        <span>Education Services</span>
+                         <strong id="educationServiceActivity">-</strong>
+                    </div>
+
+                    <div class="metric-bar">
+                        <div class="metric-fill education-fill"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="report-metric">
+
+                    <div class="metric-row">
+                        <span>Employment Services</span>
+                        <strong id="employmentServiceActivity">-</strong>
+                    </div>
+
+                    <div class="metric-bar">
+                        <div class="metric-fill employment-fill"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="report-metric">
+
+                    <div class="metric-row">
+                        <span>Welfare Services</span>
+                        <strong id="welfareServiceActivity">-</strong>
+                    </div>
+
+                    <div class="metric-bar">
+                        <div class="metric-fill welfare-fill"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Integration Report -->
+            <div class="admin-card">
+
+                <div class="card-header">
+                    <div>
+                        <h2>Integration Performance</h2>
+                        <p>Department API activity.</p>
+                    </div>
+                </div>
+
+                <div class="performance-item">
+
+                    <div>
+                        <strong>Education API</strong>
+                         <span id="educationApiStatus">Checking...</span>
+                    </div>
+
+                    <b id="educationApiAvailability">-</b>
+
+                </div>
+
+
+                <div class="performance-item">
+
+                    <div>
+                        <strong>Employment API</strong>
+                         <span id="employmentApiStatus">Checking...</span>
+                    </div>
+
+                    <b id="employmentApiAvailability">-</b>
+
+                </div>
+
+
+                <div class="performance-item">
+
+                    <div>
+                        <strong>Welfare API</strong>
+                        <span id="welfareApiStatus">Checking...</span>
+                    </div>
+
+                    <b id="welfareApiAvailability">-</b>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Report Information -->
+        <div class="officer-report-info">
+
+            <div class="info-card">
+
+                <div class="info-icon">📈</div>
+
+                <div>
+                    <h3>Operational Reporting</h3>
+                    <p>
+                        Reports help officers monitor applications,
+                        department services and system performance.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">🔐</div>
+
+                <div>
+                    <h3>Controlled Information</h3>
+                    <p>
+                        Report access is restricted to authorized
+                        government officers.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /* Officer Role Guard */
+
+        const userMobile = localStorage.getItem("userMobile");
+        const userRole = localStorage.getItem("userRole");
+
+        if (!userMobile || !userRole) {
+            window.location.href = "index.html";
+        }
+
+        if (userRole !== "officer") {
+            alert("Access Denied: Government Officer access required.");
+            window.location.href = "index.html";
+        }
+
+
+        /* Logout */
+
+        function logout() {
+
+            localStorage.removeItem("userMobile");
+            localStorage.removeItem("userRole");
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+    <script src="js/officer-reports.js"></script>
+    <script src="js/theme.js"></script>
+
+</body>
+</html>

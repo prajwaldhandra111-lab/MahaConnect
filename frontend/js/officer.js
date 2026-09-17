@@ -28,9 +28,14 @@ async function loadOfficerApplications() {
             app => app.status === "Approved"
         ).length;
 
+        const rejected = applications.filter(
+            app => app.status === "Rejected"
+        ).length;
+
         document.getElementById("totalApplications").textContent = total;
         document.getElementById("pendingApplications").textContent = pending;
         document.getElementById("approvedApplications").textContent = approved;
+        document.getElementById("rejectedApplications").textContent = rejected;
 
 
         // No applications

@@ -34,45 +34,49 @@
         <aside class="sidebar">
 
             <div class="sidebar-brand">
-                <h2>MahaConnect</h2>
+                <h2>🏛️MahaConnect</h2>
                 <p>ADMINISTRATION PORTAL</p>
             </div>
 
-            <nav class="sidebar-nav">
+            <div class="sidebar-nav">
 
-                <a href="admin.html" class="active">
-                    📊 Dashboard
-                </a>
+    <a href="admin.html" class="active">
+        📊 Dashboard
+    </a>
 
-                <a href="#users">
-                    👥 Users
-                </a>
+    <a href="admin-users.html">
+        👥 Users
+    </a>
 
-                <a href="#departments">
-                    🏛️ Departments
-                </a>
+    <a href="admin-departments.html">
+        🏛️ Departments
+    </a>
 
-                <a href="#integrations">
-                    🔗 Integrations
-                </a>
+    <a href="admin-integrations.html">
+        🔗 Integrations
+    </a>
 
-                <a href="#audit">
-                    📋 Audit Logs
-                </a>
+    <a href="admin-audit-logs.html">
+        📋 Audit Logs
+    </a>
 
-                <a href="#system">
-                    ⚙️ System Activity
-                </a>
+    <a href="admin-system-activity.html">
+        📈 System Activity
+    </a>
 
-                <a href="home.html">
-                    🏠 Home
-                </a>
+    <a href="admin-settings.html">
+        ⚙️ Settings
+    </a>
 
-                <a href="#" onclick="logout()">
-                    🚪 Logout
-                </a>
+    <a href="home.html">
+        🏠 Home
+    </a>
 
-            </nav>
+    <a href="#" onclick="logout()">
+        🚪 Logout
+    </a>
+
+</div>
 
             <div class="security-card">
 
@@ -156,8 +160,8 @@
                             platform users.
                         </p>
 
-                        <strong class="admin-stat">
-                            1
+                        <strong class="admin-stat" id="totalUsers">
+                            -
                         </strong>
 
                     </div>
@@ -177,8 +181,8 @@
                             Connected government service departments.
                         </p>
 
-                        <strong class="admin-stat">
-                            3
+                        <strong class="admin-stat" id="totalDepartments">
+                            -
                         </strong>
 
                     </div>
@@ -198,8 +202,8 @@
                             APIs currently connected to MahaConnect.
                         </p>
 
-                        <strong class="admin-stat">
-                            3
+                        <strong class="admin-stat" id="activeApis">
+                            -
                         </strong>
 
                     </div>
@@ -242,9 +246,9 @@
                             service.
                         </p>
 
-                        <span class="status-approved">
-                            ● Operational
-                        </span>
+                        <span class="status-approved" id="educationApiStatus">
+                            ● Checking...
+                            </span>
 
                     </div>
 
@@ -265,8 +269,8 @@
                             Employment service integration.
                         </p>
 
-                        <span class="status-approved">
-                            ● Operational
+                        <span class="status-approved" id="employmentApiStatus">
+                            ● Checking...
                         </span>
 
                     </div>
@@ -288,10 +292,9 @@
                             Welfare scheme integration service.
                         </p>
 
-                        <span class="status-approved">
-                            ● Operational
+                        <span class="status-approved" id="welfareApiStatus">
+                            ● Checking...
                         </span>
-
                     </div>
 
                 </div>
@@ -299,143 +302,60 @@
 
                 <!-- ================= BOTTOM GRID ================= -->
 
-                <div class="bottom-grid">
+<div class="bottom-grid">
 
+    <!-- System Activity -->
 
-                    <!-- System Activity -->
+    <div class="dashboard-box" id="system">
 
-                    <div class="dashboard-box" id="system">
+        <h3>
+            Recent System Activity
+        </h3>
 
-                        <h3>
-                            Recent System Activity
-                        </h3>
+        <div id="recentSystemActivity">
 
+            <div class="application-row">
 
-                        <div class="application-row">
-
-                            <div class="application-info">
-
-                                <strong>
-                                    API Integration
-                                </strong>
-
-                                <span>
-                                    Education service connected
-                                </span>
-
-                            </div>
-
-                            <span class="status-approved">
-                                Success
-                            </span>
-
-                        </div>
-
-
-                        <div class="application-row">
-
-                            <div class="application-info">
-
-                                <strong>
-                                    Application Workflow
-                                </strong>
-
-                                <span>
-                                    Employment application processed
-                                </span>
-
-                            </div>
-
-                            <span class="status-approved">
-                                Success
-                            </span>
-
-                        </div>
-
-
-                        <div class="application-row">
-
-                            <div class="application-info">
-
-                                <strong>
-                                    Data Synchronization
-                                </strong>
-
-                                <span>
-                                    Welfare service synchronized
-                                </span>
-
-                            </div>
-
-                            <span class="status-approved">
-                                Success
-                            </span>
-
-                        </div>
-
-
-                        <div class="application-row">
-
-                            <div class="application-info">
-
-                                <strong>
-                                    Security Audit
-                                </strong>
-
-                                <span>
-                                    Platform access verified
-                                </span>
-
-                            </div>
-
-                            <span class="status-approved">
-                                Verified
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Quick Actions -->
-
-                    <div class="dashboard-box">
-
-                        <h3>
-                            Quick Actions
-                        </h3>
-
-                        <a
-                            href="#users"
-                            class="quick-action"
-                        >
-                            👥 Manage Users
-                        </a>
-
-                        <a
-                            href="#departments"
-                            class="quick-action"
-                        >
-                            🏛️ View Departments
-                        </a>
-
-                        <a
-                            href="#integrations"
-                            class="quick-action"
-                        >
-                            🔗 Check API Integrations
-                        </a>
-
-                        <a
-                            href="#audit"
-                            class="quick-action"
-                        >
-                            📋 View Audit Logs
-                        </a>
-
-                    </div>
-
+                <div class="application-info">
+                    <strong>Loading activity...</strong>
+                    <span>Please wait</span>
                 </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Quick Actions -->
+
+    <div class="dashboard-box">
+
+        <h3>
+            Quick Actions
+        </h3>
+
+        <a href="admin-users.html" class="quick-action">
+            👥 Manage Users
+        </a>
+
+        <a href="admin-departments.html" class="quick-action">
+            🏛️ View Departments
+        </a>
+
+        <a href="admin-integrations.html" class="quick-action">
+            🔗 Check API Integrations
+        </a>
+
+        <a href="admin-audit-logs.html" class="quick-action">
+            📋 View Audit Logs
+        </a>
+
+
+    </div>
+
+</div>                    
 
 
                 <!-- ================= PLATFORM OVERVIEW ================= -->
@@ -464,8 +384,8 @@
 
                         </div>
 
-                        <span class="status-approved">
-                            Online
+                        <span class="status-approved" id="apiGatewayStatus">
+                            Checking...
                         </span>
 
                     </div>
@@ -485,8 +405,8 @@
 
                         </div>
 
-                        <span class="status-approved">
-                            Online
+                        <span class="status-approved" id="consentEngineStatus">
+                            Checking...
                         </span>
 
                     </div>
@@ -506,8 +426,8 @@
 
                         </div>
 
-                        <span class="status-approved">
-                            Online
+                        <span class="status-approved" id="eligibilityEngineStatus">
+                            Checking...
                         </span>
 
                     </div>
@@ -527,8 +447,8 @@
 
                         </div>
 
-                        <span class="status-approved">
-                            Online
+                        <span class="status-approved" id="notificationServiceStatus">
+                            Checking...
                         </span>
 
                     </div>
@@ -569,8 +489,8 @@
 
                         </div>
 
-                        <span class="status-approved">
-                            Enabled
+                        <span class="status-approved" id="auditLoggingStatus">
+                            Checking...
                         </span>
 
                     </div>
@@ -590,9 +510,9 @@
 
                         </div>
 
-                        <span class="status-approved">
-                            Enabled
-                        </span>
+                        <span class="status-approved" id="roleAccessStatus">
+                            Checking...
+                            </span>
 
                     </div>
 
@@ -611,8 +531,8 @@
 
                         </div>
 
-                        <span class="status-approved">
-                            Enabled
+                        <span class="status-approved" id="dataConsentStatus">
+                            Checking...
                         </span>
 
                     </div>
@@ -633,6 +553,9 @@ function logout() {
     window.location.href = "index.html";
 }
 </script>
+
+<script src="js/admin.js"></script>
+<script src="js/theme.js"></script>
 
 </body>
 

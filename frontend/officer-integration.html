@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Integration | MahaConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <h2>🏛️ MahaConnect</h2>
+            <p>Government Officer Portal</p>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="officer.html">
+                📊 Dashboard
+            </a>
+
+            <a href="officer-applications.html">
+                📄 Applications
+            </a>
+
+            <a href="officer-citizens.html">
+                👥 Citizens
+            </a>
+
+            <a href="officer-integration.html" class="active">
+                🔗 Department Integration
+            </a>
+
+            <a href="officer-reports.html">
+                📊 Reports
+            </a>
+
+            <a href="officer-settings.html">
+                ⚙️ Settings
+            </a>
+
+            <a href="#" onclick="logout()">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+        <div class="security-card">
+            <strong>🛡️ Secure Officer Access</strong>
+            <span>Protected by MahaConnect</span>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <!-- Header -->
+        <div class="page-header">
+
+            <div>
+                <h1>🔗 Department Integration</h1>
+                <p>
+                    Monitor connected government services and API interoperability.
+                </p>
+            </div>
+
+            <div class="officer-status">
+                🟢 Integration Active
+            </div>
+
+        </div>
+
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">🔗</div>
+                <div>
+                    <h3>Connected APIs</h3>
+                    <strong id="connectedApis">-</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🟢</div>
+                <div>
+                    <h3>Active Services</h3>
+                    <strong id="activeServices">-</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📡</div>
+                <div>
+                    <h3>API Requests</h3>
+                    <strong id="apiRequests">-</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div>
+                    <h3>Availability</h3>
+                    <strong id="availability">-</strong>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Department APIs -->
+        <div class="admin-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>Connected Departments</h2>
+                    <p>
+                        Government systems connected through the MahaConnect
+                        interoperability layer.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="officer-integration-grid">
+
+                <!-- Education -->
+                <div class="integration-card">
+
+                    <div class="integration-card-top">
+
+                        <div class="integration-icon">
+                            🎓
+                        </div>
+
+                        <span id="educationStatus" class="integration-status">● Connected</span>
+                    </div>
+
+                    <h3>Education Department</h3>
+
+                    <p>
+                        Handles education records, student information
+                        and education-related services.
+                    </p>
+
+                    <div class="integration-details">
+                        <span>Endpoint</span>
+                        <strong>/api/education</strong>
+                    </div>
+
+                    <div class="integration-details">
+                        <span>Status</span>
+                        <strong>Operational</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- Employment -->
+                <div class="integration-card">
+
+                    <div class="integration-card-top">
+
+                        <div class="integration-icon">
+                            💼
+                        </div>
+
+                        <span id="employmentStatus" class="integration-status">● Connected</span>
+                    </div>
+
+                    <h3>Employment Department</h3>
+
+                    <p>
+                        Handles employment applications, eligibility
+                        checks and job-related services.
+                    </p>
+
+                    <div class="integration-details">
+                        <span>Endpoint</span>
+                        <strong>/api/employment</strong>
+                    </div>
+
+                    <div class="integration-details">
+                        <span>Status</span>
+                        <strong>Operational</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- Welfare -->
+                <div class="integration-card">
+
+                    <div class="integration-card-top">
+
+                        <div class="integration-icon">
+                            🤝
+                        </div>
+
+                        <span id="welfareStatus" class="integration-status">● Connected</span>
+
+                    </div>
+
+                    <h3>Welfare Department</h3>
+
+                    <p>
+                        Handles welfare schemes, citizen benefits
+                        and eligibility information.
+                    </p>
+
+                    <div class="integration-details">
+                        <span>Endpoint</span>
+                        <strong>/api/welfare</strong>
+                    </div>
+
+                    <div class="integration-details">
+                        <span>Status</span>
+                        <strong>Operational</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Interoperability Flow -->
+        <div class="admin-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Interoperability Flow</h2>
+                    <p>
+                        How citizen data moves between connected government systems.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="officer-flow">
+
+                <div class="officer-flow-item">
+                    <div class="officer-flow-icon">👤</div>
+                    <strong>Citizen</strong>
+                    <span>Master Profile</span>
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="officer-flow-item">
+                    <div class="officer-flow-icon">🔐</div>
+                    <strong>Access Control</strong>
+                    <span>Consent + Eligibility</span>
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="officer-flow-item">
+                    <div class="officer-flow-icon">🔗</div>
+                    <strong>Integration Layer</strong>
+                    <span>API Routing</span>
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="officer-flow-item">
+                    <div class="officer-flow-icon">🏛️</div>
+                    <strong>Departments</strong>
+                    <span>Government APIs</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Security Information -->
+        <div class="officer-security-grid">
+
+            <div class="info-card">
+
+                <div class="info-icon">🔐</div>
+
+                <div>
+                    <h3>Consent-Based Access</h3>
+
+                    <p>
+                        Department systems receive only the required
+                        citizen information after appropriate consent.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">📋</div>
+
+                <div>
+                    <h3>Audit & Monitoring</h3>
+
+                    <p>
+                        API requests and sensitive data access can be
+                        tracked through the MahaConnect audit system.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /* Officer Role Guard */
+
+        const userMobile = localStorage.getItem("userMobile");
+        const userRole = localStorage.getItem("userRole");
+
+        if (!userMobile || !userRole) {
+            window.location.href = "index.html";
+        }
+
+        if (userRole !== "officer") {
+            alert("Access Denied: Government Officer access required.");
+            window.location.href = "index.html";
+        }
+
+
+        /* Logout */
+
+        function logout() {
+
+            localStorage.removeItem("userMobile");
+            localStorage.removeItem("userRole");
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+    <script src="js/officer-integration.js"></script>
+    <script src="js/theme.js"></script>
+
+
+</body>
+</html>

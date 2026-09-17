@@ -138,7 +138,8 @@ async function updateApplicationStatus(applicationId, status) {
                 },
 
                 body: JSON.stringify({
-                    status: status
+                    status: status,
+                    officer_mobile: localStorage.getItem("userMobile")
                 })
             }
         );

@@ -59,7 +59,7 @@
                     🔔 Notifications
                 </a>
 
-                <a href="#">
+                <a href="settings.html">
                     ⚙️ Settings
                 </a>
 
@@ -164,6 +164,12 @@
                 <!-- Profile Form -->
                 <form id="profileForm">
 
+                    <button
+                        type="button"
+                        class="back-profile-btn"
+                        onclick="backToCompletedProfile()">
+                        ← Back to Profile
+                    </button>
 
                     <!-- Personal Information -->
                     <div class="profile-section">
@@ -233,6 +239,55 @@
                         </div>
 
                     </div>
+
+                <!-- Identity Verification -->
+<div class="profile-section identity-verification-card">
+
+    <div class="verification-header">
+        <div>
+            <h2>🛡️ Identity Verification</h2>
+            <p>
+                Verify your identity through DigiLocker to create a trusted
+                Master Profile.
+            </p>
+        </div>
+
+        <span
+            class="verification-status"
+            id="verificationStatus">
+                Not Verified
+        </span>
+
+    </div>
+
+    <div class="verification-info">
+
+        <div class="verification-item">
+            <span>Identity Source</span>
+            <strong>DigiLocker</strong>
+        </div>
+
+        <div class="verification-item">
+            <span>Required Document</span>
+            <strong>Aadhaar</strong>
+        </div>
+
+        <div class="verification-item">
+            <span>Verification</span>
+            <strong>Compulsory</strong>
+        </div>
+
+    </div>
+
+    <button
+        type="button"
+        class="verify-identity-btn"
+        onclick="startIdentityVerification()"
+    >
+        Verify Identity →
+    </button>
+
+</div>
 
 
                     <!-- Contact Information -->
@@ -400,6 +455,70 @@
 
                 </form>
 
+                <!-- Profile Completion Section -->
+<section
+    id="profileCompletedSection"
+    style="
+    display:none;
+    margin-top:30px;
+    padding:30px;
+    border-radius:16px;
+    background:#F0FDFA;
+    border:1px solid #B8DED8;
+    text-align:center;
+    "
+>
+
+    <div style="font-size:50px;">
+        ✓
+    </div>
+
+    <h2 style="color:#0F766E; margin-top:10px;">
+        Profile Completed
+    </h2>
+
+    <p style="margin-top:8px;">
+        Your Master Profile is successfully completed.
+    </p>
+
+    <div
+        style="
+        display:flex;
+        justify-content:center;
+        gap:12px;
+        flex-wrap:wrap;
+        margin-top:22px;
+        "
+    >
+
+        <button
+            type="button"
+            class="verify-identity-btn"
+            onclick="viewProfilePreview()"
+        >
+            View Profile Preview
+        </button>
+
+        <button
+            type="button"
+            class="save-btn"
+            onclick="editProfile()"
+        >
+            Update / Edit Profile
+        </button>
+
+        <button
+            type="button"
+            class="save-btn"
+            onclick="continueToDashboard()"
+        >
+            Continue to Dashboard →
+        </button>
+
+    </div>
+
+</section>
+
             </main>
 
         </div>
@@ -409,6 +528,63 @@
 
     <!-- JavaScript -->
     <script src="js/profile.js"></script>
+
+<script>
+function startIdentityVerification() {
+
+    const fullName =
+        document.getElementById("fullName").value.trim();
+
+    const dob =
+        document.getElementById("dob").value;
+
+    const gender =
+        document.getElementById("gender").value;
+
+    // Identity details are required for verification
+    if (!fullName || !dob || !gender) {
+        alert(
+            "Please enter your Full Name, Date of Birth and Gender before verifying your identity."
+        );
+        return;
+    }
+
+    // Store identity data for DigiLocker verification
+    const identityData = {
+        fullName: fullName,
+        dob: dob,
+        gender: gender
+    };
+
+    localStorage.setItem(
+        "pendingIdentityData",
+        JSON.stringify(identityData)
+    );
+
+    // Open DigiLocker verification
+    window.location.href = "digilocker.html";
+}
+</script>
+
+<script>
+    const verificationStatus =
+        localStorage.getItem("identityVerificationStatus");
+
+    const verificationSource =
+        localStorage.getItem("identitySource");
+
+    const statusElement =
+        document.getElementById("verificationStatus");
+
+    if (
+        verificationStatus === "verified" &&
+        verificationSource === "DigiLocker"
+    ) {
+        statusElement.textContent = "✓ Verified";
+        statusElement.style.color = "#0F766E";
+    }
+</script>
+<script src="js/theme.js"></script>
 
 </body>
 

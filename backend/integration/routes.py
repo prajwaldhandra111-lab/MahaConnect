@@ -188,3 +188,83 @@ def send_to_welfare_benefits(mobile: str):
             "message": "Unable to connect to Welfare Department",
             "error": str(error)
         }
+
+@router.get("/status")
+def integration_status():
+
+    departments = [
+        {
+            "name": "Education Department",
+            "endpoint": "http://127.0.0.1:8002",
+            "display_endpoint": "/api/education"
+        },
+        {
+            "name": "Employment Department",
+            "endpoint": "http://127.0.0.1:8001",
+            "display_endpoint": "/api/employment"
+        },
+        {
+            "name": "Welfare Department",
+            "endpoint": "http://127.0.0.1:8003",
+            "display_endpoint": "/api/welfare"
+        }
+    ]
+
+    results = []
+
+    for department in departments:
+
+        try:
+
+            request = urllib.request.Request(
+                department["endpoint"],
+                method="GET"
+            )
+
+            with urllib.request.urlopen(
+                request,
+                timeout=3
+            ) as response:
+
+                online = response.status == 200
+
+        except Exception:
+
+            online = False
+
+
+        results.append(
+            {
+                "name": department["name"],
+                "endpoint": department["display_endpoint"],
+                "status": (
+                    "Connected"
+                    if online
+                    else "Unavailable"
+                ),
+                "operational": online
+            }
+        )
+
+
+    connected = sum(
+        1
+        for department in results
+        if department["operational"]
+    )
+
+    total = len(results)
+
+    availability = round(
+        (connected / total) * 100
+    ) if total else 0
+
+
+    return {
+        "success": True,
+        "connected_apis": connected,
+        "total_apis": total,
+        "active_services": connected,
+        "availability": availability,
+        "departments": results
+    }    

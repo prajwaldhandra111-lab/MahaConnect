@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizens | MahaConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <h2>🏛️ MahaConnect</h2>
+            <p>Government Officer Portal</p>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="officer.html">
+                📊 Dashboard
+            </a>
+
+            <a href="officer-applications.html">
+                📄 Applications
+            </a>
+
+            <a href="officer-citizens.html" class="active">
+                👥 Citizens
+            </a>
+
+            <a href="officer-integration.html">
+                🔗 Department Integration
+            </a>
+
+            <a href="officer-reports.html">
+                📊 Reports
+            </a>
+
+            <a href="officer-settings.html">
+                ⚙️ Settings
+            </a>
+
+            <a href="#" onclick="logout()">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+        <div class="security-card">
+            <strong>🛡️ Secure Officer Access</strong>
+            <span>Protected by MahaConnect</span>
+        </div>
+
+    </aside>
+
+
+    <!-- Main -->
+    <main class="main">
+
+        <!-- Header -->
+        <div class="page-header">
+
+            <div>
+                <h1>👥 Citizens</h1>
+                <p>
+                    View citizen profiles and service information.
+                </p>
+            </div>
+
+            <div class="officer-status">
+                🟢 Officer Access
+            </div>
+
+        </div>
+
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div>
+                    <h3>Total Citizens</h3>
+                    <strong id="totalCitizens">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🎓</div>
+                <div>
+                    <h3>Education Users</h3>
+                    <strong id="educationUsers">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">💼</div>
+                <div>
+                    <h3>Employment Users</h3>
+                    <strong id="employmentUsers">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🤝</div>
+                <div>
+                    <h3>Welfare Users</h3>
+                    <strong id="welfareUsers">0</strong>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Citizen Directory -->
+        <div class="admin-card">
+
+            <div class="citizen-search-header">
+
+                <div>
+                    <h2>Citizen Directory</h2>
+                    <p>
+                        Search citizens connected through MahaConnect.
+                    </p>
+                </div>
+
+                <input
+                    type="text"
+                    id="citizenSearch"
+                    class="citizen-search"
+                    placeholder="Search by name or mobile..."
+                    onkeyup="searchCitizens()"
+                >
+
+            </div>
+
+
+            <!-- Citizen Table -->
+            <div class="table-container">
+
+                <table id="citizenTable">
+
+                    <thead>
+
+                        <tr>
+                            <th>Citizen</th>
+                            <th>Mobile</th>
+                            <th>City</th>
+                            <th>Services</th>
+                            <th>Consent</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="citizenTableBody">
+
+                        <tr>
+                            <td colspan="6" style="text-align:center;">
+                                Loading citizen data...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- Data Access Information -->
+        <div class="citizen-info-grid">
+
+            <div class="info-card">
+
+                <div class="info-icon">🔐</div>
+
+                <div>
+                    <h3>Controlled Data Access</h3>
+
+                    <p>
+                        Officers can access only the citizen information
+                        required for their department and authorized services.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">📋</div>
+
+                <div>
+                    <h3>Consent Based Sharing</h3>
+
+                    <p>
+                        Citizen information is shared with departments
+                        according to consent and service requirements.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /* Officer Role Guard */
+
+        const userMobile = localStorage.getItem("userMobile");
+        const userRole = localStorage.getItem("userRole");
+
+        if (!userMobile || !userRole) {
+            window.location.href = "index.html";
+        }
+
+        if (userRole !== "officer") {
+            alert("Access Denied: Government Officer access required.");
+            window.location.href = "index.html";
+        }
+
+
+        /* Store citizens for search */
+
+        let citizensData = [];
+
+
+        /* Load Citizens */
+
+        async function loadCitizens() {
+
+            const tableBody =
+                document.getElementById("citizenTableBody");
+
+            try {
+
+                const response = await fetch(
+                    "http://127.0.0.1:8000/officer/citizens"
+                );
+
+                const result = await response.json();
+
+                if (!result.success) {
+
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="6" style="text-align:center;">
+                                Unable to load citizen data.
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+
+                /* Store citizen data */
+
+                citizensData = result.citizens;
+
+
+                /* Update statistics */
+
+                document.getElementById("totalCitizens").textContent =
+                    result.stats.total;
+
+                document.getElementById("educationUsers").textContent =
+                    result.stats.education;
+
+                document.getElementById("employmentUsers").textContent =
+                    result.stats.employment;
+
+                document.getElementById("welfareUsers").textContent =
+                    result.stats.welfare;
+
+
+                /* Render citizens */
+
+                renderCitizens(citizensData);
+
+            } catch (error) {
+
+                console.error("Citizen API Error:", error);
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center;">
+                            ⚠️ Unable to connect to MahaConnect backend.
+                        </td>
+                    </tr>
+                `;
+
+            }
+
+        }
+
+
+        /* Render Citizen Table */
+
+        function renderCitizens(citizens) {
+
+            const tableBody =
+                document.getElementById("citizenTableBody");
+
+
+            if (citizens.length === 0) {
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center;">
+                            No citizens found.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+
+            tableBody.innerHTML = citizens.map(citizen => {
+
+                const servicesHTML =
+                    citizen.services.length > 0
+                    ? citizen.services.map(service => `
+                        <span class="service-badge">
+                            ${service}
+                        </span>
+                    `).join(" ")
+                    : `
+                        <span class="service-badge">
+                            None
+                        </span>
+                    `;
+
+
+                const consentClass =
+                    citizen.consent === "Active"
+                    ? "consent-active"
+                    : "consent-limited";
+
+
+                return `
+                    <tr>
+
+                        <td>
+                            <strong>
+                                ${citizen.full_name || "Profile Not Completed"}
+                            </strong>
+                        </td>
+
+                        <td>
+                            ${citizen.mobile}
+                        </td>
+
+                        <td>
+                            ${citizen.city || "Not Available"}
+                        </td>
+
+                        <td>
+                            ${servicesHTML}
+                        </td>
+
+                        <td>
+                            <span class="${consentClass}">
+                                ${citizen.consent}
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="status-badge success">
+                                ${citizen.status}
+                            </span>
+                        </td>
+
+                    </tr>
+                `;
+
+            }).join("");
+
+        }
+
+
+        /* Search Citizens */
+
+        function searchCitizens() {
+
+            const input =
+                document
+                .getElementById("citizenSearch")
+                .value
+                .toLowerCase()
+                .trim();
+
+
+            const filteredCitizens =
+                citizensData.filter(citizen => {
+
+                    const name =
+                        (citizen.full_name || "")
+                        .toLowerCase();
+
+                    const mobile =
+                        (citizen.mobile || "")
+                        .toLowerCase();
+
+                    const city =
+                        (citizen.city || "")
+                        .toLowerCase();
+
+                    return (
+                        name.includes(input) ||
+                        mobile.includes(input) ||
+                        city.includes(input)
+                    );
+
+                });
+
+
+            renderCitizens(filteredCitizens);
+
+        }
+
+
+        /* Logout */
+
+        function logout() {
+
+            localStorage.removeItem("userMobile");
+            localStorage.removeItem("userRole");
+
+            window.location.href = "index.html";
+
+        }
+
+
+        /* Load data when page opens */
+
+        loadCitizens();
+
+    </script>
+
+    <script src="js/officer-citizens.js"></script>
+    <script src="js/theme.js"></script>
+
+
+</body>
+</html>

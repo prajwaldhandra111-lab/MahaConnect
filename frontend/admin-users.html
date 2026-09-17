@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MahaConnect | Users</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️MahaConnect</h2>
+                <p>ADMINISTRATION PORTAL</p>
+            </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="admin.html">
+                📊 Dashboard
+            </a>
+
+            <a href="admin-users.html" class="active">
+                👥 Users
+            </a>
+
+            <a href="admin-departments.html">
+                🏛️ Departments
+            </a>
+
+            <a href="admin-integrations.html">
+                🔗 Integrations
+            </a>
+
+            <a href="admin-audit-logs.html">
+                📋 Audit Logs
+            </a>
+
+            <a href="admin-system-activity.html">
+                📈 System Activity
+            </a>
+
+            <a href="admin-settings.html">
+                ⚙️ Settings
+            </a>
+
+            <a href="home.html">
+                🏠 Home
+            </a>
+
+            <a href="index.html">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+        <div class="security-card">
+            <strong>🛡️ System Protected</strong>
+            <span>Administrator access</span>
+        </div>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="page-header">
+
+            <div>
+                <span class="page-label">ADMINISTRATION</span>
+
+                <h1>User Management</h1>
+
+                <p>
+                    Manage registered citizens, officers and administrators.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <span>👥</span>
+                <h3 id="totalUsers">-</h3>
+                <p>Total Users</p>
+            </div>
+
+            <div class="stat-card">
+                <span>👤</span>
+                <h3 id="totalCitizens">-</h3>
+                <p>Citizens</p>
+            </div>
+
+            <div class="stat-card">
+                <span>👮</span>
+                <h3 id="totalOfficers">-</h3>
+                <p>Officers</p>
+            </div>
+
+            <div class="stat-card">
+                <span>⚙️</span>
+                <h3 id="totalAdmins">-</h3>
+                <p>Administrators</p>
+            </div>
+
+        </div>
+
+
+        <!-- User Table -->
+
+        <div class="admin-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <h2>Registered Users</h2>
+                    <p>Users currently registered in MahaConnect.</p>
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Mobile</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="usersTableBody">
+
+                        <tr>
+                            <td>1</td>
+
+                            <td>
+                                7977115747
+                            </td>
+
+                            <td>
+                                <span class="role-badge citizen">
+                                    Citizen
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="status-badge">
+                                    Active
+                                </span>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>2</td>
+
+                            <td>
+                                9000000001
+                            </td>
+
+                            <td>
+                                <span class="role-badge officer">
+                                    Officer
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="status-badge">
+                                    Active
+                                </span>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>3</td>
+
+                            <td>
+                                9000000002
+                            </td>
+
+                            <td>
+                                <span class="role-badge admin">
+                                    Administrator
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="status-badge">
+                                    Active
+                                </span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- Access Control -->
+
+        <div class="admin-card">
+
+            <h2>Role Based Access</h2>
+
+            <p>
+                MahaConnect controls access based on user roles.
+            </p>
+
+            <div class="access-list">
+
+                <div>
+                    <strong>👤 Citizen</strong>
+                    <span>Access government citizen services.</span>
+                </div>
+
+                <div>
+                    <strong>👮 Officer</strong>
+                    <span>Review and process citizen applications.</span>
+                </div>
+
+                <div>
+                    <strong>⚙️ Administrator</strong>
+                    <span>Monitor users, integrations and system activity.</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        const userRole = localStorage.getItem("userRole");
+
+        if (!userRole) {
+            window.location.href = "index.html";
+        }
+
+        if (userRole !== "admin") {
+            alert("Access Denied: Administrator access required.");
+            window.location.href = "index.html";
+        }
+
+    </script>
+
+    <script src="js/admin-users.js"></script>
+    <script src="js/theme.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MahaConnect | Audit Logs</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️MahaConnect</h2>
+                <p>ADMINISTRATION PORTAL</p>
+            </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="admin.html">
+                📊 Dashboard
+            </a>
+
+            <a href="admin-users.html">
+                👥 Users
+            </a>
+
+            <a href="admin-departments.html">
+                🏛️ Departments
+            </a>
+
+            <a href="admin-integrations.html">
+                🔗 Integrations
+            </a>
+
+            <a href="admin-audit-logs.html" class="active">
+                📋 Audit Logs
+            </a>
+
+            <a href="admin-system-activity.html">
+                📈 System Activity
+            </a>
+
+            <a href="admin-settings.html">
+               ⚙️ Settings
+            </a>
+
+            <a href="home.html">
+                🏠 Home
+            </a>
+
+            <a href="index.html">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+        <div class="security-card">
+
+            <strong>🛡️ System Protected</strong>
+
+            <span>
+                Administrator access
+            </span>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main">
+
+        <!-- Header -->
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="page-label">
+                    ADMINISTRATION
+                </span>
+
+                <h1>
+                    Audit Logs
+                </h1>
+
+                <p>
+                    Monitor important activities and data access across MahaConnect.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <span>📋</span>
+
+                <h3 id="totalActivities">-</h3>
+
+                <p>
+                    Total Activities
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>👤</span>
+
+                <h3 id="citizenActions">-</h3>
+
+                <p>
+                    Citizen Actions
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>👮</span>
+
+                <h3 id="officerActions">-</h3>
+
+                <p>
+                    Officer Actions
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>🔐</span>
+
+                <h3 id="dataAccessEvents">-</h3>
+
+                <p>
+                    Data Access Events
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Audit Log Table -->
+
+        <div class="admin-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <h2>
+                        Recent Audit Activity
+                    </h2>
+
+                    <p>
+                        Important system actions recorded by MahaConnect.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>User</th>
+
+                            <th>Action</th>
+
+                            <th>Department</th>
+
+                            <th>Time</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="auditLogsTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- Security Information -->
+
+        <div class="admin-card">
+
+            <h2>
+                Audit & Data Security
+            </h2>
+
+            <p>
+                Audit logs help administrators track access, data sharing,
+                application processing and other important activities.
+            </p>
+
+
+            <div class="audit-security-grid">
+
+                <div class="audit-security-item">
+
+                    <span>🔐</span>
+
+                    <div>
+
+                        <strong>
+                            Data Access Tracking
+                        </strong>
+
+                        <small>
+                            Records when protected citizen information is accessed.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="audit-security-item">
+
+                    <span>📝</span>
+
+                    <div>
+
+                        <strong>
+                            Action Logging
+                        </strong>
+
+                        <small>
+                            Important citizen, officer and administrator actions are recorded.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="audit-security-item">
+
+                    <span>🛡️</span>
+
+                    <div>
+
+                        <strong>
+                            Accountability
+                        </strong>
+
+                        <small>
+                            Activity records support transparency and system monitoring.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Role Protection -->
+
+    <script>
+
+        const userRole = localStorage.getItem("userRole");
+
+        if (!userRole) {
+
+            window.location.href = "index.html";
+
+        }
+
+        if (userRole !== "admin") {
+
+            alert("Access Denied: Administrator access required.");
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+    <script src="js/admin-audit-logs.js"></script>
+    <script src="js/theme.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Activity | MahaConnect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️MahaConnect</h2>
+                <p>ADMINISTRATION PORTAL</p>
+            </div>
+
+        <div class="sidebar-nav">
+
+            <a href="admin.html">
+                📊 Dashboard
+            </a>
+
+            <a href="admin-users.html">
+                👥 Users
+            </a>
+
+            <a href="admin-departments.html">
+                🏛️ Departments
+            </a>
+
+            <a href="admin-integrations.html">
+                🔗 Integrations
+            </a>
+
+            <a href="admin-audit-logs.html">
+                📋 Audit Logs
+            </a>
+
+            <a href="admin-system-activity.html">
+                📈 System Activity
+            </a>
+
+            <a href="admin-settings.html">
+                ⚙️ Settings
+            </a>
+
+            <a href="home.html">
+                🏠 Home
+            </a>
+
+            <a href="#" onclick="logout()">
+                🚪 Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <!-- Header -->
+        <div class="page-header">
+
+            <div>
+                <h1>System Activity</h1>
+                <p>
+                    Monitor platform health, API activity and system operations.
+                </p>
+            </div>
+
+            <div class="system-status-badge">
+                <span class="status-dot"></span>
+                All Systems Operational
+            </div>
+
+        </div>
+
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">🟢</div>
+                <div>
+                    <h3>System Status</h3>
+                    <strong id="systemStatus">-</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🔗</div>
+                <div>
+                    <h3>API Requests</h3>
+                    <strong id="apiRequests">-</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div>
+                    <h3>Integration Health</h3>
+                    <strong id="integrationHealth">-</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">💾</div>
+                <div>
+                    <h3>Database</h3>
+                    <strong id="databaseStatus">-</strong>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- System Components -->
+        <div class="admin-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>System Components</h2>
+                    <p>Current health status of MahaConnect services.</p>
+                </div>
+            </div>
+
+            <div class="system-components-grid">
+
+                <div class="system-component">
+                    <div class="component-top">
+                        <div class="component-icon">🌐</div>
+                        <span class="component-status operational" id="citizenPlatformStatus">
+                            Checking...
+                        </span>
+                    </div>
+
+                    <h3>Citizen Platform</h3>
+                    <p>Citizen-facing web application</p>
+                </div>
+
+
+                <div class="system-component">
+                    <div class="component-top">
+                        <div class="component-icon">🔐</div>
+                        <span class="component-status operational" id="authenticationStatus">
+                            Checking...
+                        </span>
+                    </div>
+
+                    <h3>Authentication Service</h3>
+                    <p>User authentication and access control</p>
+                </div>
+
+
+                <div class="system-component">
+                    <div class="component-top">
+                        <div class="component-icon">🔗</div>
+                        <span class="component-status operational" id="integrationLayerStatus">
+                            checking...
+                        </span>
+                    </div>
+
+                    <h3>Integration Layer</h3>
+                    <p>Department API interoperability</p>
+                </div>
+
+
+                <div class="system-component">
+                    <div class="component-top">
+                        <div class="component-icon">🗄️</div>
+                        <span class="component-status operational" id="mysqlStatus">
+                            Checking...
+                        </span>
+                    </div>
+
+                    <h3>MySQL Database</h3>
+                    <p>Central profile and application data</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- API Activity -->
+        <div class="admin-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>Recent Platform Activity</h2>
+                    <p>Latest activities recorded across the MahaConnect platform.</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+
+                <table class="activity-table">
+
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Service</th>
+                            <th>Action</th>
+                            <th>Department</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="apiActivityTableBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- System Events -->
+        <div class="admin-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>Recent System Events</h2>
+                    <p>Important platform events and operations.</p>
+                </div>
+            </div>
+
+            <div class="activity-list" id="systemEventsList">
+            </div>
+
+        </div>
+
+        <!-- Monitoring Information -->
+        <div class="system-monitoring-grid">
+
+            <div class="monitoring-card">
+
+                <div class="monitoring-icon">🛡️</div>
+
+                <div>
+                    <h3>Security Monitoring</h3>
+                    <p>
+                        API access, authentication events and sensitive
+                        data operations are monitored.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="monitoring-card">
+
+                <div class="monitoring-icon">📈</div>
+
+                <div>
+                    <h3>Performance Monitoring</h3>
+                    <p>
+                        Response time and service availability are tracked
+                        for connected systems.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    
+
+
+    <script>
+
+        // Admin Role Guard
+        const userMobile = localStorage.getItem("userMobile");
+        const userRole = localStorage.getItem("userRole");
+
+        if (!userMobile || !userRole) {
+            window.location.href = "index.html";
+        }
+
+        if (userRole !== "admin") {
+            alert("Access Denied: Administrator access required.");
+            window.location.href = "index.html";
+        }
+
+
+        function logout() {
+
+            localStorage.removeItem("userMobile");
+            localStorage.removeItem("userRole");
+
+            window.location.href = "index.html";
+        }
+
+    </script>
+
+<script src="js/admin-system-activity.js"></script>
+<script src="js/theme.js"></script>
+
+</body>
+</html>

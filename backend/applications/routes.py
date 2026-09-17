@@ -4,6 +4,7 @@ from backend.database import get_db_connection
 import urllib.request
 import json
 from backend.audit.logger import create_audit_log
+from backend.eligibility.rules import check_employment_eligibility
 
 router = APIRouter(
     prefix="/applications",
@@ -42,6 +43,47 @@ def create_application(data: ApplicationRequest):
 
     user_id = user[0]
 
+    # Check employment eligibility
+    if data.service_name == "Employment Service":
+
+        cursor.execute(
+            """
+            SELECT dob
+            FROM profiles
+            WHERE user_id = %s
+            """,
+            (user_id,)
+        )
+
+        profile = cursor.fetchone()
+
+        if not profile or not profile[0]:
+
+            cursor.close()
+            connection.close()
+
+            return {
+                "success": False,
+                "message": "Date of Birth is required for employment eligibility."
+            }
+
+        dob = profile[0]
+
+        eligibility = check_employment_eligibility(
+            dob.isoformat()
+        )
+
+        if not eligibility["can_apply"]:
+
+            cursor.close()
+            connection.close()
+
+            return {
+                "success": False,
+                "message": eligibility["message"],
+                "age": eligibility["age"]
+            }
+
     # Check consent
     cursor.execute(
         """
@@ -66,6 +108,24 @@ def create_application(data: ApplicationRequest):
                 "success": False,
                 "message": "Employment data consent is required before applying."
             }
+
+
+# Education applications require education consent
+    if data.service_name in [
+        "Student Scholarship",
+        "Merit Scholarship",
+        "Education Financial Support"
+    ]:
+
+        if not consent or not consent[0]:
+
+            cursor.close()
+            connection.close()
+
+            return {
+                "success": False,
+                "message": "Education data consent is required before applying."
+            }               
 
     # Create application
     cursor.execute(
@@ -130,6 +190,44 @@ def create_application(data: ApplicationRequest):
                 "error": str(error)
             }
 
+    # Send education application to Education Department
+    if data.service_name in [
+        "Student Scholarship",
+        "Merit Scholarship",
+        "Education Financial Support"
+    ]:
+
+        department_data = {
+            "application_id": application_id,
+            "mobile": data.mobile,
+            "service_name": data.service_name
+        }
+
+        try:
+
+            request = urllib.request.Request(
+                "http://127.0.0.1:8002/applications",
+                data=json.dumps(department_data).encode("utf-8"),
+                headers={
+                    "Content-Type": "application/json"
+                },
+                method="POST"
+            )
+
+            with urllib.request.urlopen(request) as response:
+
+                department_response = json.loads(
+                    response.read().decode("utf-8")
+                )
+
+        except Exception as error:
+
+            department_response = {
+                "success": False,
+                "message": "Education Department unavailable",
+                "error": str(error)
+            }            
+
     return {
         "success": True,
         "message": "Application submitted successfully",
@@ -179,6 +277,7 @@ def get_applications(mobile: str):
 
 class StatusUpdateRequest(BaseModel):
     status: str
+    officer_mobile: str
 
 
 @router.put("/update-status/{application_id}")
@@ -186,6 +285,7 @@ def update_application_status(
     application_id: int,
     data: StatusUpdateRequest
 ):
+
     allowed_statuses = ["Pending", "Approved", "Rejected"]
 
     if data.status not in allowed_statuses:
@@ -224,6 +324,30 @@ def update_application_status(
             "message": "Application not found"
         }
 
+    # Find officer
+    cursor.execute(
+        """
+        SELECT id
+        FROM users
+        WHERE mobile = %s
+          AND role = 'officer'
+        """,
+        (data.officer_mobile,)
+    )
+
+    officer = cursor.fetchone()
+
+    if not officer:
+        cursor.close()
+        connection.close()
+
+        return {
+            "success": False,
+            "message": "Authorized officer not found"
+        }
+
+    officer_id = officer["id"]
+
     # Update application status
     cursor.execute(
         """
@@ -256,9 +380,9 @@ def update_application_status(
     connection.commit()
 
     create_audit_log(
-    application["user_id"],
-    f"Application {data.status}",
-    application["service_name"]
+        officer_id,
+        f"Application {data.status}",
+        application["service_name"]
     )
 
     cursor.close()

@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 from backend.database import get_db_connection
+from backend.audit.logger import create_audit_log
 
 router = APIRouter(
     prefix="/consent",
@@ -88,6 +89,13 @@ def save_consent(data: ConsentRequest):
         )
 
     connection.commit()
+
+        # Record consent update in audit logs
+    create_audit_log(
+        user_id,
+        "Updated data sharing consent",
+        "MahaConnect"
+    )
 
     cursor.close()
     connection.close()

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MahaConnect | Settings</title>
+
+    <!-- Existing MahaConnect CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="settings-page">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️ MahaConnect</h2>
+                <p>One Profile • Multiple Services</p>
+            </div>
+
+    <nav class="sidebar-nav">
+
+        <a href="dashboard.html">
+            ▦ Dashboard
+        </a>
+
+        <a href="profile.html">
+            👤 My Profile
+        </a>
+
+        <a href="applications.html">
+            📄 My Applications
+        </a>
+
+        <a href="consent.html">
+            🔐 Data Consent
+        </a>
+
+        <a href="notifications.html">
+            🔔 Notifications
+        </a>
+
+        <a href="settings.html" class="active">
+            ⚙️ Settings
+        </a>
+
+        <a href="#" onclick="logout()">
+            🚪 Logout
+        </a>
+
+    </nav>
+
+    <div class="security-card">
+        <strong>🛡️ Your data is secure</strong>
+        <span>Protected by MahaConnect</span>
+    </div>
+
+</aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main">
+
+        <!-- Page Header -->
+
+        <div class="top">
+
+            <small>
+                ACCOUNT & PRIVACY
+            </small>
+
+            <h1>
+                Settings
+            </h1>
+
+            <div class="subtitle">
+                Manage your account, notifications and privacy preferences.
+            </div>
+
+        </div>
+
+
+        <!-- ================= ACCOUNT ================= -->
+
+        <div class="settings-card">
+
+            <h2>
+                👤 Account Information
+            </h2>
+
+            <p>
+                Your MahaConnect account information.
+            </p>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Account Type
+                    </strong>
+
+                    <span>
+                        Citizen Account
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Registered Mobile
+                    </strong>
+
+                    <span id="mobileNumber">
+                        Loading...
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= NOTIFICATIONS ================= -->
+
+        <div class="settings-card">
+
+            <h2>
+                🔔 Notification Preferences
+            </h2>
+
+            <p>
+                Manage how you receive service updates.
+            </p>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Application Updates
+                    </strong>
+
+                    <span>
+                        Receive application status notifications
+                    </span>
+
+                </div>
+
+                <button
+                    id="applicationNotificationsBtn"
+                    class="settings-btn"
+                    onclick="toggleApplicationNotifications()">
+
+                    Loading...
+
+                </button>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Government Alerts
+                    </strong>
+
+                    <span>
+                        Receive important government service alerts
+                    </span>
+
+                </div>
+
+                <button
+                    id="governmentAlertsBtn"
+                    class="settings-btn"
+                    onclick="toggleGovernmentAlerts()">
+
+                    Loading...
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= PRIVACY ================= -->
+
+        <div class="settings-card">
+
+            <h2>
+                🛡️ Privacy & Consent
+            </h2>
+
+            <p>
+                Control how your profile information is shared
+                with government departments.
+            </p>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Manage Data Consent
+                    </strong>
+
+                    <span>
+                        Review Education, Employment and Welfare permissions.
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="settings-btn"
+                    onclick="window.location.href='consent.html'">
+
+                    Manage Consent
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- ================= APPEARANCE ================= -->
+
+<div class="settings-card">
+
+    <h2>
+        🎨 Appearance
+    </h2>
+
+    <p>
+        Customize the appearance of your MahaConnect account.
+    </p>
+
+
+    <div class="setting-row">
+
+        <div>
+
+            <strong>
+                Dark Mode
+            </strong>
+
+            <span>
+                Use a dark theme across MahaConnect.
+            </span>
+
+        </div>
+
+
+        <button id="darkModeBtn" onclick="toggleDarkMode()">
+            Enable
+        </button>
+
+    </div>
+
+</div>
+
+
+
+        <!-- ================= SECURITY ================= -->
+
+        <div class="settings-card">
+
+            <h2>
+                🔐 Security
+            </h2>
+
+            <p>
+                Your account security information.
+            </p>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Password
+                    </strong>
+
+                    <span>
+                        Your account password is protected.
+                    </span>
+
+                </div>
+
+
+                <span class="protected-badge">
+                    Protected
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= LOGOUT ================= -->
+
+        <div class="settings-card">
+
+            <h2>
+                🚪 Account Actions
+            </h2>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Logout
+                    </strong>
+
+                    <span>
+                        Sign out from your MahaConnect account.
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="settings-btn logout-btn"
+                    onclick="logout()">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        // Get logged-in user information
+
+        const userMobile =
+            localStorage.getItem("userMobile");
+
+        const userRole =
+            localStorage.getItem("userRole");
+
+
+        // Login protection
+
+        if (!userMobile || !userRole) {
+
+            window.location.href = "index.html";
+
+        }
+
+
+        // Citizen-only page
+
+        if (userRole !== "citizen") {
+
+            alert(
+                "Access Denied: Citizen access required."
+            );
+
+            window.location.href = "index.html";
+
+        }
+
+
+        // Display mobile number
+
+        document.getElementById(
+            "mobileNumber"
+        ).textContent =
+            userMobile || "Not available";
+
+        // Logout
+
+        function logout() {
+
+            localStorage.removeItem(
+                "userMobile"
+            );
+
+            localStorage.removeItem(
+                "userRole"
+            );
+
+            window.location.href =
+                "index.html";
+
+        }
+
+    </script>
+
+    <script src="js/settings.js"></script>
+    <script src="js/theme.js"></script>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,14 +16,18 @@
 
         <div class="login-card">
 
+            <a href="home.html" class="back-home-btn">
+                ← Back to Home
+            </a>
+
             <div class="logo">
                 MC
             </div>
 
             <h1>MahaConnect</h1>
 
-            <p class="subtitle">
-                One Profile. Multiple Government Services.
+            <p class="subtitle" id="loginSubtitle">
+                Government Digital Services
             </p>
 
             <form id="loginForm">
@@ -50,12 +55,31 @@
                     Login
                 </button>
 
+                <div id="forgotPassword" style="display:none; margin-top:12px;">
+                    <a href="forgot-password.html" class="home-role-link">
+                        Forgot Password?
+                    </a>
+                </div>
+
                 <p id="message"></p>
 
             </form>
 
-            <p class="demo-text">
-                Demo Login
+            <!-- Citizen Registration -->
+            <div id="citizenRegister" style="display:none; margin-top:15px;">
+
+                <p>
+                    New Citizen?
+                </p>
+
+                <a href="register.html" class="home-role-link">
+                    Create Citizen Account →
+                </a>
+
+            </div>
+
+            <p class="demo-text" id="demoText">
+                Secure Role-Based Access
             </p>
 
         </div>
@@ -64,5 +88,50 @@
 
     <script src="js/auth.js"></script>
 
+    <script>
+
+        const params = new URLSearchParams(window.location.search);
+        const role = params.get("role");
+
+        const subtitle = document.getElementById("loginSubtitle");
+        const registerBox = document.getElementById("citizenRegister");
+        const demoText = document.getElementById("demoText");
+        const forgotPassword = document.getElementById("forgotPassword");
+
+        if (role === "citizen") {
+
+            subtitle.textContent =
+                "Citizen Login";
+
+            registerBox.style.display = "block";
+
+            forgotPassword.style.display = "block";
+
+            demoText.textContent =
+                "New citizens can create an account";
+
+        } 
+        else if (role === "officer") {
+
+            subtitle.textContent =
+                "Government Officer Login";
+
+            demoText.textContent =
+                "Authorized government officers only";
+
+        } 
+        else if (role === "admin") {
+
+            subtitle.textContent =
+                "Administrator Login";
+
+            demoText.textContent =
+                "Authorized administrators only";
+
+        }
+
+    </script>
+
 </body>
+
 </html>

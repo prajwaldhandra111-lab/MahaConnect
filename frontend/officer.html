@@ -36,32 +36,35 @@
 
         <nav class="sidebar-nav">
 
-            <a href="officer-applications.html">
-                📄 Applications
-            </a>
+    <a href="officer.html" class="active">
+        📊 Dashboard
+    </a>
 
-            <a href="#">
-                👥 Citizens
-            </a>
+    <a href="officer-applications.html">
+        📄 Applications
+    </a>
 
-            <a href="#">
-                🔗 Department Integration
-            </a>
+    <a href="officer-citizens.html">
+        👥 Citizens
+    </a>
 
-            <a href="#">
-                📊 Reports
-            </a>
+    <a href="officer-integration.html">
+        🔗 Department Integration
+    </a>
 
-            <a href="#">
-                ⚙️ Settings
-            </a>
+    <a href="officer-reports.html">
+        📊 Reports
+    </a>
 
-            <a href="#" onclick="logout()">
-    🚪 Logout
-</a>
+    <a href="officer-settings.html">
+        ⚙️ Settings
+    </a>
 
-        </nav>
+    <a href="#" onclick="logout()">
+        🚪 Logout
+    </a>
 
+</nav>
         <div class="security-card">
             <strong>🛡️ Secure Officer Access</strong>
             <span>Protected by MahaConnect</span>
@@ -190,6 +193,25 @@
 
                         <p
                             id="approvedApplications"
+                            style="font-size: 32px; font-weight: bold;"
+                        >
+                            0
+                        </p>
+
+                    </div>
+
+                    <div class="modern-card">
+
+                         <div class="card-icon">
+                            ❌
+                         </div>
+
+                        <h3>
+                            Rejected
+                        </h3>
+
+                        <p
+                            id="rejectedApplications"
                             style="font-size: 32px; font-weight: bold;"
                         >
                             0
@@ -329,6 +351,8 @@ function logout() {
     window.location.href = "index.html";
 }
 </script>
+<script src="js/theme.js"></script>
+
 
 </body>
 </html>

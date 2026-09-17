@@ -1,49 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Settings | MahaConnect</title>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        const userMobile = localStorage.getItem("userMobile");
+        const userRole = localStorage.getItem("userRole");
+
+        if (!userMobile || !userRole) {
+            window.location.href = "index.html";
+        }
+
+        if (userRole !== "admin") {
+            alert("Access Denied: Administrator access required.");
+            window.location.href = "index.html";
+        }
+    </script>
 </head>
+
 
 <body>
 
     <!-- Sidebar -->
+
     <aside class="sidebar">
 
         <div class="sidebar-brand">
-            <h2>🏛️ MahaConnect</h2>
-            <p>Government Officer Portal</p>
-        </div>
 
+            <h2>🏛️ MahaConnect</h2>
+
+            <p>Administration Portal</p>
+
+        </div>
 
 
         <nav class="sidebar-nav">
 
-            <a href="officer.html">
+            <a href="admin.html">
                 📊 Dashboard
             </a>
 
-            <a href="officer-applications.html">
-                📄 Applications
+            <a href="admin-users.html">
+                👥 Users
             </a>
 
-            <a href="officer-citizens.html">
-                👥 Citizens
+            <a href="admin-departments.html">
+                🏛️ Departments
             </a>
 
-            <a href="officer-integration.html">
-                🔗 Department Integration
+            <a href="admin-integrations.html">
+                🔗 Integrations
             </a>
 
-            <a href="officer-reports.html">
-                📊 Reports
+            <a href="admin-audit-logs.html">
+                📋 Audit Logs
             </a>
 
-            <a href="officer-settings.html" class="active">
+            <a href="admin-system-activity.html">
+                📈 System Activity
+            </a>
+
+            <a href="admin-settings.html">
                 ⚙️ Settings
+            </a>
+
+            <a href="home.html">
+                🏠 Home
             </a>
 
             <a href="#" onclick="logout()">
@@ -54,60 +82,84 @@
 
 
         <div class="security-card">
-            <strong>🛡️ Secure Officer Access</strong>
-            <span>Protected by MahaConnect</span>
+
+            <strong>🔐 Platform Security</strong>
+
+            <span>
+                ● All systems operational
+            </span>
+
         </div>
 
     </aside>
 
 
     <!-- Main Content -->
+
     <main class="main">
 
+
         <!-- Header -->
+
         <div class="page-header">
 
             <div>
+
                 <h1>⚙️ Settings</h1>
+
                 <p>
-                    Manage your officer account and portal preferences.
+                    Manage your administrator account and platform preferences.
                 </p>
+
             </div>
 
+
             <div class="officer-status">
-                🟢 Officer Account
+                🟢 Administrator Account
             </div>
 
         </div>
 
 
+
         <!-- Account Information -->
+
         <div class="settings-card">
 
             <div class="settings-card-header">
+
                 <div>
+
                     <h2>Account Information</h2>
-                    <p>Basic information associated with your officer account.</p>
+
+                    <p>
+                        Basic information associated with your administrator account.
+                    </p>
+
                 </div>
+
             </div>
 
 
             <div class="settings-profile">
 
-                <div class="settings-avatar" id="officerAvatar">
-                    O
+                <div class="settings-avatar">
+                    A
                 </div>
 
+
                 <div class="settings-profile-info">
-                    <h3 id="officerName">
-                        Government Officer
-                    </h3>
-                    <p id="officerProfileId">
-                        Officer ID: OFF-0001
+
+                    <h3>System Administrator</h3>
+
+                    <p>
+                        Administrator ID: ADM-0001
                     </p>
-                    <span class="settings-role" id="officerProfileRole">
-                        Government Officer
+
+                    <span class="settings-role">
+                        Platform Administrator
                     </span>
+
                 </div>
 
             </div>
@@ -116,42 +168,54 @@
             <div class="settings-fields">
 
                 <div class="settings-field">
-                    <label>Officer ID</label>
+
+                    <label>Administrator ID</label>
+
                     <input
                         type="text"
-                        id="officerId"
+                        id="adminId"
                         readonly
                     >
+
                 </div>
 
 
                 <div class="settings-field">
+
                     <label>Department</label>
+
                     <input
                         type="text"
-                        id="officerDepartment"
+                        id="adminDepartment"
                         readonly
-                     >
+                    >
+
                 </div>
 
 
                 <div class="settings-field">
+
                     <label>Registered Mobile</label>
+
                     <input
                         type="text"
-                        id="officerMobile"
+                        id="adminMobile"
                         readonly
                     >
+
                 </div>
 
 
                 <div class="settings-field">
+
                     <label>Role</label>
+
                     <input
                         type="text"
-                        id="officerRole"
+                        id="adminRole"
                         readonly
                     >
+
                 </div>
 
             </div>
@@ -159,37 +223,22 @@
         </div>
 
 
-        <!-- Portal Preferences -->
+
+        <!-- Platform Preferences -->
+
         <div class="settings-card">
 
             <div class="settings-card-header">
 
                 <div>
-                    <h2>Portal Preferences</h2>
-                    <p>Configure your officer portal preferences.</p>
-                </div>
 
-            </div>
+                    <h2>Platform Preferences</h2>
 
-
-            <div class="settings-option">
-
-                <div>
-                    <h3>Application Notifications</h3>
                     <p>
-                        Receive notifications when application status changes.
+                        Configure your administrator portal preferences.
                     </p>
-                </div>
 
-                <label class="toggle-switch">
-                    <input
-                        type="checkbox"
-                        id="applicationNotifications"
-                        checked
-                        onchange="savePreferences()"
-                    >
-                    <span class="toggle-slider"></span>
-                </label>
+                </div>
 
             </div>
 
@@ -197,94 +246,154 @@
             <div class="settings-option">
 
                 <div>
-                    <h3>Integration Alerts</h3>
-                    <p>
-                        Receive alerts about department API and integration issues.
-                    </p>
-                </div>
 
-                <label class="toggle-switch">
-                    <input
-                        type="checkbox"
-                        id="integrationAlerts"
-                        checked
-                        onchange="savePreferences()"
-                    >
-                    <span class="toggle-slider"></span>
-                </label>
-
-            </div>
-
-
-            <div class="settings-option">
-
-                <div>
                     <h3>System Activity Updates</h3>
+
                     <p>
-                        Receive important system activity and maintenance updates.
+                        Receive important platform activity and maintenance updates.
                     </p>
+
                 </div>
 
+
                 <label class="toggle-switch">
+
                     <input
                         type="checkbox"
                         id="systemUpdates"
                         checked
                         onchange="savePreferences()"
                     >
+
                     <span class="toggle-slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="settings-option">
+
+                <div>
+
+                    <h3>Integration Alerts</h3>
+
+                    <p>
+                        Receive alerts about department API and integration issues.
+                    </p>
+
+                </div>
+
+
+                <label class="toggle-switch">
+
+                    <input
+                        type="checkbox"
+                        id="integrationAlerts"
+                        checked
+                        onchange="savePreferences()"
+                    >
+
+                    <span class="toggle-slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="settings-option">
+
+                <div>
+
+                    <h3>Security Alerts</h3>
+
+                    <p>
+                        Receive important security and access notifications.
+                    </p>
+
+                </div>
+
+
+                <label class="toggle-switch">
+
+                    <input
+                        type="checkbox"
+                        id="securityAlerts"
+                        checked
+                        onchange="savePreferences()"
+                    >
+
+                    <span class="toggle-slider"></span>
+
                 </label>
 
             </div>
 
         </div>
 
-        <!-- ================= APPEARANCE ================= -->
-
-<div class="settings-card">
-
-    <h2>
-        🎨 Appearance
-    </h2>
-
-    <p>
-        Customize the appearance of your MahaConnect account.
-    </p>
 
 
-    <div class="setting-row">
+        <!-- Appearance -->
 
-        <div>
-
-            <strong>
-                Dark Mode
-            </strong>
-
-            <span>
-                Use a dark theme across MahaConnect.
-            </span>
-
-        </div>
-
-
-        <button id="darkModeBtn" onclick="toggleDarkMode()">
-            Enable
-        </button>
-
-    </div>
-
-</div>
-
-
-
-        <!-- Security -->
         <div class="settings-card">
 
             <div class="settings-card-header">
 
                 <div>
+
+                    <h2>🎨 Appearance</h2>
+
+                    <p>
+                        Customize the appearance of your administrator portal.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Dark Mode
+                    </strong>
+
+                    <span>
+                        Use a dark theme across the Admin Portal.
+                    </span>
+
+                </div>
+
+
+                <button
+                    id="darkModeBtn"
+                    onclick="toggleDarkMode()"
+                >
+                    Enable
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Security -->
+
+        <div class="settings-card">
+
+            <div class="settings-card-header">
+
+                <div>
+
                     <h2>🔐 Security</h2>
-                    <p>Security information for your officer account.</p>
+
+                    <p>
+                        Security information for your administrator account.
+                    </p>
+
                 </div>
 
             </div>
@@ -292,51 +401,81 @@
 
             <div class="security-settings-grid">
 
+
                 <div class="security-setting-item">
-                    <span class="security-setting-icon">🔑</span>
+
+                    <span class="security-setting-icon">
+                        🔑
+                    </span>
+
 
                     <div>
+
                         <h3>Password Protection</h3>
+
                         <p>
-                            Your account is protected by authenticated access.
+                            Your administrator account is protected by authenticated access.
                         </p>
+
                     </div>
+
 
                     <span class="security-active" id="passwordProtectionStatus">
-                        Active
+                        Checking...
                     </span>
+
                 </div>
 
 
+
                 <div class="security-setting-item">
-                    <span class="security-setting-icon">🛡️</span>
+
+                    <span class="security-setting-icon">
+                        🛡️
+                    </span>
+
 
                     <div>
+
                         <h3>Role-Based Access</h3>
+
                         <p>
-                            Officer features are restricted to authorized users.
+                            Administrative features are restricted to authorized users.
                         </p>
+
                     </div>
+
 
                     <span class="security-active" id="roleAccessStatus">
-                        Active
+                        Checking...
                     </span>
+
                 </div>
 
 
+
                 <div class="security-setting-item">
-                    <span class="security-setting-icon">📋</span>
+
+                    <span class="security-setting-icon">
+                        📋
+                    </span>
+
 
                     <div>
+
                         <h3>Audit Logging</h3>
+
                         <p>
-                            Important officer actions can be recorded for accountability.
+                            Important administrator actions can be recorded for accountability.
                         </p>
+
                     </div>
 
+
                     <span class="security-active" id="auditLoggingStatus">
-                        Active
+                        Checking...
                     </span>
+
                 </div>
 
             </div>
@@ -344,14 +483,21 @@
         </div>
 
 
+
         <!-- System Information -->
+
         <div class="settings-card">
 
             <div class="settings-card-header">
 
                 <div>
+
                     <h2>System Information</h2>
-                    <p>Current MahaConnect platform information.</p>
+
+                    <p>
+                        Current MahaConnect platform information.
+                    </p>
+
                 </div>
 
             </div>
@@ -359,32 +505,56 @@
 
             <div class="system-info-grid">
 
+
                 <div class="system-info-item">
-                    <span>Platform</span>
+
+                    <span>
+                        Platform
+                    </span>
+
                     <strong id="platformName">
-                        MahaConnect
+                        -
                     </strong>
+
                 </div>
 
+
                 <div class="system-info-item">
-                    <span>Version</span>
+
+                    <span>
+                        Version
+                    </span>
+
                     <strong id="platformVersion">
-                        1.0.0
+                        -
                     </strong>
+
                 </div>
 
+
                 <div class="system-info-item">
-                    <span>Environment</span>
+
+                    <span>
+                        Environment
+                    </span>
+
                     <strong id="environmentStatus">
-                        Prototype
+                        -
                     </strong>
+
                 </div>
 
+
                 <div class="system-info-item">
-                    <span>System Status</span>
+
+                    <span>
+                        System Status
+                    </span>
+
                     <strong class="system-online" id="systemStatus">
-                        ● Operational
+                        ● Checking...
                     </strong>
+
                 </div>
 
             </div>
@@ -394,28 +564,15 @@
     </main>
 
 
+
     <script>
 
-        /* Officer Role Guard */
-
-        const userMobile = localStorage.getItem("userMobile");
-        const userRole = localStorage.getItem("userRole");
-
-        if (!userMobile || !userRole) {
-            window.location.href = "index.html";
-        }
-
-        if (userRole !== "officer") {
-            alert("Access Denied: Government Officer access required.");
-            window.location.href = "index.html";
-        }
-
-
-        /* Logout */
+        // Logout
 
         function logout() {
 
             localStorage.removeItem("userMobile");
+
             localStorage.removeItem("userRole");
 
             window.location.href = "index.html";
@@ -423,8 +580,12 @@
         }
 
     </script>
+
+    <!-- Role-Based Theme -->
+
+    <script src="js/admin-settings.js"></script>
     <script src="js/theme.js"></script>
-    <script src="js/officer-settings.js"></script>
 
 </body>
+
 </html>

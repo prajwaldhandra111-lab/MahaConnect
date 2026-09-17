@@ -12,6 +12,12 @@ class EducationRequest(BaseModel):
     mobile: str
 
 
+class EducationApplicationRequest(BaseModel):
+    application_id: int
+    mobile: str
+    service_name: str
+
+
 @app.get("/")
 def home():
     return {
@@ -33,5 +39,23 @@ def get_education_records(data: EducationRequest):
             "program": "Computer Science and Engineering (AIML)",
             "year": "3rd Year",
             "status": "Active"
+        }
+    }
+
+
+@app.post("/applications")
+def receive_education_application(
+    data: EducationApplicationRequest
+):
+
+    return {
+        "success": True,
+        "message": "Application received by Education Department",
+        "department": "Education Department",
+        "application": {
+            "application_id": data.application_id,
+            "mobile": data.mobile,
+            "service_name": data.service_name,
+            "status": "Pending"
         }
     }

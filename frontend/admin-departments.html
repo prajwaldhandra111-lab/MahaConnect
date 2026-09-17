@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MahaConnect | Departments</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️MahaConnect</h2>
+                <p>ADMINISTRATION PORTAL</p>
+            </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="admin.html">
+                📊 Dashboard
+            </a>
+
+            <a href="admin-users.html">
+                👥 Users
+            </a>
+
+            <a href="admin-departments.html" class="active">
+                🏛️ Departments
+            </a>
+
+            <a href="admin-integrations.html">
+                🔗 Integrations
+            </a>
+
+            <a href="admin-audit-logs.html">
+                📋 Audit Logs
+            </a>
+
+            <a href="admin-system-activity.html">
+                📈 System Activity
+            </a>
+
+            <a href="admin-settings.html">
+                ⚙️ Settings
+            </a>
+
+            <a href="home.html">
+                🏠 Home
+            </a>
+
+            <a href="index.html">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+        <div class="security-card">
+
+            <strong>🛡️ System Protected</strong>
+
+            <span>
+                Administrator access
+            </span>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main">
+
+        <!-- Header -->
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="page-label">
+                    ADMINISTRATION
+                </span>
+
+                <h1>
+                    Government Departments
+                </h1>
+
+                <p>
+                    Monitor departments connected to the MahaConnect platform.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Department Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <span>🏛️</span>
+
+                <h3 id="totalDepartments">-</h3>
+
+                <p>
+                    Total Departments
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>🟢</span>
+
+                <h3 id="activeDepartments">-</h3>
+
+                <p>
+                    Active Departments
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>🔗</span>
+
+                <h3 id="connectedApis">-</h3>
+
+                <p>
+                    Connected APIs
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>⚡</span>
+
+                <h3 id="systemAvailability">-</h3>
+
+                <p>
+                    System Availability
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Departments -->
+
+        <div class="admin-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <h2>
+                        Connected Departments
+                    </h2>
+
+                    <p>
+                        Government services currently integrated with MahaConnect.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="department-grid">
+
+
+                <!-- Education -->
+
+                <div class="department-card">
+
+                    <div class="department-icon">
+                        🎓
+                    </div>
+
+                    <div class="department-info">
+
+                        <h3>
+                            Education Department
+                        </h3>
+
+                        <p>
+                            Student records, academic information and education services.
+                        </p>
+
+                    </div>
+
+                    <div class="department-meta">
+
+                        <span class="department-status" id="educationDepartmentStatus">
+                            ● Checking...
+                        </span>
+
+                        <span>
+                            API: Education
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Employment -->
+
+                <div class="department-card">
+
+                    <div class="department-icon">
+                        💼
+                    </div>
+
+                    <div class="department-info">
+
+                        <h3>
+                            Employment Department
+                        </h3>
+
+                        <p>
+                            Employment opportunities, applications and job-related services.
+                        </p>
+
+                    </div>
+
+                    <div class="department-meta">
+
+                        <span class="department-status" id="employmentDepartmentStatus">
+                            ● Checking...
+                        </span>
+                        <span>
+                            API: Employment
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Welfare -->
+
+                <div class="department-card">
+
+                    <div class="department-icon">
+                        🤝
+                    </div>
+
+                    <div class="department-info">
+
+                        <h3>
+                            Welfare Department
+                        </h3>
+
+                        <p>
+                            Welfare schemes, benefits and citizen assistance services.
+                        </p>
+
+                    </div>
+
+                    <div class="department-meta">
+
+                        <span class="department-status" id="welfareDepartmentStatus">
+                            ● Checking...
+                        </span>
+
+                        <span>
+                            API: Welfare
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- Integration Information -->
+
+        <div class="admin-card">
+
+            <h2>
+                Interoperability Overview
+            </h2>
+
+            <p>
+                MahaConnect provides a secure integration layer between
+                independent government departmental systems.
+            </p>
+
+
+            <div class="integration-flow">
+
+                <div class="flow-item">
+
+                    <span class="flow-icon">
+                        👤
+                    </span>
+
+                    <strong>
+                        Citizen
+                    </strong>
+
+                    <small>
+                        Master Profile
+                    </small>
+
+                </div>
+
+
+                <div class="flow-arrow">
+                    →
+                </div>
+
+
+                <div class="flow-item">
+
+                    <span class="flow-icon">
+                        🔐
+                    </span>
+
+                    <strong>
+                        Access Layer
+                    </strong>
+
+                    <small>
+                        Consent + Eligibility
+                    </small>
+
+                </div>
+
+
+                <div class="flow-arrow">
+                    →
+                </div>
+
+
+                <div class="flow-item">
+
+                    <span class="flow-icon">
+                        🔗
+                    </span>
+
+                    <strong>
+                        Integration Layer
+                    </strong>
+
+                    <small>
+                        REST APIs
+                    </small>
+
+                </div>
+
+
+                <div class="flow-arrow">
+                    →
+                </div>
+
+
+                <div class="flow-item">
+
+                    <span class="flow-icon">
+                        🏛️
+                    </span>
+
+                    <strong>
+                        Departments
+                    </strong>
+
+                    <small>
+                        Government Services
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Role Protection -->
+
+    <script>
+
+        const userRole = localStorage.getItem("userRole");
+
+        if (!userRole) {
+
+            window.location.href = "index.html";
+
+        }
+
+        if (userRole !== "admin") {
+
+            alert("Access Denied: Administrator access required.");
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+    <script src="js/admin-departments.js"></script>
+    <script src="js/theme.js"></script>
+
+</body>
+
+</html>

@@ -7,8 +7,11 @@ if (document.getElementById("educationConsent")) {
 // Scholarship Services
 function applyScholarship() {
 
-    const section = document.getElementById("scholarshipSection");
-    const content = document.getElementById("scholarshipContent");
+    const section =
+        document.getElementById("scholarshipSection");
+
+    const content =
+        document.getElementById("scholarshipContent");
 
     section.style.display = "block";
 
@@ -28,7 +31,12 @@ function applyScholarship() {
                 <span class="status-pending">
                     Eligibility Check Required
                 </span>
+
+                <button onclick="applyEducationService('Student Scholarship')">
+                    Check Eligibility →
+                </button>
             </div>
+
 
             <div class="modern-card">
                 <div class="card-icon">📚</div>
@@ -43,7 +51,12 @@ function applyScholarship() {
                 <span class="status-pending">
                     Eligibility Check Required
                 </span>
+
+                <button onclick="applyEducationService('Merit Scholarship')">
+                    Check Eligibility →
+                </button>
             </div>
+
 
             <div class="modern-card">
                 <div class="card-icon">💰</div>
@@ -58,6 +71,10 @@ function applyScholarship() {
                 <span class="status-pending">
                     Eligibility Check Required
                 </span>
+
+                <button onclick="applyEducationService('Education Financial Support')">
+                    Check Eligibility →
+                </button>
             </div>
 
         </div>
@@ -66,6 +83,81 @@ function applyScholarship() {
     section.scrollIntoView({
         behavior: "smooth"
     });
+}
+
+async function applyEducationService(serviceName) {
+
+    const mobile =
+        localStorage.getItem("userMobile");
+
+    if (!mobile) {
+        alert("User session not found. Please login again.");
+        window.location.href = "index.html";
+        return;
+    }
+
+    const consent =
+        JSON.parse(
+            localStorage.getItem("mahaConnectConsent")
+        ) || {};
+
+    if (!consent.education) {
+        alert(
+            "Education data consent is required before applying."
+        );
+        window.location.href = "consent.html";
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/applications/apply",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    mobile: mobile,
+                    service_name: serviceName,
+                    department: "Education Department"
+                })
+            }
+        );
+
+        const result =
+            await response.json();
+
+        if (result.success) {
+
+            alert(
+                "Application submitted successfully! Application ID: MC-" +
+                result.application.id
+            );
+
+            window.location.href =
+                "applications.html";
+
+        } else {
+
+            alert(
+                result.message ||
+                "Unable to submit application."
+            );
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Education Application Error:",
+            error
+        );
+
+        alert(
+            "Unable to connect to MahaConnect server."
+        );
+    }
 }
 
 
@@ -161,8 +253,11 @@ async function viewEducationRecords() {
 
 function viewStudentServices() {
 
-    const section = document.getElementById("studentServicesSection");
-    const content = document.getElementById("studentServicesContent");
+    const section =
+        document.getElementById("studentServicesSection");
+
+    const content =
+        document.getElementById("studentServicesContent");
 
     section.style.display = "block";
 
@@ -170,39 +265,68 @@ function viewStudentServices() {
         <div class="modern-services">
 
             <div class="modern-card">
+
                 <div class="card-icon">🪪</div>
+
                 <h3>Student Certificate Services</h3>
+
                 <p>
                     Access student-related certificate
                     and document services.
                 </p>
+
                 <span class="status-pending">
                     Service Available
                 </span>
+
+                <button onclick="exploreStudentCertificate()">
+                    Explore Service →
+                </button>
+
             </div>
 
+
             <div class="modern-card">
+
                 <div class="card-icon">📖</div>
+
                 <h3>Academic Services</h3>
+
                 <p>
                     Access academic information and
                     student support services.
                 </p>
+
                 <span class="status-pending">
                     Service Available
                 </span>
+
+                <button onclick="exploreAcademicServices()">
+                    View Services →
+                </button>
+
             </div>
 
+
             <div class="modern-card">
+
                 <div class="card-icon">🎯</div>
+
                 <h3>Student Opportunities</h3>
+
                 <p>
                     Explore available student
                     opportunities and programs.
                 </p>
+
                 <span class="status-pending">
                     Service Available
                 </span>
+
+                <button onclick="exploreStudentOpportunities()">
+                    Explore Opportunities →
+                </button>
+
             </div>
 
         </div>
@@ -213,6 +337,44 @@ function viewStudentServices() {
     });
 }
 
+
+// Student Certificate Services
+
+function exploreStudentCertificate() {
+
+    alert(
+        "Student Certificate Services\n\n" +
+        "This service is currently available " +
+        "as a simulated government service " +
+        "for demonstration."
+    );
+}
+
+
+// Academic Services
+
+function exploreAcademicServices() {
+
+    alert(
+        "Academic Services\n\n" +
+        "Academic information and student " +
+        "support services are available " +
+        "through MahaConnect."
+    );
+}
+
+
+// Student Opportunities
+
+function exploreStudentOpportunities() {
+
+    alert(
+        "Student Opportunities\n\n" +
+        "Available student programs and " +
+        "opportunities can be explored " +
+        "through MahaConnect."
+    );
+}
 
 // Back to Dashboard
 
@@ -493,24 +655,27 @@ async function studentSchemes() {
             <div class="modern-services">
 
                 ${schemes.map(scheme => `
-                    <div class="modern-card">
+    <div class="modern-card">
 
-                        <div class="card-icon">🎓</div>
+        <div class="card-icon">🎓</div>
 
-                        <h3>${scheme.name}</h3>
+        <h3>${scheme.name}</h3>
 
-                        <p>
-                            Category:
-                            <strong>${scheme.category}</strong>
-                        </p>
+        <p>
+            Category:
+            <strong>${scheme.category}</strong>
+        </p>
 
-                        <span class="status-pending">
-                            ${scheme.status}
-                        </span>
+        <span class="status-pending">
+            ${scheme.status}
+        </span>
 
-                    </div>
-                `).join("")}
+        <button onclick="viewWelfareScheme('${scheme.name}', '${scheme.category}', '${scheme.status}')">
+            View Details →
+        </button>
 
+    </div>
+`).join("")}
             </div>
         `;
 
@@ -527,6 +692,17 @@ async function studentSchemes() {
             </p>
         `;
     }
+}
+
+function viewWelfareScheme(name, category, status) {
+
+    alert(
+        "Welfare Scheme Details\n\n" +
+        "Scheme: " + name + "\n" +
+        "Category: " + category + "\n" +
+        "Status: " + status + "\n\n" +
+        "This scheme is available through the MahaConnect Welfare Integration Layer."
+    );
 }
 
 
@@ -598,24 +774,27 @@ async function financialSupport() {
             <div class="modern-services">
 
                 ${programs.map(program => `
-                    <div class="modern-card">
+    <div class="modern-card">
 
-                        <div class="card-icon">💰</div>
+        <div class="card-icon">💰</div>
 
-                        <h3>${program.name}</h3>
+        <h3>${program.name}</h3>
 
-                        <p>
-                            Category:
-                            <strong>${program.category}</strong>
-                        </p>
+        <p>
+            Category:
+            <strong>${program.category}</strong>
+        </p>
 
-                        <span class="status-pending">
-                            ${program.status}
-                        </span>
+        <span class="status-pending">
+            ${program.status}
+        </span>
 
-                    </div>
-                `).join("")}
+        <button onclick="viewFinancialSupport('${program.name}', '${program.category}', '${program.status}')">
+            View Details →
+        </button>
 
+    </div>
+`).join("")}
             </div>
         `;
 
@@ -632,6 +811,17 @@ async function financialSupport() {
             </p>
         `;
     }
+}
+
+function viewFinancialSupport(name, category, status) {
+
+    alert(
+        "Financial Assistance Details\n\n" +
+        "Program: " + name + "\n" +
+        "Category: " + category + "\n" +
+        "Status: " + status + "\n\n" +
+        "This program is available through the MahaConnect Welfare Integration Layer."
+    );
 }
 
 // Welfare Benefits
@@ -702,23 +892,27 @@ async function welfareBenefits() {
             <div class="modern-services">
 
                 ${benefits.map(benefit => `
-                    <div class="modern-card">
+    <div class="modern-card">
 
-                        <div class="card-icon">🏠</div>
+        <div class="card-icon">🏠</div>
 
-                        <h3>${benefit.name}</h3>
+        <h3>${benefit.name}</h3>
 
-                        <p>
-                            Category:
-                            <strong>${benefit.category}</strong>
-                        </p>
+        <p>
+            Category:
+            <strong>${benefit.category}</strong>
+        </p>
 
-                        <span class="status-pending">
-                            ${benefit.status}
-                        </span>
+        <span class="status-pending">
+            ${benefit.status}
+        </span>
 
-                    </div>
-                `).join("")}
+        <button onclick="viewWelfareBenefit('${benefit.name}', '${benefit.category}', '${benefit.status}')">
+            View Details →
+        </button>
+
+    </div>
+`).join("")}
 
             </div>
         `;
@@ -736,6 +930,17 @@ async function welfareBenefits() {
             </p>
         `;
     }
+}
+
+function viewWelfareBenefit(name, category, status) {
+
+    alert(
+        "Welfare Benefit Details\n\n" +
+        "Benefit: " + name + "\n" +
+        "Category: " + category + "\n" +
+        "Status: " + status + "\n\n" +
+        "This benefit is available through the MahaConnect Welfare Integration Layer."
+    );
 }
 
 

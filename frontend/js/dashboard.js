@@ -1,4 +1,6 @@
-// Load Dashboard Profile
+/* ================================
+   Load Dashboard Profile
+================================ */
 
 async function loadProfile() {
 
@@ -36,23 +38,42 @@ async function loadProfile() {
             document.getElementById("dashboardCity");
 
 
+        /* Dashboard Name */
+
         if (dashboardName) {
+
             dashboardName.textContent =
-                profile.full_name;
+                profile.full_name || "User";
+
         }
 
+
+        /* Navbar Name */
 
         if (navbarName) {
+
             navbarName.textContent =
-                profile.full_name;
+                profile.full_name || "User";
+
         }
 
+
+        /* Dashboard City */
 
         if (dashboardCity) {
+
             dashboardCity.textContent =
-                profile.city;
+                profile.city || "City";
+
         }
 
+
+        /* Calculate Profile Completion */
+
+        updateProfileCompletion(profile);
+
+
+        /* Keep frontend cache updated */
 
         localStorage.setItem(
             "mahaConnectProfile",
@@ -70,7 +91,100 @@ async function loadProfile() {
 }
 
 
-// Education Page
+/* ================================
+   Profile Completion
+================================ */
+
+function updateProfileCompletion(profile) {
+
+    const requiredFields = [
+
+        profile.full_name,
+        profile.dob,
+        profile.gender,
+        profile.email,
+        profile.city,
+        profile.address,
+        profile.school_college,
+        profile.board,
+        profile.current_class,
+        profile.academic_year
+
+    ];
+
+
+    let completedFields = 0;
+
+
+    requiredFields.forEach(field => {
+
+        if (
+            field !== null &&
+            field !== undefined &&
+            String(field).trim() !== ""
+        ) {
+
+            completedFields++;
+
+        }
+
+    });
+
+
+    /* Identity verification */
+
+    if (
+        profile.identity_verified === 1 ||
+        profile.identity_verified === true
+    ) {
+
+        completedFields++;
+
+    }
+
+
+    const totalFields = 11;
+
+    const percentage = Math.round(
+        (completedFields / totalFields) * 100
+    );
+
+
+    /* Update percentage */
+
+    const completionElement =
+        document.getElementById(
+            "profileCompletion"
+        );
+
+    if (completionElement) {
+
+        completionElement.textContent =
+            percentage + "%";
+
+    }
+
+
+    /* Update progress bar */
+
+    const progressBar =
+        document.querySelector(
+            ".profile-summary .progress-bar"
+        );
+
+    if (progressBar) {
+
+        progressBar.style.width =
+            percentage + "%";
+
+    }
+
+}
+
+
+/* ================================
+   Education Page
+================================ */
 
 function openEducation() {
 
@@ -80,7 +194,9 @@ function openEducation() {
 }
 
 
-// Employment Page
+/* ================================
+   Employment Page
+================================ */
 
 function openEmployment() {
 
@@ -90,7 +206,9 @@ function openEmployment() {
 }
 
 
-// Welfare Page
+/* ================================
+   Welfare Page
+================================ */
 
 function openWelfare() {
 
@@ -100,7 +218,9 @@ function openWelfare() {
 }
 
 
-// Consent Page
+/* ================================
+   Consent Page
+================================ */
 
 function openConsent() {
 
@@ -110,7 +230,9 @@ function openConsent() {
 }
 
 
-// Applications Page
+/* ================================
+   Applications Page
+================================ */
 
 function openApplications() {
 
@@ -120,6 +242,8 @@ function openApplications() {
 }
 
 
-// Load Profile
+/* ================================
+   Load Profile
+================================ */
 
 loadProfile();

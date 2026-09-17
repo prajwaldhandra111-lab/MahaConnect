@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MahaConnect | Citizen Registration</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <div class="logo">
+                MC
+            </div>
+
+            <h1>MahaConnect</h1>
+
+            <p class="subtitle">
+                Create Citizen Account
+            </p>
+
+            <form id="registerForm">
+
+                <label for="mobile">Mobile Number</label>
+
+                <input
+                    type="tel"
+                    id="mobile"
+                    placeholder="Enter 10-digit mobile number"
+                    maxlength="10"
+                    required
+                >
+
+                <label for="password">Create Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create password"
+                    required
+                >
+
+                <label for="confirmPassword">Confirm Password</label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm password"
+                    required
+                >
+
+                <div class="password-hint">
+                    Password must be at least 8 characters.
+                 </div>
+
+                <label class="terms-check">
+                    <input type="checkbox" id="terms" required>
+                    <span>I agree to the Terms & Privacy Policy</span>
+                </label>
+
+                <button type="submit">
+                    Create Account
+                </button>
+
+                <p id="message"></p>
+
+            </form>
+
+            <p class="demo-text">
+                Already have an account?
+                <a href="index.html?role=citizen">
+                    Login
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>

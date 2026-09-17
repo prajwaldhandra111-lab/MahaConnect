@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MahaConnect | DigiLocker Verification</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>🏛️ MahaConnect</h2>
+                <p>One Profile • Multiple Services</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    ▦ Dashboard
+                </a>
+
+                <a href="profile.html" class="active">
+                    👤 My Profile
+                </a>
+
+                <a href="applications.html">
+                    📄 My Applications
+                </a>
+
+                <a href="consent.html">
+                    🔐 Data Consent
+                </a>
+
+                <a href="notifications.html">
+                    🔔 Notifications
+                </a>
+
+                <a href="settings.html">
+                    ⚙️ Settings
+                </a>
+
+                <a href="index.html">
+                    🚪 Logout
+                </a>
+
+            </nav>
+
+            <div class="security-card">
+                <strong>🛡️ Your data is secure</strong>
+                <span>Protected by MahaConnect</span>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Area -->
+        <div class="main-area">
+
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search services, schemes..."
+                    >
+                </div>
+
+                <div class="user-area">
+
+                    <span>🔔</span>
+
+                    <div class="user-avatar">
+                        👤
+                    </div>
+
+                    <span class="user-name">
+                        User
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- Page Content -->
+            <main class="dashboard-content">
+
+                <section class="page-intro">
+
+                    <h1>Verify Identity</h1>
+
+                    <p>
+                        Connect your DigiLocker account to verify your identity
+                        and create a trusted Master Profile.
+                    </p>
+
+                </section>
+
+
+                <!-- DigiLocker Card -->
+                <section class="profile-section">
+
+                    <div style="text-align:center;">
+
+                        <div
+                            style="
+                            font-size:55px;
+                            margin-bottom:15px;
+                            "
+                        >
+                            🔐
+                        </div>
+
+                        <h2>DigiLocker</h2>
+
+                        <p style="margin-top:8px;">
+                            Securely access your government-issued documents.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Information -->
+                    <div
+                        style="
+                        margin-top:25px;
+                        padding:20px;
+                        border-radius:12px;
+                        background:#F0FDFA;
+                        border:1px solid #DDEDEA;
+                        "
+                    >
+
+                        <strong>Why verify your identity?</strong>
+
+                        <p style="margin-top:8px;">
+                            Verified identity information can be used by
+                            MahaConnect to provide more accurate and
+                            eligibility-aware government services.
+                        </p>
+
+                    </div>
+
+<!-- DigiLocker Authorization -->
+<div
+    id="authorizationSection"
+    style="
+    margin-top:30px;
+    padding:25px;
+    border-radius:12px;
+    background:#FFFFFF;
+    border:1px solid #DDEDEA;
+    "
+>
+
+    <div style="text-align:center;">
+
+        <div style="font-size:45px; margin-bottom:12px;">
+            🔐
+        </div>
+
+        <h2>Connect DigiLocker</h2>
+
+        <p style="margin-top:10px;">
+            MahaConnect needs your permission to access
+            selected government documents from DigiLocker.
+        </p>
+
+    </div>
+
+
+    <div
+        style="
+        margin-top:20px;
+        padding:18px;
+        border-radius:10px;
+        background:#F0FDFA;
+        border:1px solid #DDEDEA;
+        "
+    >
+
+        <strong>Information that may be accessed:</strong>
+
+        <ul style="margin-top:10px; padding-left:20px;">
+
+            <li>Full Name</li>
+
+            <li>Date of Birth</li>
+
+            <li>Gender</li>
+
+            <li>Selected Identity Document</li>
+
+        </ul>
+
+    </div>
+
+
+    <div
+        style="
+        margin-top:18px;
+        padding:15px;
+        border-radius:10px;
+        background:#FAFFFE;
+        border:1px solid #DDEDEA;
+        "
+    >
+
+        <strong>🔒 Privacy</strong>
+
+        <p style="margin-top:6px;">
+            Only the information required for identity verification
+            will be used by MahaConnect.
+        </p>
+
+    </div>
+
+
+    <div style="text-align:center; margin-top:22px;">
+
+        <button
+            type="button"
+            class="verify-identity-btn"
+            onclick="authorizeDigiLocker()"
+        >
+            Allow Access & Continue →
+        </button>
+
+    </div>
+
+</div>                    
+
+
+                    <!-- Documents -->
+                    <div
+                        id="documentsSection"
+                        style="display:none; margin-top:30px;">
+                        <h3>Available Documents</h3>
+
+
+                        <!-- Aadhaar -->
+                        <div
+                            style="
+                            margin-top:18px;
+                            padding:20px;
+                            border:1px solid #DDEDEA;
+                            border-radius:12px;
+                            background:#FFFFFF;
+                            "
+                        >
+
+                            <div
+                                style="
+                                display:flex;
+                                justify-content:space-between;
+                                align-items:center;
+                                gap:15px;
+                                flex-wrap:wrap;
+                                "
+                            >
+
+                                <div>
+
+                                    <h3>🪪 Aadhaar Card</h3>
+
+                                    <p style="margin-top:6px;">
+                                        Government identity document
+                                    </p>
+
+                                    <strong
+                                        style="
+                                        display:block;
+                                        margin-top:8px;
+                                        color:#0F766E;
+                                        "
+                                    >
+                                        Required for identity verification
+                                    </strong>
+
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    class="verify-identity-btn"
+                                    onclick="verifyAadhaar()"
+                                >
+                                    Select Aadhaar →
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PAN -->
+                        <div
+                            style="
+                            margin-top:18px;
+                            padding:20px;
+                            border:1px solid #DDEDEA;
+                            border-radius:12px;
+                            background:#FFFFFF;
+                            "
+                        >
+
+                            <div
+                                style="
+                                display:flex;
+                                justify-content:space-between;
+                                align-items:center;
+                                gap:15px;
+                                flex-wrap:wrap;
+                                "
+                            >
+
+                                <div>
+
+                                    <h3>💳 PAN Card</h3>
+
+                                    <p style="margin-top:6px;">
+                                        Government-issued financial identity document
+                                    </p>
+
+                                    <span
+                                        style="
+                                        display:block;
+                                        margin-top:8px;
+                                        color:#64748B;
+                                        "
+                                    >
+                                        Optional
+                                    </span>
+
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    class="verify-identity-btn"
+                                    onclick="selectPan()"
+                                >
+                                    Select PAN →
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Verification Result -->
+                    <div
+                        id="verificationResult"
+                        style="
+                        display:none;
+                        margin-top:30px;
+                        padding:25px;
+                        border-radius:12px;
+                        background:#F0FDFA;
+                        border:1px solid #B8DED8;
+                        "
+                    >
+
+                        <h2 style="color:#0F766E;">
+                            ✅ Identity Verified
+                        </h2>
+
+                        <p style="margin-top:8px;">
+                            Your identity has been successfully verified
+                            using Aadhaar.
+                        </p>
+
+
+                        <div
+                            style="
+                            margin-top:20px;
+                            display:grid;
+                            gap:12px;
+                            "
+                        >
+
+                            <div>
+                                <strong>Full Name:</strong>
+                             <span id="verifiedName">
+                            </span>
+                            </div>
+
+                            <div>
+                                <strong>Date of Birth:</strong>
+                                <span id="verifiedDob">
+                            </span>
+
+                            </div>
+
+                            <div>
+                                <strong>Gender:</strong>
+                                <span id="verifiedGender">
+                                </span>
+                            </div>
+
+                            <div>
+                                <strong>Identity Source:</strong>
+                                DigiLocker
+                            </div>
+
+                            <div>
+                                <strong>Document:</strong>
+                                Aadhaar
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="save-btn"
+                            style="margin-top:22px;"
+                            onclick="continueToProfile()"
+                        >
+                            Continue to Master Profile →
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function verifyAadhaar() {
+
+    const authorized =
+        localStorage.getItem("digilockerAuthorized");
+
+    if (authorized !== "true") {
+        alert("Please authorize DigiLocker access first.");
+        return;
+    }
+
+    // Get identity information from Master Profile
+    const identityData =
+        JSON.parse(
+            localStorage.getItem("pendingIdentityData")
+        ) || {};
+
+    const fullName = identityData.fullName;
+    const dob = identityData.dob;
+    const gender = identityData.gender;
+
+    // Make sure identity data is available
+    if (!fullName || !dob || !gender) {
+        alert(
+            "Identity information is missing. Please return to Master Profile and enter your Full Name, Date of Birth and Gender."
+        );
+        return;
+    }
+
+    // Display verified identity information
+    document.getElementById("verifiedName").textContent =
+        fullName;
+
+    document.getElementById("verifiedDob").textContent =
+        dob;
+
+    document.getElementById("verifiedGender").textContent =
+        gender;
+
+    // Save verification status
+    localStorage.setItem(
+        "identityVerified",
+        "true"
+    );
+
+    localStorage.setItem(
+        "identityVerificationStatus",
+        "verified"
+    );
+
+    localStorage.setItem(
+        "identitySource",
+        "DigiLocker"
+    );
+
+    localStorage.setItem(
+        "verifiedDocument",
+        "Aadhaar"
+    );
+
+    // Save verified identity data
+    localStorage.setItem(
+        "verifiedName",
+        fullName
+    );
+
+    localStorage.setItem(
+        "verifiedDob",
+        dob
+    );
+
+    localStorage.setItem(
+        "verifiedGender",
+        gender
+    );
+
+    // Show verification result
+    document.getElementById(
+        "verificationResult"
+    ).style.display = "block";
+
+    document.getElementById(
+        "verificationResult"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+        function selectPan() {
+
+            alert(
+                "PAN document selected. Aadhaar verification is still required to complete identity verification."
+            );
+
+        }
+
+
+        function continueToProfile() {
+
+    localStorage.setItem(
+        "identityVerified",
+        "true"
+    );
+
+    localStorage.setItem(
+        "identityVerificationStatus",
+        "verified"
+    );
+
+    localStorage.setItem(
+        "identitySource",
+        "DigiLocker"
+    );
+
+    localStorage.setItem(
+        "verifiedDocument",
+        "Aadhaar"
+    );
+
+    const verifiedName =
+        document.getElementById("verifiedName").textContent;
+
+    const verifiedDob =
+        document.getElementById("verifiedDob").textContent;
+
+    const verifiedGender =
+        document.getElementById("verifiedGender").textContent;
+
+    localStorage.setItem(
+        "verifiedName",
+        verifiedName
+    );
+
+    localStorage.setItem(
+        "verifiedDob",
+        verifiedDob
+    );
+
+    localStorage.setItem(
+        "verifiedGender",
+        verifiedGender
+    );
+
+    window.location.href = "profile.html";
+}
+
+       function authorizeDigiLocker() {
+
+    localStorage.setItem(
+        "digilockerAuthorized",
+        "true"
+    );
+
+    document.getElementById("authorizationSection").style.display = "none";
+
+    document.getElementById("documentsSection").style.display = "block";
+
+    document.getElementById("documentsSection").scrollIntoView({
+        behavior: "smooth"
+    });
+} 
+
+    </script>
+    <script src="js/theme.js"></script>
+    
+
+</body>
+
+</html>
