@@ -3714,6 +3714,8 @@ body {
 button, .home-login-btn, .service-card button, .modern-card button, .dashboard-actions button, .save-btn, form button {
     background: var(--mc-primary);
     box-shadow: 0 6px 16px rgba(15, 118, 110, 0.14);
+    padding: 10px 18px; 
+    border-radius: 8px;
 }
 
 button:hover, .home-login-btn:hover, .service-card button:hover, .modern-card button:hover, .dashboard-actions button:hover, .save-btn:hover, form button:hover {
