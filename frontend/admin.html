@@ -100,10 +100,19 @@
             <header class="top-navbar">
 
                 <div class="search-box">
+
                     <input
                         type="text"
+                        id="adminSearch"
                         placeholder="Search platform..."
+                        autocomplete="off"
                     >
+
+                    <div
+                        id="adminSearchResults"
+                        class="search-results">
+                    </div>
+
                 </div>
 
                 <div class="user-area">
@@ -556,6 +565,7 @@ function logout() {
 
 <script src="js/admin.js"></script>
 <script src="js/theme.js"></script>
+<script src="js/admin-search.js"></script>
 
 </body>
 

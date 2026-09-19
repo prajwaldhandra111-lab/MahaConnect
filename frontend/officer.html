@@ -82,8 +82,15 @@
             <div class="search-box">
                 <input
                     type="text"
-                    placeholder="Search applications..."
+                    id="officerSearch"
+                    placeholder="Search..."
+                    autocomplete="off"
                 >
+
+                <div
+                    id="officerSearchResults"
+                    class="search-results">
+                </div>
             </div>
 
             <div class="user-area">
@@ -234,8 +241,10 @@
                 <p>
                     Applications received from citizens.
                 </p>
+                <br>
 
-                <div id="applicationsContent">
+                <div id="applicationsContent" class="officer-applications-scroll">
+
 
                     <p>
                         Loading applications...
@@ -244,17 +253,20 @@
                 </div>
 
             </section>
+            
 
+<br>
             <div class="dashboard-box">
                 <div class="section-title">
                     <h2>🔐 Audit Logs</h2>
                 </div>
 
-                <div id="auditLogsContent">
+                <div id="auditLogsContent" class="officer-audit-scroll">
                     <p>Loading audit logs...</p>
                 </div>
             </div>
 
+            <br>
 
             <!-- Integration Status -->
             <section class="dashboard-box">
@@ -343,6 +355,8 @@
 
 
 <script src="js/officer.js"></script>
+<script src="js/officer-applications.js"></script>
+
 <script>
 function logout() {
     localStorage.removeItem("userMobile");
@@ -351,7 +365,9 @@ function logout() {
     window.location.href = "index.html?role=officer";
 }
 </script>
+
 <script src="js/theme.js"></script>
+<script src="js/officer-search.js"></script>
 
 
 </body>

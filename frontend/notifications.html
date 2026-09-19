@@ -66,9 +66,8 @@
                     ⚙️ Settings
                 </a>
                 
-                <a href="index.html">
-                    <span>↪</span>
-                    Logout
+                <a href="index.html?role=citizen">
+                    🚪 Logout
                 </a>
 
             </nav>
@@ -96,8 +95,17 @@
             <header class="top-navbar">
 
                 <div class="search-box">
-                    <span>⌕</span>
-                    <input type="text" placeholder="Search services...">
+                    <input type="text" 
+                    type="text"
+                    id="globalSearch"
+                    placeholder="Search services..."
+                    autocomplete="off"
+                    >
+
+                    <div
+                    id="searchResults"
+                    class="search-results">
+                    </div>
                 </div>
 
                 <div class="user-area">
@@ -197,7 +205,7 @@
                         <h2>Recent Notifications</h2>
                     </div>
 
-                    <div id="notificationsContent">
+                    <div id="notificationsContent" class="recent-notifications-scroll">
                         <p>Loading notifications...</p>
                     </div>
 
@@ -287,6 +295,7 @@
 
     <script src="js/notifications.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/global-search.js"></script>
 
 </main>
 

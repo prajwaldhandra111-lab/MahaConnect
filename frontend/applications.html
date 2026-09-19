@@ -63,7 +63,7 @@
                     ⚙️ Settings                 
                 </a>
                 
-                <a href="index.html">
+                <a href="index.html?role=citizen">
                     🚪 Logout
                 </a>
 
@@ -87,8 +87,15 @@
                 <div class="search-box">
                     <input
                         type="text"
-                        placeholder="Search applications..."
+                        id="globalSearch"
+                        placeholder="Search services, schemes..."
+                        autocomplete="off"
                     >
+
+                    <div
+                    id="searchResults"
+                    class="search-results">
+                    </div>
                 </div>
 
                 <div class="user-area">
@@ -124,28 +131,43 @@
 
 
                 <!-- Applications -->
-                
-                    <section class="modern-services" id="applicationsContainer">
 
-                        <p id="loadingMessage">
-                            Loading your applications...
-                        </p>
+<div class="application-search-box">
+    <input
+        type="text"
+        id="applicationSearch"
+        placeholder="Search applications..."
+        autocomplete="off"
+    >
 
-                    </section>
+    <div
+        id="applicationSearchResults"
+        class="search-results">
+    </div>
+</div>
+
+<section class="modern-services application-scroll"
+    id="applicationsContainer">
+
+    <p id="loadingMessage">
+        Loading your applications...
+    </p>
+
+</section>
 
 
-                <!-- Application Info -->
-                <section class="dashboard-box">
+<!-- Application Info -->
 
-                    <h3>Application Tracking</h3>
+<section class="dashboard-box">
 
-                    <p>
-                        Your application status will be synchronized
-                        with the connected department systems.
-                    </p>
+    <h3>Application Tracking</h3>
 
-                </section>
+    <p>
+        Your application status will be synchronized
+        with the connected department systems.
+    </p>
 
+</section>
             </main>
 
         </div>
@@ -156,6 +178,7 @@
     <!-- JavaScript -->
     <script src="js/applications.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/global-search.js"></script>
 
 </body>
 

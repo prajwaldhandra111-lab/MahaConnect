@@ -63,7 +63,7 @@
                     ⚙️ Settings
                 </a>
 
-                <a href="index.html">
+                <a href="index.html?role=citizen">
                     🚪 Logout
                 </a>
 
@@ -87,8 +87,15 @@
                 <div class="search-box">
                     <input
                         type="text"
+                        id="globalSearch"
                         placeholder="Search services, schemes..."
+                        autocomplete="off"
                     >
+
+                    <div
+                    id="searchResults"
+                    class="search-results">
+                    </div>
                 </div>
 
                 <div class="user-area">
@@ -263,6 +270,7 @@
     <!-- JavaScript -->
     <script src="js/services.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/global-search.js"></script>
 
 </body>
 

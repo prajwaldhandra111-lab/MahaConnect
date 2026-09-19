@@ -1186,7 +1186,7 @@ textarea:focus {
 
 .home-role-link {
     text-decoration: none;
-    color: #0F766E;
+    color: #009688;
     font-size: 13px;
     font-weight: 700;
 }
@@ -3712,15 +3712,19 @@ body {
 }
 
 button, .home-login-btn, .service-card button, .modern-card button, .dashboard-actions button, .save-btn, form button {
-    background: var(--mc-primary);
-    box-shadow: 0 6px 16px rgba(15, 118, 110, 0.14);
-    padding: 10px 18px; 
+    border: none;
+    background: #315be0;
+    color: white;
+    padding: 10px 18px;
     border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 button:hover, .home-login-btn:hover, .service-card button:hover, .modern-card button:hover, .dashboard-actions button:hover, .save-btn:hover, form button:hover {
-    background: var(--mc-primary-dark);
-    box-shadow: 0 8px 20px rgba(15, 118, 110, 0.20);
+    background: #050a7de0(--mc-primary-dark);
+    box-shadow: 0 8px 20px rgba(15, 42, 118, 0.2);
 }
 
 input, select, textarea {
@@ -4439,7 +4443,7 @@ body.dark-mode p {
 
 /* Small / secondary text */
 body.dark-mode span {
-    color: #B8C4BF;
+    color: #009688;
 }
 
 /* Links */
@@ -4850,4 +4854,1005 @@ body.dark-mode .integration-item {
     height: 16px;
     margin: 0;
     cursor: pointer;
+}
+
+
+/* =========================================================
+   MAHACONNECT - MASTER PROFILE
+   Scoped only to Master Profile page
+   ========================================================= */
+
+#masterProfilePage {
+    max-width: 1200px;
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+#masterProfilePage .master-profile-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 22px;
+}
+
+#masterProfilePage .master-profile-label {
+    display: inline-block;
+    color: #0F766E;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+#masterProfilePage .master-profile-page-header h1 {
+    margin: 0;
+    color: #1F2937;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+#masterProfilePage .master-profile-page-header p {
+    margin-top: 6px;
+    color: #64748B;
+    font-size: 13px;
+}
+
+#masterProfilePage .master-profile-completion-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    background: #E6F7F4;
+    border: 1px solid #C9E8E3;
+    border-radius: 12px;
+}
+
+#masterProfilePage .master-profile-completion-badge span {
+    color: #64748B;
+    font-size: 12px;
+}
+
+#masterProfilePage .master-profile-completion-badge strong {
+    color: #0F766E;
+    font-size: 16px;
+}
+
+
+/* =========================
+   PROFILE HERO
+========================= */
+
+#masterProfilePage .master-profile-hero {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px;
+    margin-bottom: 20px;
+    background: #E6F7F4;
+    border: 1px solid #C9E8E3;
+    border-radius: 16px;
+}
+
+#masterProfilePage .master-profile-avatar {
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 2px solid #C9E8E3;
+    color: #0F766E;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+#masterProfilePage .master-profile-hero-info {
+    flex: 1;
+}
+
+#masterProfilePage .master-profile-name-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#masterProfilePage .master-profile-name-row h2 {
+    margin: 0;
+    color: #1F2937;
+    font-size: 21px;
+}
+
+#masterProfilePage .master-profile-verified {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 9px;
+    border-radius: 20px;
+    background: #D1FAE5;
+    color: #047857;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+#masterProfilePage .master-profile-subtitle {
+    margin: 4px 0 8px;
+    color: #64748B;
+    font-size: 12px;
+}
+
+#masterProfilePage .master-profile-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    color: #64748B;
+    font-size: 12px;
+}
+
+#masterProfilePage .master-profile-edit-btn {
+    width: auto;
+    padding: 10px 17px;
+    border: 1px solid #0F766E;
+    border-radius: 9px;
+    background: white;
+    color: #0F766E;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#masterProfilePage .master-profile-edit-btn:hover {
+    background: #F0FDFA;
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+#masterProfilePage .master-profile-tabs {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    padding: 4px;
+    background: #F8FFFE;
+    border: 1px solid #DDEDEA;
+    border-radius: 12px;
+}
+
+#masterProfilePage .master-profile-tab {
+    width: auto;
+    padding: 9px 14px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #64748B;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#masterProfilePage .master-profile-tab:hover {
+    background: #E6F7F4;
+    color: #0F766E;
+}
+
+#masterProfilePage .master-profile-tab.active {
+    background: #0F766E;
+    color: white;
+}
+
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+#masterProfilePage .master-profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+#masterProfilePage .master-card {
+    background: white;
+    border: 1px solid #DDEDEA;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(30, 50, 90, 0.05);
+}
+
+#masterProfilePage .master-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+#masterProfilePage .master-card-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E6F7F4;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+#masterProfilePage .master-card-header h2 {
+    margin: 0;
+    color: #1F2937;
+    font-size: 16px;
+}
+
+#masterProfilePage .master-card-header p {
+    margin-top: 3px;
+    color: #64748B;
+    font-size: 11px;
+}
+
+
+/* =========================
+   INFORMATION GRID
+========================= */
+
+#masterProfilePage .master-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+}
+
+#masterProfilePage .master-info-item {
+    padding: 12px;
+    background: #F8FFFE;
+    border: 1px solid #E1EFEC;
+    border-radius: 10px;
+}
+
+#masterProfilePage .master-info-item span {
+    display: block;
+    margin-bottom: 5px;
+    color: #64748B;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+#masterProfilePage .master-info-item strong {
+    display: block;
+    color: #1F2937;
+    font-size: 12px;
+    line-height: 1.45;
+    word-break: break-word;
+}
+
+#masterProfilePage .master-info-full {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================
+   VERIFICATION
+========================= */
+
+#masterProfilePage .master-status-verified {
+    margin-left: auto;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #D1FAE5;
+    color: #047857;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+#masterProfilePage .verification-details {
+    display: grid;
+    gap: 10px;
+}
+
+#masterProfilePage .verification-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 11px 12px;
+    background: #F8FFFE;
+    border: 1px solid #E1EFEC;
+    border-radius: 9px;
+}
+
+#masterProfilePage .verification-row span {
+    color: #64748B;
+    font-size: 11px;
+}
+
+#masterProfilePage .verification-row strong {
+    color: #047857;
+    font-size: 12px;
+}
+
+#masterProfilePage .verification-main-status {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #F0FDFA;
+    border: 1px solid #C9E8E3;
+    border-radius: 11px;
+}
+
+#masterProfilePage .verification-check {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #D1FAE5;
+    color: #047857;
+    font-weight: 700;
+}
+
+#masterProfilePage .verification-main-status strong {
+    color: #1F2937;
+    font-size: 13px;
+}
+
+#masterProfilePage .verification-main-status p {
+    margin-top: 3px;
+    color: #64748B;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   SKILLS & INTERESTS
+========================= */
+
+#masterProfilePage .master-tags-section {
+    display: grid;
+    gap: 9px;
+}
+
+#masterProfilePage .master-tags-label {
+    color: #64748B;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+#masterProfilePage .master-tags {
+    min-height: 35px;
+    padding: 9px 11px;
+    background: #F8FFFE;
+    border: 1px solid #E1EFEC;
+    border-radius: 9px;
+    color: #1F2937;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   DOCUMENTS
+========================= */
+
+#masterProfilePage .master-document-list {
+    display: grid;
+    gap: 11px;
+}
+
+#masterProfilePage .master-document {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    background: #F8FFFE;
+    border: 1px solid #E1EFEC;
+    border-radius: 10px;
+}
+
+#masterProfilePage .master-document-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E6F7F4;
+    border-radius: 9px;
+    font-size: 17px;
+}
+
+#masterProfilePage .master-document-info {
+    flex: 1;
+}
+
+#masterProfilePage .master-document-info strong {
+    display: block;
+    color: #1F2937;
+    font-size: 12px;
+}
+
+#masterProfilePage .master-document-info span {
+    display: block;
+    margin-top: 3px;
+    color: #64748B;
+    font-size: 10px;
+}
+
+#masterProfilePage .master-document-status {
+    padding: 4px 8px;
+    border-radius: 15px;
+    background: #D1FAE5;
+    color: #047857;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+#masterProfilePage .master-document-status.optional {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+
+/* =========================
+   CONSENT
+========================= */
+
+#masterProfilePage .consent-information {
+    display: grid;
+    gap: 13px;
+}
+
+#masterProfilePage .consent-main-message {
+    padding: 14px;
+    background: #F0FDFA;
+    border: 1px solid #C9E8E3;
+    border-radius: 10px;
+}
+
+#masterProfilePage .consent-main-message strong {
+    color: #0F766E;
+    font-size: 12px;
+}
+
+#masterProfilePage .consent-main-message p {
+    margin-top: 5px;
+    color: #64748B;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+#masterProfilePage .consent-service-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+#masterProfilePage .consent-service-item {
+    padding: 12px;
+    background: #F8FFFE;
+    border: 1px solid #E1EFEC;
+    border-radius: 9px;
+}
+
+#masterProfilePage .consent-service-item strong {
+    display: block;
+    color: #1F2937;
+    font-size: 11px;
+}
+
+#masterProfilePage .consent-service-item span {
+    display: block;
+    margin-top: 5px;
+    color: #047857;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+#masterProfilePage .consent-enabled {
+    color: #047857;
+}
+
+#masterProfilePage .master-consent-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #0F766E;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#masterProfilePage .master-consent-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+#masterProfilePage .master-profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#masterProfilePage .master-profile-actions button {
+    width: auto;
+    padding: 10px 16px;
+    border-radius: 9px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#masterProfilePage .master-profile-secondary-btn {
+    background: white;
+    border: 1px solid #DDEDEA;
+    color: #0F766E;
+}
+
+#masterProfilePage .master-profile-secondary-btn:hover {
+    background: #F0FDFA;
+}
+
+#masterProfilePage .master-profile-primary-btn {
+    background: #0F766E;
+    border: 1px solid #0F766E;
+    color: white;
+}
+
+#masterProfilePage .master-profile-primary-btn:hover {
+    background: #0B5F59;
+}
+
+
+/* =========================
+   HIDDEN OLD ELEMENTS
+========================= */
+
+#masterProfilePage #profileCompletedSection,
+#masterProfilePage #profileForm,
+#masterProfilePage .profile-completion-section {
+    display: none;
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark-mode #masterProfilePage .master-profile-page-header h1,
+body.dark-mode #masterProfilePage .master-profile-name-row h2,
+body.dark-mode #masterProfilePage .master-card-header h2,
+body.dark-mode #masterProfilePage .master-info-item strong,
+body.dark-mode #masterProfilePage .verification-main-status strong,
+body.dark-mode #masterProfilePage .master-tags,
+body.dark-mode #masterProfilePage .master-document-info strong,
+body.dark-mode #masterProfilePage .consent-service-item strong {
+    color: #F4F0E6;
+}
+
+body.dark-mode #masterProfilePage .master-profile-page-header p,
+body.dark-mode #masterProfilePage .master-profile-subtitle,
+body.dark-mode #masterProfilePage .master-profile-meta,
+body.dark-mode #masterProfilePage .master-card-header p,
+body.dark-mode #masterProfilePage .master-info-item span,
+body.dark-mode #masterProfilePage .verification-row span,
+body.dark-mode #masterProfilePage .verification-main-status p,
+body.dark-mode #masterProfilePage .master-document-info span,
+body.dark-mode #masterProfilePage .consent-main-message p {
+    color: #9CAAA5;
+}
+
+body.dark-mode #masterProfilePage .master-profile-hero {
+    background: #1B342C;
+    border-color: #34443E;
+}
+
+body.dark-mode #masterProfilePage .master-profile-completion-badge,
+body.dark-mode #masterProfilePage .master-card,
+body.dark-mode #masterProfilePage .master-info-item,
+body.dark-mode #masterProfilePage .verification-row,
+body.dark-mode #masterProfilePage .master-document,
+body.dark-mode #masterProfilePage .master-tags,
+body.dark-mode #masterProfilePage .consent-service-item {
+    background: #202C28;
+    border-color: #34443E;
+}
+
+body.dark-mode #masterProfilePage .master-profile-avatar,
+body.dark-mode #masterProfilePage .master-profile-edit-btn,
+body.dark-mode #masterProfilePage .master-profile-secondary-btn {
+    background: #202C28;
+    border-color: #34443E;
+}
+
+body.dark-mode #masterProfilePage .master-profile-page-header h1,
+body.dark-mode #masterProfilePage .master-profile-name-row h2,
+body.dark-mode #masterProfilePage .master-card-header h2 {
+    color: #F4F0E6;
+}
+
+body.dark-mode #masterProfilePage .master-profile-tabs {
+    background: #202C28;
+    border-color: #34443E;
+}
+
+body.dark-mode #masterProfilePage .master-profile-tab {
+    color: #B8C3BE;
+}
+
+body.dark-mode #masterProfilePage .master-profile-tab:hover {
+    background: #1F342E;
+    color: #B8E05F;
+}
+
+body.dark-mode #masterProfilePage .master-profile-tab.active {
+    background: #1F342E;
+    color: #B8E05F;
+}
+
+body.dark-mode #masterProfilePage .master-card-icon,
+body.dark-mode #masterProfilePage .master-document-icon {
+    background: #1F342E;
+}
+
+body.dark-mode #masterProfilePage .verification-main-status,
+body.dark-mode #masterProfilePage .consent-main-message {
+    background: #1F342E;
+    border-color: #34443E;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    #masterProfilePage .master-profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #masterProfilePage .consent-service-list {
+        grid-template-columns: 1fr;
+    }
+
+    #masterProfilePage .master-profile-page-header {
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    #masterProfilePage .master-profile-page-header {
+        flex-direction: column;
+    }
+
+    #masterProfilePage .master-profile-completion-badge {
+        width: fit-content;
+    }
+
+    #masterProfilePage .master-profile-hero {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    #masterProfilePage .master-profile-hero-action {
+        width: 100%;
+    }
+
+    #masterProfilePage .master-profile-edit-btn {
+        width: 100%;
+    }
+
+    #masterProfilePage .master-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #masterProfilePage .master-info-full {
+        grid-column: auto;
+    }
+
+    #masterProfilePage .master-profile-actions {
+        flex-direction: column;
+    }
+
+    #masterProfilePage .master-profile-actions button {
+        width: 100%;
+    }
+}
+
+/* Search Results */
+.search-box {
+    position: relative;
+}
+
+.search-results {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #DDEDEA;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.search-result-item {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #1F2937;
+    cursor: pointer;
+    border-bottom: 1px solid #EEF5F3;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background: #F0FDFA;
+}
+
+.search-no-result {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #64748B;
+}
+
+
+.application-search-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.application-search-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border: 1px solid #DDEDEA;
+    border-radius: 10px;
+    font-size: 13px;
+    outline: none;
+    background: white;
+}
+
+.application-search-box input:focus {
+    border-color: #0F766E;
+}
+
+.application-search-results {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #DDEDEA;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.application-search-result {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #EEF5F3;
+    font-size: 13px;
+    color: #1F2937;
+}
+
+.application-search-result:last-child {
+    border-bottom: none;
+}
+
+.application-search-result:hover {
+    background: #F0FDFA;
+}
+
+.application-search-result small {
+    color: #64748B;
+}
+
+.application-search-no-result {
+    padding: 12px 16px;
+    color: #64748B;
+    font-size: 13px;
+}
+
+.user-search-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.user-search-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border: 1px solid #DDEDEA;
+    border-radius: 10px;
+    font-size: 13px;
+    outline: none;
+    background: white;
+}
+
+.user-search-box input:focus {
+    border-color: #0F766E;
+}
+
+.user-search-results {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #DDEDEA;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.user-search-result {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #EEF5F3;
+    font-size: 13px;
+    color: #1F2937;
+}
+
+.user-search-result:last-child {
+    border-bottom: none;
+}
+
+.user-search-result:hover {
+    background: #F0FDFA;
+}
+
+.user-search-result small {
+    color: #64748B;
+}
+
+.user-search-no-result {
+    padding: 12px 16px;
+    color: #64748B;
+    font-size: 13px;
+}
+
+
+.audit-search-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.audit-search-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border: 1px solid #DDEDEA;
+    border-radius: 10px;
+    font-size: 13px;
+    outline: none;
+    background: white;
+}
+
+.audit-search-box input:focus {
+    border-color: #0F766E;
+}
+
+.audit-search-results {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #DDEDEA;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.audit-search-result {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #EEF5F3;
+    font-size: 13px;
+    color: #1F2937;
+}
+
+.audit-search-result:last-child {
+    border-bottom: none;
+}
+
+.audit-search-result:hover {
+    background: #F0FDFA;
+}
+
+.audit-search-result small {
+    color: #64748B;
+}
+
+.audit-search-no-result {
+    padding: 12px 16px;
+    color: #64748B;
+    font-size: 13px;
+}
+.audit-log-scroll {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.registered-users-scroll {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.application-scroll {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.recent-notifications-scroll {
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.officer-applications-scroll {
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.officer-audit-scroll {
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.citizen-directory-scroll {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.all-citizen-applications-scroll {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.platform-activity-scroll {
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 8px;
 }

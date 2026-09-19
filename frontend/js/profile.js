@@ -45,9 +45,14 @@ async function loadProfile() {
             if (profileComplete) {
 
                 profileForm.style.display = "none";
-                completedSection.style.display = "block";
+                completedSection.style.display = "none";
 
                 updateCompletion(100);
+
+                // Show the new Master Profile view
+                if (typeof displayMasterProfile === "function") {
+                    displayMasterProfile(result.profile);
+                }
 
             } else {
 
@@ -583,4 +588,284 @@ function backToCompletedProfile() {
     completedSection.scrollIntoView({
         behavior: "smooth"
     });
+}
+
+function showMasterTab(tabName, clickedTab) {
+
+    const tabs = [
+        "overview",
+        "personal",
+        "education",
+        "verification",
+        "documents",
+        "consent"
+    ];
+
+    tabs.forEach(function(tab) {
+
+        const section = document.getElementById(
+            "masterTab" +
+            tab.charAt(0).toUpperCase() +
+            tab.slice(1)
+        );
+
+        if (section) {
+            section.style.display = "none";
+        }
+    });
+
+    const selectedSection = document.getElementById(
+        "masterTab" +
+        tabName.charAt(0).toUpperCase() +
+        tabName.slice(1)
+    );
+
+    if (selectedSection) {
+        selectedSection.style.display = "block";
+    }
+
+    document
+        .querySelectorAll(".master-profile-tab")
+        .forEach(function(tab) {
+            tab.classList.remove("active");
+        });
+
+    if (clickedTab) {
+        clickedTab.classList.add("active");
+    }
+}
+
+
+function displayMasterProfile(profile) {
+
+    if (!profile) return;
+
+    // Profile header
+    const name = profile.full_name || "Citizen";
+    const mobile = profile.mobile || savedMobile || "-";
+    const city = profile.city || "-";
+
+    const displayName = document.getElementById("profileDisplayName");
+    const profileMobile = document.getElementById("profileMobile");
+    const profileCity = document.getElementById("profileCity");
+    const profileInitial = document.getElementById("profileInitial");
+
+    if (displayName) {
+        displayName.textContent = name;
+    }
+
+    if (profileMobile) {
+        profileMobile.textContent = mobile;
+    }
+
+    if (profileCity) {
+        profileCity.textContent = city;
+    }
+
+    if (profileInitial) {
+        profileInitial.textContent = name.charAt(0).toUpperCase();
+    }
+
+
+    // Overview - Personal Information
+    setText("overviewFullName", profile.full_name);
+    setText("overviewDob", profile.dob);
+    setText("overviewGender", profile.gender);
+    setText("overviewMobile", mobile);
+    setText("overviewEmail", profile.email);
+    setText("overviewCity", profile.city);
+    setText("overviewAddress", profile.address);
+
+
+    // Overview - Education
+    setText("overviewInstitution", profile.school_college);
+    setText("overviewBoard", profile.board);
+    setText("overviewClass", profile.current_class);
+    setText("overviewAcademicYear", profile.academic_year);
+
+
+    // Overview - Skills & Interests
+    setText("overviewSkills", profile.skills);
+    setText("overviewInterests", profile.interests);
+
+
+    // Personal Tab
+    setText("personalFullName", profile.full_name);
+    setText("personalDob", profile.dob);
+    setText("personalGender", profile.gender);
+    setText("personalMobile", mobile);
+    setText("personalEmail", profile.email);
+    setText("personalCity", profile.city);
+    setText("personalAddress", profile.address);
+
+
+    // Education Tab
+    setText("educationInstitution", profile.school_college);
+    setText("educationBoard", profile.board);
+    setText("educationClass", profile.current_class);
+    setText("educationAcademicYear", profile.academic_year);
+
+
+    // Verification
+    const verified =
+        profile.identity_verified === 1 ||
+        profile.identity_verified === true;
+
+    setText(
+        "verificationStatus",
+        verified ? "✓ Verified" : "Not Verified"
+    );
+
+    setText(
+        "identityVerificationText",
+        verified ? "Verified" : "Not Verified"
+    );
+
+    setText(
+        "identitySourceText",
+        profile.identity_source || "DigiLocker"
+    );
+
+    setText(
+        "verifiedDocumentText",
+        localStorage.getItem("verifiedDocument") || "Aadhaar"
+    );
+
+    setText(
+        "verificationSourceDetail",
+        profile.identity_source || "DigiLocker"
+    );
+
+    setText(
+        "verificationDocumentDetail",
+        localStorage.getItem("verifiedDocument") || "Aadhaar"
+    );
+
+
+    // Documents
+
+const verifiedDocument =
+    localStorage.getItem("verifiedDocument");
+
+const documentName =
+    verifiedDocument || "No document";
+
+const documentNameElement =
+    document.getElementById("verifiedDocumentName");
+
+const documentDescriptionElement =
+    document.getElementById("verifiedDocumentDescription");
+
+const documentStatusElement =
+    document.getElementById("verifiedDocumentStatus");
+
+if (documentNameElement) {
+    documentNameElement.textContent = documentName;
+}
+
+if (documentDescriptionElement) {
+    documentDescriptionElement.textContent =
+        verified
+            ? "Identity verification document"
+            : "No verified document";
+}
+
+if (documentStatusElement) {
+    documentStatusElement.textContent =
+        verified
+            ? "Verified"
+            : "Not Verified";
+
+    documentStatusElement.classList.toggle(
+        "optional",
+        !verified
+    );
+}
+
+// Consent & Data Sharing
+
+loadConsentStatus(profile.mobile || savedMobile);
+
+    // Completion
+    const completionPercent = calculateCompletion(profile);
+
+    setText(
+        "masterProfileCompletion",
+     completionPercent + "%"
+    );
+} 
+
+async function loadConsentStatus(mobile) {
+    if (!mobile) return;
+
+    try {
+        const response = await fetch(
+            `http://127.0.0.1:8000/consent/${mobile}`
+        );
+
+        const result = await response.json();
+
+        console.log("CONSENT DATA:", result);
+
+        if (!result.success || !result.consent) return;
+
+        const consent = result.consent;
+
+        updateConsentStatus(
+            "educationConsentStatus",
+            consent.education
+        );
+
+        updateConsentStatus(
+            "employmentConsentStatus",
+            consent.employment
+        );
+
+        updateConsentStatus(
+            "welfareConsentStatus",
+            consent.welfare
+        );
+
+    } catch (error) {
+        console.error("Consent Load Error:", error);
+    }
+}
+
+function updateConsentStatus(elementId, enabled) {
+
+    const element =
+        document.getElementById(elementId);
+
+    if (!element) {
+        return;
+    }
+
+    const isEnabled =
+        enabled === 1 ||
+        enabled === true;
+
+    element.textContent =
+        isEnabled
+            ? "Enabled"
+            : "Disabled";
+
+    element.classList.toggle(
+        "consent-enabled",
+        isEnabled
+    );
+}
+
+// Small helper for safely updating text
+function setText(elementId, value) {
+
+    const element = document.getElementById(elementId);
+
+    if (element) {
+        element.textContent =
+            value !== null &&
+            value !== undefined &&
+            String(value).trim() !== ""
+                ? value
+                : "-";
+    }
 }

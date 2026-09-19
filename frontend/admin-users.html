@@ -50,7 +50,7 @@
                 🏠 Home
             </a>
 
-            <a href="index.html">
+            <a href="index.html?role=admin">
                 🚪 Logout
             </a>
 
@@ -125,9 +125,24 @@
 
             </div>
 
+            <div class="user-search-box">
 
-            <div class="table-wrapper">
+                <input
+                    type="text"
+                    id="userSearch"
+                    placeholder="Search users..."
+                    autocomplete="off"
+                >
 
+                <div
+                    id="userSearchResults"
+                    class="user-search-results">
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper registered-users-scroll">
                 <table>
 
                     <thead>
@@ -263,6 +278,7 @@
 
     <script src="js/admin-users.js"></script>
     <script src="js/theme.js"></script>
+    
 
 </body>
 </html>

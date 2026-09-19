@@ -5,566 +5,1071 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Page Title -->
     <title>MahaConnect | Master Profile</title>
 
-    <!-- CSS File -->
     <link rel="stylesheet" href="css/style.css">
+
     <script>
-    const userMobile = localStorage.getItem("userMobile");
-    const userRole = localStorage.getItem("userRole");
+        const userMobile = localStorage.getItem("userMobile");
+        const userRole = localStorage.getItem("userRole");
 
-    if (!userMobile || !userRole) {
-        window.location.href = "index.html";
-    }
+        if (!userMobile || !userRole) {
+            window.location.href = "index.html";
+        }
 
-    if (userRole !== "citizen") {
-        alert("Access Denied: Citizen access required.");
-        window.location.href = "index.html";
-    }
-</script>
+        if (userRole !== "citizen") {
+            alert("Access Denied: Citizen access required.");
+            window.location.href = "index.html";
+        }
+    </script>
 </head>
 
 <body>
 
-    <div class="app-layout">
+<div class="app-layout">
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
+    <!-- Sidebar -->
+    <aside class="sidebar">
 
-            <div class="sidebar-brand">
-                <h2>🏛️ MahaConnect</h2>
-                <p>One Profile • Multiple Services</p>
+        <div class="sidebar-brand">
+            <h2>🏛️ MahaConnect</h2>
+            <p>One Profile • Multiple Services</p>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                ▦ Dashboard
+            </a>
+
+            <a href="profile.html" class="active">
+                👤 My Profile
+            </a>
+
+            <a href="applications.html">
+                📄 My Applications
+            </a>
+
+            <a href="consent.html">
+                🔐 Data Consent
+            </a>
+
+            <a href="notifications.html">
+                🔔 Notifications
+            </a>
+
+            <a href="settings.html">
+                ⚙️ Settings
+            </a>
+
+            <a href="index.html?role=citizen">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+        <div class="security-card">
+            <strong>🛡️ Your data is secure</strong>
+            <span>Protected by MahaConnect</span>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Area -->
+    <div class="main-area">
+
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="globalSearch"
+                    placeholder="Search services, schemes..."
+                    autocomplete="off"
+                >
+
+                <div
+                    id="searchResults"
+                    class="search-results">
+                </div>
             </div>
 
-            <nav class="sidebar-nav">
+            <div class="user-area">
 
-                <a href="dashboard.html">
-                    ▦ Dashboard
-                </a>
+                <span>🔔</span>
 
-                <a href="profile.html" class="active">
-                    👤 My Profile
-                </a>
+                <div class="user-avatar">
+                    👤
+                </div>
 
-                <a href="applications.html">
-                    📄 My Applications
-                </a>
+                <span class="user-name">
+                    User
+                </span>
 
-                <a href="consent.html">
-                    🔐 Data Consent
-                </a>
-
-                <a href="notifications.html">
-                    🔔 Notifications
-                </a>
-
-                <a href="settings.html">
-                    ⚙️ Settings
-                </a>
-
-                <a href="index.html?role=citizen">
-                    🚪 Logout
-                </a>
-
-            </nav>
-
-
-            <!-- Security Card -->
-            <div class="security-card">
-                <strong>🛡️ Your data is secure</strong>
-                <span>Protected by MahaConnect</span>
             </div>
 
-        </aside>
+        </header>
 
 
-        <!-- Main Area -->
-        <div class="main-area">
+        <!-- Profile Content -->
+        <main class="dashboard-content" id="masterProfilePage">
 
-            <!-- Top Navbar -->
-            <header class="top-navbar">
+             <div id="masterProfileCompletedView">
 
-                <div class="search-box">
-                    <input
-                        type="text"
-                        placeholder="Search services, schemes..."
-                    >
-                </div>
-
-                <div class="user-area">
-
-                    <span>🔔</span>
-
-                    <div class="user-avatar">
-                        👤
-                    </div>
-
-                    <span class="user-name">
-                        User
-                    </span>
-
-                </div>
-
-            </header>
-
-
-            <!-- Profile Content -->
-            <main class="dashboard-content">
-
-                <!-- Page Intro -->
-                <section class="page-intro">
-
-                    <h1>Master Profile</h1>
-
-                    <p>
-                        Your unified profile for multiple government services.
-                    </p>
-
-                </section>
-
-
-                <!-- Profile Summary -->
-                <section class="profile-summary">
-
-                    <div class="profile-info">
-
-                        <div class="profile-avatar">
-                            👤
-                        </div>
-
-                        <div>
-                            <h2>Your Master Profile</h2>
-
-                            <p>
-                                Keep your information updated for
-                                government services.
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <div class="completion">
-
-                        <div class="completion-text">
-                            <span>Profile Completion</span>
-                            <strong>85%</strong>
-                        </div>
-
-                        <div class="progress">
-                            <div class="progress-bar"></div>
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- Profile Form -->
-                <form id="profileForm">
-
-                    <button
-                        type="button"
-                        class="back-profile-btn"
-                        onclick="backToCompletedProfile()">
-                        ← Back to Profile
-                    </button>
-
-                    <!-- Personal Information -->
-                    <div class="profile-section">
-
-                        <h2>Personal Information</h2>
-
-                        <div class="form-grid">
-
-                            <div>
-                                <label>Full Name</label>
-
-                                <input
-                                    type="text"
-                                    id="fullName"
-                                    placeholder="Enter your full name"
-                                    required
-                                >
-                            </div>
-
-
-                            <div>
-                                <label>Date of Birth</label>
-
-                                <input
-                                    type="date"
-                                    id="dob"
-                                    required
-                                >
-                            </div>
-
-
-                            <div>
-                                <label>Gender</label>
-
-                                <select id="gender">
-
-                                    <option value="">
-                                        Select Gender
-                                    </option>
-
-                                    <option>
-                                        Male
-                                    </option>
-
-                                    <option>
-                                        Female
-                                    </option>
-
-                                    <option>
-                                        Other
-                                    </option>
-
-                                </select>
-                            </div>
-
-
-                            <div>
-                                <label>Mobile Number</label>
-
-                                <input
-                                    type="tel"
-                                    id="mobile"
-                                    readonly
-                                >
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                <!-- Identity Verification -->
-<div class="profile-section identity-verification-card">
-
-    <div class="verification-header">
+    <!-- Page Header -->
+    <section class="master-profile-page-header">
         <div>
-            <h2>🛡️ Identity Verification</h2>
-            <p>
-                Verify your identity through DigiLocker to create a trusted
-                Master Profile.
+            <span class="master-profile-label">CITIZEN PROFILE</span>
+            <h1>Master Profile</h1>
+            <p>Your unified identity for multiple government services.</p>
+        </div>
+
+        <div class="master-profile-completion-badge">
+            <span>Profile Complete</span>
+            <strong id="masterProfileCompletion">100%</strong>
+        </div>
+    </section>
+
+
+    <!-- Profile Hero -->
+    <section class="master-profile-hero">
+
+        <div class="master-profile-avatar">
+            <span id="profileInitial">P</span>
+        </div>
+
+        <div class="master-profile-hero-info">
+            <div class="master-profile-name-row">
+                <h2 id="profileDisplayName">Prajwal Kailash Dhandar</h2>
+                <span
+                    class="master-profile-verified"
+                    id="profileVerifiedBadge">
+                    ✓ Verified
+                </span>
+            </div>
+
+            <p class="master-profile-subtitle">
+                Master Citizen Profile
             </p>
+
+            <div class="master-profile-meta">
+                <span>📱 <span id="profileMobile">-</span></span>
+                <span>📍 <span id="profileCity">-</span></span>
+            </div>
         </div>
 
-        <span
-            class="verification-status"
-            id="verificationStatus">
-                Not Verified
-        </span>
-
-    </div>
-
-    <div class="verification-info">
-
-        <div class="verification-item">
-            <span>Identity Source</span>
-            <strong>DigiLocker</strong>
+        <div class="master-profile-hero-action">
+            <button
+                type="button"
+                class="master-profile-edit-btn"
+                onclick="editProfile()">
+                Edit Profile
+            </button>
         </div>
 
-        <div class="verification-item">
-            <span>Required Document</span>
-            <strong>Aadhaar</strong>
-        </div>
+    </section>
 
-        <div class="verification-item">
-            <span>Verification</span>
-            <strong>Compulsory</strong>
-        </div>
 
-    </div>
-
-    <button
-        type="button"
-        class="verify-identity-btn"
-        onclick="startIdentityVerification()"
-    >
-        Verify Identity →
-    </button>
-
-</div>
-
-
-                    <!-- Contact Information -->
-                    <div class="profile-section">
-
-                        <h2>Contact Information</h2>
-
-                        <div class="form-grid">
-
-                            <div>
-                                <label>Email</label>
-
-                                <input
-                                    type="email"
-                                    id="email"
-                                    placeholder="Enter email"
-                                >
-                            </div>
-
-
-                            <div>
-                                <label>City / District</label>
-
-                                <input
-                                    type="text"
-                                    id="city"
-                                    placeholder="Enter city or district"
-                                >
-                            </div>
-
-
-                            <div class="full-width">
-
-                                <label>Address</label>
-
-                                <textarea
-                                    id="address"
-                                    placeholder="Enter your address"
-                                ></textarea>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Education Information -->
-                    <div class="profile-section">
-
-                        <h2>Education Information</h2>
-
-                        <div class="form-grid">
-
-                            <div>
-                                <label>School / College</label>
-
-                                <input
-                                    type="text"
-                                    id="institution"
-                                    placeholder="Enter institution name"
-                                >
-                            </div>
-
-
-                            <div>
-                                <label>Board</label>
-
-                                <select id="board">
-
-                                    <option value="">
-                                        Select Board
-                                    </option>
-
-                                    <option>
-                                        Maharashtra State Board
-                                    </option>
-
-                                    <option>
-                                        CBSE
-                                    </option>
-
-                                    <option>
-                                        ICSE
-                                    </option>
-
-                                    <option>
-                                        Other
-                                    </option>
-
-                                </select>
-                            </div>
-
-
-                            <div>
-                                <label>Current Class</label>
-
-                                <input
-                                    type="text"
-                                    id="class"
-                                    placeholder="Example: 10th"
-                                >
-                            </div>
-
-
-                            <div>
-                                <label>Academic Year</label>
-
-                                <input
-                                    type="text"
-                                    id="academicYear"
-                                    placeholder="2026-27"
-                                >
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Skills and Interests -->
-                    <div class="profile-section">
-
-                        <h2>Skills & Interests</h2>
-
-                        <div class="form-grid">
-
-                            <div class="full-width">
-
-                                <label>Skills</label>
-
-                                <input
-                                    type="text"
-                                    id="skills"
-                                    placeholder="Example: Python, Web Development"
-                                >
-
-                            </div>
-
-
-                            <div class="full-width">
-
-                                <label>Interests</label>
-
-                                <input
-                                    type="text"
-                                    id="interests"
-                                    placeholder="Example: Technology, Sports"
-                                >
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Save Button -->
-                    <button
-                        type="submit"
-                        class="save-btn"
-                    >
-                        Save & Continue →
-                    </button>
-
-                </form>
-
-                <!-- Profile Completion Section -->
-<section
-    id="profileCompletedSection"
-    style="
-    display:none;
-    margin-top:30px;
-    padding:30px;
-    border-radius:16px;
-    background:#F0FDFA;
-    border:1px solid #B8DED8;
-    text-align:center;
-    "
->
-
-    <div style="font-size:50px;">
-        ✓
-    </div>
-
-    <h2 style="color:#0F766E; margin-top:10px;">
-        Profile Completed
-    </h2>
-
-    <p style="margin-top:8px;">
-        Your Master Profile is successfully completed.
-    </p>
-
-    <div
-        style="
-        display:flex;
-        justify-content:center;
-        gap:12px;
-        flex-wrap:wrap;
-        margin-top:22px;
-        "
-    >
+    <!-- Navigation Tabs -->
+    <nav class="master-profile-tabs">
 
         <button
             type="button"
-            class="verify-identity-btn"
-            onclick="viewProfilePreview()"
-        >
-            View Profile Preview
+            class="master-profile-tab active"
+            onclick="showMasterTab('overview', this)">
+            Overview
         </button>
 
         <button
             type="button"
-            class="save-btn"
-            onclick="editProfile()"
-        >
+            class="master-profile-tab"
+            onclick="showMasterTab('personal', this)">
+            Personal
+        </button>
+
+        <button
+            type="button"
+            class="master-profile-tab"
+            onclick="showMasterTab('education', this)">
+            Education
+        </button>
+
+        <button
+            type="button"
+            class="master-profile-tab"
+            onclick="showMasterTab('verification', this)">
+            Verification
+        </button>
+
+        <button
+            type="button"
+            class="master-profile-tab"
+            onclick="showMasterTab('documents', this)">
+            Documents
+        </button>
+
+        <button
+            type="button"
+            class="master-profile-tab"
+            onclick="showMasterTab('consent', this)">
+            Consent & Sharing
+        </button>
+
+    </nav>
+
+
+    <!-- =========================
+         OVERVIEW
+    ========================== -->
+
+    <section
+        class="master-profile-tab-content"
+        id="masterTabOverview">
+
+        <div class="master-profile-grid">
+
+            <!-- Personal Information -->
+            <div class="master-card">
+
+                <div class="master-card-header">
+                    <div class="master-card-icon">👤</div>
+
+                    <div>
+                        <h2>Personal Information</h2>
+                        <p>Basic identity information</p>
+                    </div>
+                </div>
+
+                <div class="master-info-grid">
+
+                    <div class="master-info-item">
+                        <span>Full Name</span>
+                        <strong id="overviewFullName">-</strong>
+                    </div>
+
+                    <div class="master-info-item">
+                        <span>Date of Birth</span>
+                        <strong id="overviewDob">-</strong>
+                    </div>
+
+                    <div class="master-info-item">
+                        <span>Gender</span>
+                        <strong id="overviewGender">-</strong>
+                    </div>
+
+                    <div class="master-info-item">
+                        <span>Mobile Number</span>
+                        <strong id="overviewMobile">-</strong>
+                    </div>
+
+                    <div class="master-info-item">
+                        <span>Email</span>
+                        <strong id="overviewEmail">-</strong>
+                    </div>
+
+                    <div class="master-info-item">
+                        <span>City</span>
+                        <strong id="overviewCity">-</strong>
+                    </div>
+
+                    <div class="master-info-item master-info-full">
+                        <span>Address</span>
+                        <strong id="overviewAddress">-</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Identity Verification -->
+            <div class="master-card">
+
+                <div class="master-card-header">
+                    <div class="master-card-icon">🛡️</div>
+
+                    <div>
+                        <h2>Identity Verification</h2>
+                        <p>Verified citizen identity</p>
+                    </div>
+
+                    <span
+                        class="master-status-verified"
+                        id="verificationStatus">
+                        ✓ Verified
+                    </span>
+                </div>
+
+                <div class="verification-details">
+
+                    <div class="verification-row">
+                        <span>Verification Status</span>
+                        <strong id="identityVerificationText">
+                            Verified
+                        </strong>
+                    </div>
+
+                    <div class="verification-row">
+                        <span>Verification Source</span>
+                        <strong id="identitySourceText">
+                            DigiLocker
+                        </strong>
+                    </div>
+
+                    <div class="verification-row">
+                        <span>Verified Document</span>
+                        <strong id="verifiedDocumentText">
+                            Aadhaar
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Education -->
+            <div class="master-card">
+
+                <div class="master-card-header">
+                    <div class="master-card-icon">🎓</div>
+
+                    <div>
+                        <h2>Education</h2>
+                        <p>Current academic information</p>
+                    </div>
+                </div>
+
+                <div class="master-info-grid">
+
+                    <div class="master-info-item master-info-full">
+                        <span>School / College</span>
+                        <strong id="overviewInstitution">-</strong>
+                    </div>
+
+                    <div class="master-info-item">
+                        <span>Board</span>
+                        <strong id="overviewBoard">-</strong>
+                    </div>
+
+                    <div class="master-info-item">
+                        <span>Current Class / Year</span>
+                        <strong id="overviewClass">-</strong>
+                    </div>
+
+                    <div class="master-info-item">
+                        <span>Academic Year</span>
+                        <strong id="overviewAcademicYear">-</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Skills & Interests -->
+            <div class="master-card">
+
+                <div class="master-card-header">
+                    <div class="master-card-icon">💡</div>
+
+                    <div>
+                        <h2>Skills & Interests</h2>
+                        <p>Information used for relevant services</p>
+                    </div>
+                </div>
+
+                <div class="master-tags-section">
+
+                    <span class="master-tags-label">Skills</span>
+
+                    <div
+                        class="master-tags"
+                        id="overviewSkills">
+                        -
+                    </div>
+
+                    <span class="master-tags-label">Interests</span>
+
+                    <div
+                        class="master-tags"
+                        id="overviewInterests">
+                        -
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PERSONAL
+    ========================== -->
+
+    <section
+        class="master-profile-tab-content"
+        id="masterTabPersonal"
+        style="display:none;">
+
+        <div class="master-card">
+
+            <div class="master-card-header">
+                <div class="master-card-icon">👤</div>
+
+                <div>
+                    <h2>Personal Information</h2>
+                    <p>Information stored in your Master Profile</p>
+                </div>
+            </div>
+
+            <div class="master-info-grid">
+
+                <div class="master-info-item">
+                    <span>Full Name</span>
+                    <strong id="personalFullName">-</strong>
+                </div>
+
+                <div class="master-info-item">
+                    <span>Date of Birth</span>
+                    <strong id="personalDob">-</strong>
+                </div>
+
+                <div class="master-info-item">
+                    <span>Gender</span>
+                    <strong id="personalGender">-</strong>
+                </div>
+
+                <div class="master-info-item">
+                    <span>Mobile</span>
+                    <strong id="personalMobile">-</strong>
+                </div>
+
+                <div class="master-info-item">
+                    <span>Email</span>
+                    <strong id="personalEmail">-</strong>
+                </div>
+
+                <div class="master-info-item">
+                    <span>City</span>
+                    <strong id="personalCity">-</strong>
+                </div>
+
+                <div class="master-info-item master-info-full">
+                    <span>Address</span>
+                    <strong id="personalAddress">-</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EDUCATION
+    ========================== -->
+
+    <section
+        class="master-profile-tab-content"
+        id="masterTabEducation"
+        style="display:none;">
+
+        <div class="master-card">
+
+            <div class="master-card-header">
+                <div class="master-card-icon">🎓</div>
+
+                <div>
+                    <h2>Education Information</h2>
+                    <p>Academic details connected to your profile</p>
+                </div>
+
+            </div>
+
+            <div class="master-info-grid">
+
+                <div class="master-info-item master-info-full">
+                    <span>Institution</span>
+                    <strong id="educationInstitution">-</strong>
+                </div>
+
+                <div class="master-info-item">
+                    <span>Board</span>
+                    <strong id="educationBoard">-</strong>
+                </div>
+
+                <div class="master-info-item">
+                    <span>Class / Year</span>
+                    <strong id="educationClass">-</strong>
+                </div>
+
+                <div class="master-info-item">
+                    <span>Academic Year</span>
+                    <strong id="educationAcademicYear">-</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         VERIFICATION
+    ========================== -->
+
+    <section
+        class="master-profile-tab-content"
+        id="masterTabVerification"
+        style="display:none;">
+
+        <div class="master-card">
+
+            <div class="master-card-header">
+
+                <div class="master-card-icon">🛡️</div>
+
+                <div>
+                    <h2>Identity Verification</h2>
+                    <p>Your identity verification information</p>
+                </div>
+
+            </div>
+
+            <div class="verification-main-status">
+
+                <div class="verification-check">
+                    ✓
+                </div>
+
+                <div>
+                    <strong>Identity Verified</strong>
+                    <p>
+                        Your identity has been verified through the
+                        DigiLocker verification flow.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="master-info-grid">
+
+                <div class="master-info-item">
+                    <span>Status</span>
+                    <strong>Verified</strong>
+                </div>
+
+                <div class="master-info-item">
+                    <span>Source</span>
+                    <strong id="verificationSourceDetail">
+                        DigiLocker
+                    </strong>
+                </div>
+
+                <div class="master-info-item">
+                    <span>Document</span>
+                    <strong id="verificationDocumentDetail">
+                        Aadhaar
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DOCUMENTS
+    ========================== -->
+
+    <section
+        class="master-profile-tab-content"
+        id="masterTabDocuments"
+        style="display:none;">
+
+        <div class="master-card">
+
+            <div class="master-card-header">
+
+                <div class="master-card-icon">📄</div>
+
+                <div>
+                    <h2>Documents</h2>
+                    <p>Identity documents linked to your profile</p>
+                </div>
+
+            </div>
+
+            <div
+    class="master-document-list"
+    id="masterDocumentList">
+
+    <div class="master-document">
+
+        <div class="master-document-icon">
+            🪪
+        </div>
+
+        <div class="master-document-info">
+            <strong id="verifiedDocumentName">
+                Aadhaar
+            </strong>
+
+            <span id="verifiedDocumentDescription">
+                Identity verification document
+            </span>
+        </div>
+
+        <span
+            class="master-document-status"
+            id="verifiedDocumentStatus">
+            Verified
+        </span>
+
+    </div>
+
+</div>
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONSENT & DATA SHARING
+    ========================== -->
+
+    <section
+        class="master-profile-tab-content"
+        id="masterTabConsent"
+        style="display:none;">
+
+        <div class="master-card">
+
+            <div class="master-card-header">
+
+                <div class="master-card-icon">🔐</div>
+
+                <div>
+                    <h2>Consent & Data Sharing</h2>
+                    <p>
+                        Control how your information is shared
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="consent-information">
+
+                <div class="consent-main-message">
+
+                    <strong>
+                        Your data remains under your control.
+                    </strong>
+
+                    <p>
+                        MahaConnect shares only the information required
+                        by each government service according to
+                        consent and service requirements.
+                    </p>
+
+                </div>
+
+
+                <div class="consent-service-list">
+
+                    <div class="consent-service-item">
+
+                        <div>
+                            <strong>Education Services</strong>
+                            <span>
+                                Academic information
+                            </span>
+                        </div>
+
+                        <span
+                            class="consent-enabled"
+                            id="educationConsentStatus">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="consent-service-item">
+
+                        <div>
+                            <strong>Employment Services</strong>
+                            <span>
+                                Skills and employment information
+                            </span>
+                        </div>
+
+                        <span
+                            class="consent-enabled"
+                            id="employmentConsentStatus">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="consent-service-item">
+
+                        <div>
+                            <strong>Welfare Services</strong>
+                            <span>
+                                Eligibility-related information
+                            </span>
+                        </div>
+
+                        <span
+                            class="consent-enabled"
+                            id="welfareConsentStatus">
+                            -
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a
+                href="consent.html"
+                class="master-consent-link">
+                Manage Consent →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Profile Actions -->
+
+    <section class="master-profile-actions">
+
+        <button
+            type="button"
+            class="master-profile-secondary-btn"
+            onclick="editProfile()">
             Update / Edit Profile
         </button>
 
         <button
             type="button"
-            class="save-btn"
-            onclick="continueToDashboard()"
-        >
+            class="master-profile-primary-btn"
+            onclick="continueToDashboard()">
             Continue to Dashboard →
         </button>
 
+    </section>
+
     </div>
 
-</section>
 
-            </main>
+    <!-- Old completion section kept hidden for JS compatibility -->
+
+    <section
+        id="profileCompletedSection"
+        style="display:none;">
+    </section>
+
+
+    <!-- Existing Profile Form -->
+
+    <form
+        id="profileForm"
+        style="display:none;">
+
+        <button
+            type="button"
+            class="master-profile-back-btn"
+            onclick="backToCompletedProfile()">
+            ← Back to Profile
+        </button>
+
+        <div class="profile-section">
+
+            <h2>Personal Information</h2>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="fullName">
+                        Full Name
+                    </label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">
+                        Date of Birth
+                    </label>
+                    <input
+                        type="date"
+                        id="dob"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">
+                        Gender
+                    </label>
+                    <select id="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">
+                        Mobile Number
+                    </label>
+                    <input
+                        type="text"
+                        id="mobile"
+                        readonly>
+                </div>
+
+                <div class="form-group full-width">
+
+                    <div class="verification-card">
+
+                        <div>
+                            <strong>Identity Verification</strong>
+                            <p id="verificationStatusForm">
+                                Not Verified
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            onclick="startIdentityVerification()">
+                            Verify Identity
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        Email
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">
+                        City
+                    </label>
+                    <input
+                        type="text"
+                        id="city"
+                        required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="address">
+                        Address
+                    </label>
+                    <textarea
+                        id="address"
+                        rows="3"
+                        required></textarea>
+                </div>
+
+            </div>
 
         </div>
 
+
+        <div class="profile-section">
+
+            <h2>Education Information</h2>
+
+            <div class="form-grid">
+
+                <div class="form-group full-width">
+                    <label for="institution">
+                        School / College
+                    </label>
+
+                    <input
+                        type="text"
+                        id="institution"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="board">
+                        Board
+                    </label>
+
+                    <input
+                        type="text"
+                        id="board"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="class">
+                        Current Class / Year
+                    </label>
+
+                    <input
+                        type="text"
+                        id="class"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="academicYear">
+                        Academic Year
+                    </label>
+
+                    <input
+                        type="text"
+                        id="academicYear"
+                        required>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-section">
+
+            <h2>Skills & Interests</h2>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="skills">
+                        Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        id="skills">
+                </div>
+
+                <div class="form-group">
+                    <label for="interests">
+                        Interests
+                    </label>
+
+                    <input
+                        type="text"
+                        id="interests">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="save-btn">
+            Save Master Profile
+        </button>
+
+    </form>
+
+
+    <!-- Profile Completion -->
+
+    <section
+        class="profile-completion-section"
+        style="display:none;">
+
+        <div class="completion">
+            <div class="completion-text">
+                Profile Completion
+                <strong>100%</strong>
+            </div>
+
+            <div class="progress">
+                <div
+                    class="progress-bar"
+                    style="width:100%;">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
     </div>
 
+</div>
 
-    <!-- JavaScript -->
-    <script src="js/profile.js"></script>
+
+<!-- =============================================================
+     EXISTING PROFILE JAVASCRIPT
+============================================================= -->
+
+<script src="js/profile.js"></script>
+
 
 <script>
-function startIdentityVerification() {
+    function startIdentityVerification() {
 
-    const fullName =
-        document.getElementById("fullName").value.trim();
+        const fullName =
+            document.getElementById("fullName").value.trim();
 
-    const dob =
-        document.getElementById("dob").value;
+        const dob =
+            document.getElementById("dob").value;
 
-    const gender =
-        document.getElementById("gender").value;
+        const gender =
+            document.getElementById("gender").value;
 
-    // Identity details are required for verification
-    if (!fullName || !dob || !gender) {
-        alert(
-            "Please enter your Full Name, Date of Birth and Gender before verifying your identity."
+        if (!fullName || !dob || !gender) {
+
+            alert(
+                "Please enter your Full Name, Date of Birth and Gender before verifying your identity."
+            );
+
+            return;
+        }
+
+        const identityData = {
+            fullName: fullName,
+            dob: dob,
+            gender: gender
+        };
+
+        localStorage.setItem(
+            "pendingIdentityData",
+            JSON.stringify(identityData)
         );
-        return;
+
+        window.location.href = "digilocker.html";
     }
-
-    // Store identity data for DigiLocker verification
-    const identityData = {
-        fullName: fullName,
-        dob: dob,
-        gender: gender
-    };
-
-    localStorage.setItem(
-        "pendingIdentityData",
-        JSON.stringify(identityData)
-    );
-
-    // Open DigiLocker verification
-    window.location.href = "digilocker.html";
-}
 </script>
+
 
 <script>
     const verificationStatus =
@@ -574,17 +1079,26 @@ function startIdentityVerification() {
         localStorage.getItem("identitySource");
 
     const statusElement =
-        document.getElementById("verificationStatus");
+        document.getElementById("verificationStatusForm");
 
     if (
         verificationStatus === "verified" &&
         verificationSource === "DigiLocker"
     ) {
-        statusElement.textContent = "✓ Verified";
-        statusElement.style.color = "#0F766E";
+
+        if (statusElement) {
+
+            statusElement.textContent =
+                "✓ Verified";
+
+            statusElement.style.color =
+                "#0F766E";
+        }
     }
 </script>
+
 <script src="js/theme.js"></script>
+<script src="js/global-search.js"></script>
 
 </body>
 

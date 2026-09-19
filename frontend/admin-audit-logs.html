@@ -54,7 +54,7 @@
                 🏠 Home
             </a>
 
-            <a href="index.html">
+            <a href="index.html?role=admin">
                 🚪 Logout
             </a>
 
@@ -178,8 +178,24 @@
 
             </div>
 
+            <div class="audit-search-box">
 
-            <div class="table-wrapper">
+                <input
+                    type="text"
+                    id="auditSearch"
+                    placeholder="Search audit activity..."
+                    autocomplete="off"
+                >
+
+                <div
+                    id="auditSearchResults"
+                    class="audit-search-results">
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper audit-log-scroll">
 
                 <table>
 

@@ -66,9 +66,8 @@
                     ⚙️ Settings
                 </a>
 
-                <a href="index.html">
-                    <span>↪</span>
-                    Logout
+                <a href="index.html?role=citizen">
+                    🚪 Logout
                 </a>
 
             </nav>
@@ -97,7 +96,16 @@
 
                 <div class="search-box">
                     <span>⌕</span>
-                    <input type="text" placeholder="Search services...">
+                    <input type="text" 
+                    id="globalSearch"
+                    placeholder="Search services..."
+                    autocomplete="off"
+                    >
+
+                    <div
+                    id="searchResults"
+                    class="search-results">
+                    </div>
                 </div>
 
                 <div class="user-area">
@@ -151,6 +159,8 @@
                     </p>
 
                 </div>
+
+                <br>
 
 
                 <!-- Consent Cards -->
@@ -329,6 +339,7 @@
                     </div>
 
                 </div>
+                <br>
 
 
                 <!-- Actions -->
@@ -353,6 +364,7 @@
 
     <script src="js/services.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/global-search.js"></script>
 
 </body>
 

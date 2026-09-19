@@ -20,6 +20,8 @@ async function loadApplications() {
 
         allApplications = Array.isArray(data) ? data : data.applications || [];
 
+        console.log("APPLICATION DATA:", allApplications);
+
         updateStatistics();
         displayApplications(allApplications);
 
@@ -125,48 +127,57 @@ function displayApplications(applications) {
 
 // Update application status
 async function updateApplicationStatus(applicationId, status) {
+    const officerMobile = localStorage.getItem("userMobile");
+
+    console.log("=== STATUS UPDATE ===");
+    console.log("Application ID:", applicationId);
+    console.log("Status:", status);
+    console.log("Officer Mobile:", officerMobile);
 
     try {
-
         const response = await fetch(
             `${API_BASE}/applications/update-status/${applicationId}`,
             {
                 method: "PUT",
-
                 headers: {
                     "Content-Type": "application/json"
                 },
-
                 body: JSON.stringify({
-                    status: status,
-                    officer_mobile: localStorage.getItem("userMobile")
+                    status: String(status),
+                    officer_mobile: String(officerMobile)
                 })
             }
         );
 
+        console.log("HTTP Status:", response.status);
+
+        const text = await response.text();
+
+        console.log("Server Response:", text);
 
         if (!response.ok) {
-            throw new Error("Failed to update application");
+            throw new Error(text);
         }
 
+        const data = JSON.parse(text);
 
         alert(`Application ${status.toLowerCase()} successfully.`);
 
         loadApplications();
 
     } catch (error) {
-
-        console.error(error);
-
-        alert("Unable to update application.");
+        console.error("STATUS UPDATE ERROR:", error);
+        alert("Unable to update status.");
     }
 }
 
 
 // Search applications
-document
-    .getElementById("applicationSearch")
-    .addEventListener("input", function () {
+const applicationSearch = document.getElementById("applicationSearch");
+
+if (applicationSearch) {
+
+    applicationSearch.addEventListener("input", function () {
 
         const searchText = this.value.toLowerCase();
 
@@ -179,7 +190,10 @@ document
         });
 
         displayApplications(filtered);
+
     });
+
+}
 
 
 // Start

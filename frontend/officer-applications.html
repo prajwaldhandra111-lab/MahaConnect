@@ -61,7 +61,7 @@
         ⚙️ Settings
     </a>
 
-    <a href="#" onclick="logout()">
+    <a href="index.html?role=officer">
         🚪 Logout
     </a>
 
@@ -84,9 +84,15 @@
             <div class="search-box">
                 <input
                     type="text"
-                    id="applicationSearch"
-                    placeholder="Search applications..."
+                    id="officerSearch"
+                    placeholder="Search..."
+                    autocomplete="off"
                 >
+
+                <div
+                    id="officerSearchResults"
+                    class="search-results">
+                </div>
             </div>
 
             <div class="user-area">
@@ -215,8 +221,18 @@
                 <p>
                     Applications submitted through connected government services.
                 </p>
+                <br>
 
-                <div id="applicationsContent">
+                <div class="application-search-box">
+                    <input
+                        type="text"
+                        id="applicationSearch"
+                        placeholder="Search applications..."
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div id="applicationsContent" class="all-citizen-applications-scroll">
 
                     <p>
                         Loading applications...
@@ -225,7 +241,8 @@
                 </div>
 
             </section>
-
+   
+            <br>
 
             <!-- Integration Information -->
             <section class="dashboard-box">
@@ -237,6 +254,8 @@
                 <p>
                     Applications are routed through the MahaConnect Integration Layer.
                 </p>
+
+                <br>
 
                 <div class="modern-services">
 
@@ -315,6 +334,7 @@
 
 <script src="js/officer-applications.js"></script>
 <script src="js/theme.js"></script>
+<script src="js/officer-search.js"></script>
 
 
 </body>
